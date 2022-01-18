@@ -48,7 +48,7 @@ class Agent:
         self.__locationY = random.randint(0, 100)
 
     def moveLocationSouth(self) -> None:
-        """Moves Agent's location more south(in a negative directon on Y-Axis)
+        """Moves Agent's location more south(in a negative direction on Y-Axis)
         """
         self.__locationX -= 10
 
