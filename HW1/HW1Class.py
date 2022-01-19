@@ -2,13 +2,15 @@ import random
 
 
 class Agent:
-    """
-    Class of type Agent
-    """
-    name = str()
-    __age = int()
-    __locationX = int()
-    __locationY = int()
+    """Class of type Agent
+
+    Returns:
+        [type]: Nones
+    """    
+    name: str
+    __age: int
+    __locationX: int
+    __locationY: int
 
     def __init__(self, name: str, age: int, locationX: int, locationY: int) -> None:
         """Constructs Object of type Agent
