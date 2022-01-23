@@ -1,0 +1,11 @@
+from Human import Human
+h = Human(15, 200)
+j = Human(20)
+print("Height", h.getHeight(), "Weight", h.getWeight())
+print("Height", j.getHeight(), "Weight", j.getWeight())
+h.setHeight(45)
+h.setWeight(69)
+j.setHeight(48)
+j.setWeight(73)
+print("Height", h.getHeight(), "Weight", h.getWeight())
+print("Height", j.getHeight(), "Weight", j.getWeight())
