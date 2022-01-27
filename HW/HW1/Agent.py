@@ -1,4 +1,6 @@
 import random
+from typing import List, Tuple
+
 """Agent.py
     Name: Benjamin Goldstone
     Professor: Jorge Silveyra
@@ -43,7 +45,7 @@ class Agent:
         """
         return self.name
 
-    def getLocation(self) -> tuple:
+    def getLocation(self) -> Tuple:
         """Gets the X and Y location of Agent
 
         Returns:
@@ -59,8 +61,7 @@ class Agent:
         self.__locationY = random.randint(-500, 500)
 
     def moveLocationSouth(self) -> None:
-        """Moves Agent's location more south(in a negative direction on Y-Axis)
-        """
+        """Moves Agent's location more south(in a negative direction on Y-Axis)"""
         self.__locationY -= random.randint(0, 20)
 
     def moveLocationBasedOnAge(self) -> None:
@@ -73,24 +74,22 @@ class Agent:
         Returns:
             str: String representation of Agent
         """
-        return f'Agent(name={self.name}, age={self.__age}, locationX={self.__locationX}, locationY={self.__locationY})'
+        return f"Agent(name={self.name}, age={self.__age}, locationX={self.__locationX}, locationY={self.__locationY})"
 
 
-def main():
-    """Main Method for Agent Class.
-
-    """
-    NAME_CHANGE = ["John", "George"]
-    DASHES = '-'*30
-    agents = [
+def main() -> None:
+    """Main Method for Agent Class."""
+    NAME_CHANGE: List = ["John", "George"]
+    DASHES: str = "-" * 30
+    agents: List = [
         Agent("Ben", random.randint(0, 90), 0, 100),
-        Agent("Ben", random.randint(0, 90), 50, 50)
+        Agent("Ben", random.randint(0, 90), 50, 50),
     ]
     for index, agent in enumerate(agents):
-        print(f'{DASHES}START AGENT #{index+1}{DASHES}')
+        print(f"{DASHES}START AGENT #{index+1}{DASHES}")
         print("Initial agent:", agent)
         agent.setName(NAME_CHANGE[index])
-        print(f'Agent name: {agent.getName()}')
+        print(f"Agent name: {agent.getName()}")
         for _ in range(2):
             agent.moveLocationRandom()
             print("Random Location:", agent.getLocation())
@@ -100,7 +99,7 @@ def main():
             print("Location based on age:", agent.getLocation())
             agent.moveLocationRandom()
         print("Final agent:", agent)
-        print(f'{DASHES}END AGENT #{index+1}{DASHES}\n')
+        print(f"{DASHES}END AGENT #{index+1}{DASHES}\n")
 
 
 # Runs main function on file run
