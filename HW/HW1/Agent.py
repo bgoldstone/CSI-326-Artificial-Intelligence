@@ -9,11 +9,7 @@ from typing import List, Tuple
 
 
 class Agent:
-    """Class of type Agent
-
-    Returns:
-        [type]: Nones
-    """
+    """Class of type Agent"""
 
     def __init__(self, name: str, age: int, locationX: int, locationY: int) -> None:
         """Constructs Object of type Agent
@@ -49,7 +45,7 @@ class Agent:
         """Gets the X and Y location of Agent
 
         Returns:
-            tuple: x and y location of Agent
+            Tuple: x and y location of Agent
         """
         return (self.__locationX, self.__locationY)
 
@@ -65,6 +61,8 @@ class Agent:
         self.__locationY -= random.randint(0, 20)
 
     def moveLocationBasedOnAge(self) -> None:
+        """Changes Agent's location based on age.
+        """
         self.__locationX += self.__age * random.choice([-1, 1])
         self.__locationY += self.__age * random.choice([-1, 1])
 
