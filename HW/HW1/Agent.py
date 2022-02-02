@@ -12,7 +12,7 @@ class Agent:
     """Class of type Agent"""
 
     def __init__(self, name: str, age: int, locationX: int, locationY: int) -> None:
-        """Constructs Object of type Agent
+        """__init__ Constructs Object of type Agent
 
         Args:
             name (str): name of Agent
