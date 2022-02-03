@@ -1,13 +1,14 @@
 """
 list_comprehension.py
-List Comprehension examples.
+List Comprehension problems for homework assignment #2.
 Date: 2/1/2022
 Author: Ben Goldstone
 """
 
+
 def main():
     """
-    Main function.
+    main - Main function
     """
 
     # cat

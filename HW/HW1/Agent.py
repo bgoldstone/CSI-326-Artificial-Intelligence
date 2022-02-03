@@ -2,10 +2,10 @@ import random
 from typing import List, Tuple
 
 """Agent.py
-    Name: Benjamin Goldstone
+    Author: Benjamin Goldstone
     Professor: Jorge Silveyra
     Version: 1/21/2022
-    """
+"""
 
 
 class Agent:
