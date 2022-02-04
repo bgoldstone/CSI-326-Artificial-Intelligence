@@ -1,7 +1,9 @@
 """
-Created on Thu Feb  3 14:36:54 2022
-
-@author: jorgesilveyra
+graph_practice.py
+A module that contains the class and functions of Graph, Stack, and Queue.
+Author: Ben Goldstone
+Date: 2/3/2022
+Original Author: Jorge Silveyra
 """
 import os
 from typing import TypeVar
@@ -47,7 +49,7 @@ class Graph:
         visited = list()
         q.enqueue(start)
         seen[start] = True
-        while len(q) > 0:
+        while q.size() > 0:
             i = q.dequeue()
             for path in self.graph.get(i):
                 if not seen[path[0]]:
@@ -85,6 +87,9 @@ class Queue:
             T: Item removed from queue.
         """
         return self.queue.pop()
+
+    def size(self) -> int:
+        return len(self.queue)
 
 
 class Stack:
