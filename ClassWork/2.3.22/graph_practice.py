@@ -58,6 +58,19 @@ class Graph:
             visited.append(i)
         print("Visited:", visited)
 
+    def __str__(self) -> str:
+        """
+        __str__ Returns string represention of graph.
+
+        Returns:
+            str: String representation of graph.
+        """
+        output = []
+        for node in self.graph.items():
+            output.append(str(node))
+
+        return "\nGraph:\n\t(Start,[(Destination,Weight),...]\n\n\t" + "\n\t".join(output)
+
 
 class Queue:
     """
@@ -151,6 +164,7 @@ class Stack:
 def main():
     graph = Graph('GraphExample.txt')
     graph.bfs(0)
+    print(graph)
 
 
 if __name__ == '__main__':
