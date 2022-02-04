@@ -74,18 +74,33 @@ class Agent:
         self.environment = environment
 
     def move_left(self):
+        """
+        move_left Moves the agent left.
+        """        
         self.location_x -= 1
 
     def move_right(self):
+        """
+        move_right Moves the agent right.
+        """        
         self.location_x += 1
 
     def move_down(self):
+        """
+        move_down Moves the agent down.
+        """        
         self.location_y -= 1
 
     def move_up(self):
+        """
+        move_up Moves the agent up.
+        """        
         self.location_y += 1
 
     def clean(self):
+        """
+        clean Cleans the spot at which the agent is currently located.
+        """        
         pos = self.environment.grid[self.location_x][self.location_y]
         if pos:
             pos = not pos
@@ -95,6 +110,7 @@ def main():
     env = Environment(10, 10)
     agent = Agent(random.randint(0, len(env.grid)),
                   random.randint(0, len(env.grid)), env)
+    
 
 
 if __name__ == '__main':
