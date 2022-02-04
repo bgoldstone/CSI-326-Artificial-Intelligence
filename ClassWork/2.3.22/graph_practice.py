@@ -49,7 +49,7 @@ class Graph:
         visited = list()
         q.enqueue(start)
         seen[start] = True
-        while q.size() > 0:
+        while len(q) > 0:
             i = q.dequeue()
             for path in self.graph.get(i):
                 if not seen[path[0]]:
@@ -70,6 +70,9 @@ class Graph:
             output.append(str(node))
 
         return "\nGraph:\n\t(Start,[(Destination,Weight),...]\n\n\t" + "\n\t".join(output)
+
+    def __len__(self) -> int:
+        return len(self.graph.keys())
 
 
 class Queue:
@@ -101,7 +104,13 @@ class Queue:
         """
         return self.queue.pop()
 
-    def size(self) -> int:
+    def __len__(self) -> int:
+        """
+        __len__ Length of queue using len() function.
+
+        Returns:
+            int: Length of queue.
+        """
         return len(self.queue)
 
 
