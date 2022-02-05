@@ -24,7 +24,7 @@ class Environment:
         self.boundaries = [int(x_boundary), int(y_boundary)]
         self.visited = list()
         # gets new environment
-        get_new_environment()
+        self.get_new_environment()
 
     def get_boundary_x(self) -> int:
         """
