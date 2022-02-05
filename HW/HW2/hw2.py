@@ -23,22 +23,8 @@ class Environment:
         self.grid = list()
         self.boundaries = [int(x_boundary), int(y_boundary)]
         self.visited = list()
-        # Sets all indexes to Dirty
-        self.grid = [[False for _ in range(self.boundaries[1])]
-                     for _ in range(self.boundaries[0])]
-        # Generates Dirty locations Dirty = True, Clean = False of 50% of environment
-        for _ in range(int(((self.boundaries[0])*(self.boundaries[1]))/2)):
-            x = random.randint(0, self.boundaries[0]-1)
-            y = random.randint(0, self.boundaries[1]-1)
-            if not self.grid[x][y]:
-                self.grid[x][y] = True
-                self.visited.append((x, y))
-            # if location already dirty, find another location to make dirty
-            else:
-                while((x, y) in self.visited):
-                    x = random.randint(0, self.boundaries[0]-1)
-                    y = random.randint(0, self.boundaries[1]-1)
-                    self.grid[x][y] = True
+        # gets new environment
+        get_new_environment()
 
     def get_boundary_x(self) -> int:
         """
@@ -57,6 +43,26 @@ class Environment:
             int: max position of the Y-axis.
         """
         return self.boundaries[0]-1
+
+    def get_new_environment(self):
+        """
+        get_new_environment Develops a new Dirty randomized environment.
+        """
+        self.grid = [[False for _ in range(self.boundaries[1])]
+                     for _ in range(self.boundaries[0])]
+        # Generates Dirty locations Dirty = True, Clean = False of 50% of environment
+        for _ in range(int(((self.boundaries[0])*(self.boundaries[1]))/2)):
+            x = random.randint(0, self.boundaries[0]-1)
+            y = random.randint(0, self.boundaries[1]-1)
+            if not self.grid[x][y]:
+                self.grid[x][y] = True
+                self.visited.append((x, y))
+            # if location already dirty, find another location to make dirty
+            else:
+                while((x, y) in self.visited):
+                    x = random.randint(0, self.boundaries[0]-1)
+                    y = random.randint(0, self.boundaries[1]-1)
+                    self.grid[x][y] = True
 
 
 class Agent:
