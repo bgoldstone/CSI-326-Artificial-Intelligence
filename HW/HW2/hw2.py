@@ -1,4 +1,10 @@
 import random
+"""
+    hw2.py
+    Homework 2
+    Name: Ben Goldstone, Michael Norton
+    Description: Uses a robot vaccum cleaner to clean a given "environment"
+"""
 
 
 class Environment:
@@ -18,11 +24,9 @@ class Environment:
         self.boundaries = [int(x_boundary), int(y_boundary)]
         self.visited = list()
         # Sets all indexes to Dirty
-        for x in range(self.boundaries[0]):
-            self.grid.append(list())
-            for y in range(self.boundaries[1]):
-                self.grid[x].append(False)
-        # Generates Dirty locations Dirty = True, Clean = False
+        self.grid = [[False for _ in range(self.boundaries[1])]
+                     for _ in range(self.boundaries[0])]
+        # Generates Dirty locations Dirty = True, Clean = False of 50% of environment
         for _ in range(int(((self.boundaries[0])*(self.boundaries[1]))/2)):
             x = random.randint(0, self.boundaries[0]-1)
             y = random.randint(0, self.boundaries[1]-1)
@@ -109,8 +113,8 @@ class Agent:
 def main():
     env = Environment(10, 10)
     agent = Agent(random.randint(0, len(env.grid)),
-                  random.randint(0, len(env.grid)), env)
+                  random.randint(0, len(env.grid[0])), env)
 
 
-if __name__ == '__main':
+if __name__ == '__main__':
     main()
