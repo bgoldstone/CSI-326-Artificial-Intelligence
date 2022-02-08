@@ -7,7 +7,6 @@ Original Author: Jorge Silveyra
 """
 import os
 from typing import TypeVar
-from queue import Queue,LifoQueue
 T = TypeVar('T')
 
 
@@ -48,13 +47,13 @@ class Graph:
         seen = [False for _ in range(self.nodes)]
         q = Queue()
         visited = list()
-        q.put(start)
+        q.enqueue(start)
         seen[start] = True
-        while q.qsize() > 0:
-            i = q.get()
+        while len(q) > 0:
+            i = q.dequeue()
             for path in self.graph.get(i):
                 if not seen[path[0]]:
-                    q.put(path[0])
+                    q.enqueue(path[0])
                     seen[path[0]] = True
             visited.append(i)
         print("Visited:", visited)
@@ -74,6 +73,102 @@ class Graph:
 
     def __len__(self) -> int:
         return len(self.graph.keys())
+
+
+class Queue:
+    """
+     Python Queue.
+    """
+
+    def __init__(self) -> None:
+        """
+        __init__ Initializes python queue.
+        """
+        self.queue = []
+
+    def enqueue(self, object: T) -> None:
+        """
+        enqueue Insert item into queue.
+
+        Args:
+            object (T): Item to insert into queue.
+        """
+        self.queue.insert(0, object)
+
+    def dequeue(self) -> T:
+        """
+        dequeue Removes item from queue.
+
+        Returns:
+            T: Item removed from queue.
+        """
+        return self.queue.pop()
+
+    def __len__(self) -> int:
+        """
+        __len__ Length of queue using len() function.
+
+        Returns:
+            int: Length of queue.
+        """
+        return len(self.queue)
+
+
+class Stack:
+    """
+     Python Stack
+    """
+    stack_object = list()
+    max_size: int
+
+    def __init__(self, max_size: int) -> None:
+        """
+        __init__ Initializes stack object.
+
+        Args:
+            max_size (int): [description]
+        """
+        self.max_size = max_size
+
+    def push(self, object: T):
+        """
+        push Adds item to stack.
+
+        Args:
+            object (T): Item to add to stack.
+        """
+        if len(self.stack_object) >= self.max_size:
+            print("List is full")
+            return
+        self.stack_object.push(object)
+
+    def pop(self) -> T:
+        """
+        pop Removes item from stack.
+
+        Returns:
+            T: item removed from stack.
+        """
+        return self.stack_object.pop(0)
+
+    def peek(self) -> T:
+        """
+        peek Returns Last item in Stack (next item to pop).
+
+        Returns:
+            T: Item
+        """
+        return self.stack_object[0]
+
+    def isEmpty(self) -> bool:
+        """
+        isEmpty Returns true if stack is empty.
+
+        Returns:
+            bool: is stack empty.
+        """
+        return len(self.stack_object) == 0
+
 
 def main():
     graph = Graph('GraphExample.txt')
