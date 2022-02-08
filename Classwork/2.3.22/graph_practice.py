@@ -45,15 +45,36 @@ class Graph:
             start (int): Graph Node to start at.
         """
         seen = [False for _ in range(self.nodes)]
-        q = Queue()
+        queue = Queue()
         visited = list()
-        q.enqueue(start)
+        queue.enqueue(start)
         seen[start] = True
-        while len(q) > 0:
-            i = q.dequeue()
+        while len(queue) > 0:
+            i = queue.dequeue()
             for path in self.graph.get(i):
                 if not seen[path[0]]:
-                    q.enqueue(path[0])
+                    queue.enqueue(path[0])
+                    seen[path[0]] = True
+            visited.append(i)
+        print("Visited:", visited)
+
+    def dfs(self, start: int):
+        """
+        dfs Does a Depth First Search of the Graph.
+
+        Args:
+            start (int): Graph Node to start at.
+        """
+        seen = [False for _ in range(self.nodes)]
+        stack = Stack()
+        visited = list()
+        stack.push(start)
+        seen[start] = True
+        while len(stack) > 0:
+            i = stack.pop()
+            for path in self.graph.get(i):
+                if not seen[path[0]]:
+                    stack.push(path[0])
                     seen[path[0]] = True
             visited.append(i)
         print("Visited:", visited)
@@ -84,7 +105,7 @@ class Queue:
         """
         __init__ Initializes python queue.
         """
-        self.queue = []
+        self.__queue = []
 
     def enqueue(self, object: T) -> None:
         """
@@ -93,7 +114,7 @@ class Queue:
         Args:
             object (T): Item to insert into queue.
         """
-        self.queue.insert(0, object)
+        self.__queue.insert(0, object)
 
     def dequeue(self) -> T:
         """
@@ -102,7 +123,7 @@ class Queue:
         Returns:
             T: Item removed from queue.
         """
-        return self.queue.pop()
+        return self.__queue.pop()
 
     def __len__(self) -> int:
         """
@@ -111,14 +132,13 @@ class Queue:
         Returns:
             int: Length of queue.
         """
-        return len(self.queue)
+        return len(self.__queue)
 
 
 class Stack:
     """
      Python Stack
     """
-    stack_object = list()
     max_size: int
 
     def __init__(self, max_size: int) -> None:
@@ -129,6 +149,7 @@ class Stack:
             max_size (int): [description]
         """
         self.max_size = max_size
+        self.__stack = []
 
     def push(self, object: T):
         """
@@ -137,10 +158,10 @@ class Stack:
         Args:
             object (T): Item to add to stack.
         """
-        if len(self.stack_object) >= self.max_size:
+        if len(self.__stack) >= self.max_size:
             print("List is full")
             return
-        self.stack_object.push(object)
+        self.__stack.push(object)
 
     def pop(self) -> T:
         """
@@ -149,7 +170,7 @@ class Stack:
         Returns:
             T: item removed from stack.
         """
-        return self.stack_object.pop(0)
+        return self.__stack.pop(0)
 
     def peek(self) -> T:
         """
@@ -158,7 +179,7 @@ class Stack:
         Returns:
             T: Item
         """
-        return self.stack_object[0]
+        return self.__stack[0]
 
     def isEmpty(self) -> bool:
         """
@@ -167,7 +188,14 @@ class Stack:
         Returns:
             bool: is stack empty.
         """
-        return len(self.stack_object) == 0
+        return len(self.__stack) == 0
+
+    def __len__(self):
+        """
+        __len__ returns length of stack.
+        Returns: length of the stack.
+        """
+        return len(self.__stack)
 
 
 def main():
