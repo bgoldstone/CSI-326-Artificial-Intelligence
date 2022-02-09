@@ -19,7 +19,7 @@ class Graph:
         Args:
             filename (str): File of graph to import.
         """
-        # graph = {origin:[(destination,weight)]}
+        # graph formatting: {origin:[(destination,weight)]}
         self.__graph = dict()
         os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
