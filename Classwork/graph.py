@@ -6,13 +6,9 @@ Date: 2/3/2022
 Original Author: Jorge Silveyra
 """
 import os
-from typing import TypeVar
-
 from data_structures import Queue, Stack
 
 # import heapq
-
-T = TypeVar('T')
 
 
 class Graph:

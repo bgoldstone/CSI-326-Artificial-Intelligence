@@ -1,3 +1,12 @@
+"""
+    Date: 2/8/2022
+    Data Structures Implementations
+"""
+from typing import TypeVar
+
+T = TypeVar('T')
+
+
 class Queue:
     """
     Queue Implementation of a Queue.
