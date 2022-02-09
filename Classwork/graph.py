@@ -117,17 +117,17 @@ class Graph:
             return True
         return False
 
-    def node_exists(self, node: int) -> bool:
+    def node_exists(self, node_number: int) -> bool:
         """
         node_exists Checks if node exists.
 
         Args:
-            node (int): node number.
+            node_number (int): node number.
 
         Returns:
             bool: True if node exists.
         """
-        return self.__graph.get(node).exists()
+        return self.__graph.get(node_number).exists()
 
     """
     Search Algorithms:
@@ -177,6 +177,10 @@ class Graph:
             visited.append(i)
         print("Visited:", visited)
 
+    # TODO
+    def best_first_search(self) -> None:
+        pass
+
     def __str__(self) -> str:
         """
         __str__ Returns string represention of graph.
@@ -184,13 +188,19 @@ class Graph:
         Returns:
             str: String representation of graph.
         """
-        output = []
+        output = list()
         for node in self.__graph.items():
             output.append(str(node))
 
         return "\nGraph:\n\t(Start,[(Destination,Weight),...]\n\n\t" + "\n\t".join(output)
 
     def __len__(self) -> int:
+        """
+        __len__ Length of Graph
+
+        Returns:
+            int: number of nodes
+        """        
         return len(self.__graph.keys())
 
 
