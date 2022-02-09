@@ -7,6 +7,7 @@ Original Author: Jorge Silveyra
 """
 import os
 from typing import TypeVar
+import heapq
 T = TypeVar('T')
 
 
