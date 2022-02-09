@@ -12,7 +12,7 @@ from data_structures import Queue, Stack
 
 
 class Graph:
-    def __init__(self, filename: str):
+    def __init__(self, filename: str) -> None:
         """
         __init__ Initializes graph object.
 
@@ -20,7 +20,7 @@ class Graph:
             filename (str): File of graph to import.
         """
         # graph = {origin:[(destination,weight)]}
-        self.graph = dict()
+        self.__graph = dict()
         os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
         with open(filename) as f:
@@ -30,17 +30,70 @@ class Graph:
             self.edges = int(line1[1])
 
             for i in range(self.nodes):
-                self.graph[i] = list()
+                self.__graph[i] = list()
 
             for i in range(self.edges):
                 edge = f.readline().split()
                 origin, destination, weight = int(
                     edge[0]), int(edge[1]), int(edge[2])
-                self.graph[origin].append((destination, weight))
+                self.__graph[origin].append((destination, weight))
 
-    def bfs(self, start: int):
+    def add_connection(self, origin: int, destination: int, weight: int) -> None:
         """
-        bfs Does a Breath First Search of the Graph.
+        add_connection Adds connection to existing node.
+
+        Args:
+            origin (int): origin node or from node.
+            destination (int): destination or to node.
+            weight (int): weight or cost to path of nodes.
+        """
+        self.__graph[origin].append((destination, weight))
+
+    def get_connections(self, origin: int) -> dict:
+        """
+        get_connections Gets connections for a given origin.
+
+        Args:
+            origin (int): start, or origin node.
+
+        Returns:
+            dict: sequence of nodes that  the origin node goes to.
+        """
+        return self.__graph[origin]
+
+    def add_node(self, node_number: int) -> bool:
+        """
+        add_node Adds an additional node to the dictionary.
+
+        Args:
+            node_number (int): Number of node to add.
+
+        Returns:
+            bool: true if node is successfully added.
+        """
+        if self.__graph.get(node_number):
+            return False
+        self.__graph[node_number] = []
+        return True
+
+    def remove_node(self, node_number: int) -> bool:
+        """
+        remove_node Removes a node from the dictionary.
+
+        Args:
+            node_number (int): Number of node to remove.
+
+        Returns:
+            bool: true if node is successfully removed.
+        """
+        if self.__graph.get(node_number):
+            self.__graph.pop(node_number)
+            return True
+        return False
+
+    def breath_first_search(self, start: int) -> None:
+        """
+        breath_first_search Does a Breath First Search of the Graph.
 
         Args:
             start (int): Graph Node to start at.
@@ -52,16 +105,16 @@ class Graph:
         seen[start] = True
         while len(queue) > 0:
             i = queue.dequeue()
-            for path in self.graph.get(i):
+            for path in self.__graph.get(i):
                 if not seen[path[0]]:
                     queue.enqueue(path[0])
                     seen[path[0]] = True
             visited.append(i)
         print("Visited:", visited)
 
-    def dfs(self, start: int):
+    def depth_first_search(self, start: int) -> None:
         """
-        dfs Does a Depth First Search of the Graph.
+        depth_first_search Does a Depth First Search of the Graph.
 
         Args:
             start (int): Graph Node to start at.
@@ -73,7 +126,7 @@ class Graph:
         seen[start] = True
         while len(stack) > 0:
             i = stack.pop()
-            for path in self.graph.get(i):
+            for path in self.__graph.get(i):
                 if not seen[path[0]]:
                     stack.push(path[0])
                     seen[path[0]] = True
@@ -88,18 +141,18 @@ class Graph:
             str: String representation of graph.
         """
         output = []
-        for node in self.graph.items():
+        for node in self.__graph.items():
             output.append(str(node))
 
         return "\nGraph:\n\t(Start,[(Destination,Weight),...]\n\n\t" + "\n\t".join(output)
 
     def __len__(self) -> int:
-        return len(self.graph.keys())
+        return len(self.__graph.keys())
 
 
-def main():
+def main() -> None:
     graph = Graph('GraphExample.txt')
-    graph.bfs(0)
+    graph.breath_first_search(0)
     print(graph)
 
 
