@@ -8,7 +8,7 @@ Original Author: Jorge Silveyra
 import os
 from data_structures import Queue, Stack
 
-# import heapq
+# heapq
 
 
 class Graph:
@@ -200,7 +200,7 @@ class Graph:
 
         Returns:
             int: number of nodes
-        """        
+        """
         return len(self.__graph.keys())
 
 
