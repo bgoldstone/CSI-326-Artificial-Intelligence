@@ -38,9 +38,19 @@ class Graph:
                     edge[0]), int(edge[1]), int(edge[2])
                 self.__graph[origin].append((destination, weight))
 
-    def add_connection(self, origin: int, destination: int, weight: int) -> None:
+    """
+    Helper methods:
+        add_connections()
+        remove_connections()
+        get_connections()
+        add_node()
+        remove_node()
+        node_exists()
+    """
+
+    def add_connections(self, origin: int, destination: int, weight: int) -> None:
         """
-        add_connection Adds connection to existing node.
+        add_connections Adds connection to existing node.
 
         Args:
             origin (int): origin node or from node.
@@ -48,6 +58,22 @@ class Graph:
             weight (int): weight or cost to path of nodes.
         """
         self.__graph[origin].append((destination, weight))
+
+    def remove_connections(self, origin: int, destination: int, weight: int) -> bool:
+        """
+        remove_connections Removes connections from existing nodes.
+
+        Args:
+            origin (int): original or start node.
+            destination (int): destination or end node.
+            weight (int): weight or distance of node.
+
+        Returns:
+            bool: True if successfully removed.
+        """
+        pair = (destination, weight)
+        if self.node_exists(origin) and pair in self.__graph.get(origin):
+            self.__graph.get(origin).pop(pair)
 
     def get_connections(self, origin: int) -> dict:
         """
@@ -57,9 +83,9 @@ class Graph:
             origin (int): start, or origin node.
 
         Returns:
-            dict: sequence of nodes that  the origin node goes to.
+            dict: None if the origin does not exist, else returns list of destinations and weights of origin.
         """
-        return self.__graph[origin]
+        return self.__graph.get(origin, None)
 
     def add_node(self, node_number: int) -> bool:
         """
@@ -71,9 +97,9 @@ class Graph:
         Returns:
             bool: true if node is successfully added.
         """
-        if self.__graph.get(node_number):
+        if self.node_exists(node_number):
             return False
-        self.__graph[node_number] = []
+        self.__graph[node_number] = list()
         return True
 
     def remove_node(self, node_number: int) -> bool:
@@ -86,10 +112,28 @@ class Graph:
         Returns:
             bool: true if node is successfully removed.
         """
-        if self.__graph.get(node_number):
+        if self.node_exists(node_number):
             self.__graph.pop(node_number)
             return True
         return False
+
+    def node_exists(self, node: int) -> bool:
+        """
+        node_exists Checks if node exists.
+
+        Args:
+            node (int): node number.
+
+        Returns:
+            bool: True if node exists.
+        """
+        return self.__graph.get(node).exists()
+
+    """
+    Search Algorithms:
+        breath_first_search()
+        depth_first_Search()
+    """
 
     def breath_first_search(self, start: int) -> None:
         """
