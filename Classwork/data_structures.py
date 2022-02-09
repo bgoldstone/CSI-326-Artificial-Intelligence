@@ -1,6 +1,9 @@
 """
     Date: 2/8/2022
     Data Structures Implementations
+    Contains:
+        Queue()
+        Stack()
 """
 from typing import TypeVar
 
@@ -9,14 +12,14 @@ T = TypeVar('T')
 
 class Queue:
     """
-    Queue Implementation of a Queue.
+    Queue - Implementation of a Queue.
     """
 
     def __init__(self) -> None:
         """
         __init__ Initializes python queue.
         """
-        self.__queue = []
+        self.__queue = list()
 
     def enqueue(self, object: T) -> None:
         """
@@ -36,6 +39,15 @@ class Queue:
         """
         return self.__queue.pop()
 
+    def is_empty(self) -> bool:
+        """
+        is_empty Checks if queue is empty.
+
+        Returns:
+            bool: True if queue is empty.
+        """
+        return len(self.__queue) == 0
+
     def __len__(self) -> int:
         """
         __len__ Length of queue using len() function.
@@ -48,19 +60,17 @@ class Queue:
 
 class Stack:
     """
-    Stack Implementation of a Stack
+    Stack - Implementation of a Stack
     """
-    max_size: int
 
-    def __init__(self, max_size: int) -> None:
+    def __init__(self) -> None:
         """
         __init__ Initializes stack object.
 
         Args:
             max_size (int): [description]
         """
-        self.max_size = max_size
-        self.__stack = []
+        self.__stack = list()
 
     def push(self, object: T):
         """
@@ -92,12 +102,12 @@ class Stack:
         """
         return self.__stack[0]
 
-    def isEmpty(self) -> bool:
+    def is_empty(self) -> bool:
         """
-        isEmpty Returns true if stack is empty.
+        is_empty Checks if stack is empty.
 
         Returns:
-            bool: is stack empty.
+            bool: True if stack is empty.
         """
         return len(self.__stack) == 0
 
