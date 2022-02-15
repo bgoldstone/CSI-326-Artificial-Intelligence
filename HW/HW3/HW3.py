@@ -234,6 +234,9 @@ Input a choice:
     3. Add Connection
     4. Store to File
     5. Exit
+    6. Print BFS
+    7. Print DFS
+    
     input: """
     while(choice != 5):
         choice = int(input(prompt))
@@ -248,6 +251,11 @@ Input a choice:
             store_to_file(graph)
         elif choice == 5:
             print("Goodbye!")
+        elif choice == 6:
+            bfs(graph)
+        elif choice == 7:
+            dfs(graph)
+
         else:
             print("Invalid input!")
         time.sleep(1)
@@ -257,6 +265,13 @@ def vertices_connected_to(graph: Graph):
     origin = int(input("Please enter a verticy to get: "))
     print("\n".join(graph.get_connections(origin)))
 
+def bfs(graph: Graph):
+    start_node = int(input("Enter a start node for BFS: "))
+    graph.breath_first_search(start_node)
+
+def dfs(graph: Graph):
+    start_node = int(input("Enter a start node for DFS: "))
+    graph.depth_first_search(start_node)
 
 def add_connection(graph: Graph):
     origin = int(input("Please enter an origin node: "))
@@ -266,7 +281,7 @@ def add_connection(graph: Graph):
 
 
 def store_to_file(graph: Graph):
-    filename = input("Enter a filename to save to: ")
+    filename = str(input("Enter a filename to save to: "))
     connections = graph.get_connections()
     output = open(filename, "w")
     output.write(f'{graph.vertices}\n')
