@@ -6,7 +6,6 @@ Date: 2/15/2022
 Original Author: Jorge Silveyra
 """
 import time
-from typing import Union
 import os
 from data_structures import Queue, Stack
 
@@ -265,13 +264,16 @@ def vertices_connected_to(graph: Graph):
     origin = int(input("Please enter a verticy to get: "))
     print("\n".join(graph.get_connections(origin)))
 
+
 def bfs(graph: Graph):
     start_node = int(input("Enter a start node for BFS: "))
     graph.breath_first_search(start_node)
 
+
 def dfs(graph: Graph):
     start_node = int(input("Enter a start node for DFS: "))
     graph.depth_first_search(start_node)
+
 
 def add_connection(graph: Graph):
     origin = int(input("Please enter an origin node: "))

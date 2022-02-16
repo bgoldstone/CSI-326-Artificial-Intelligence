@@ -18,9 +18,9 @@ USAGE: python prog <numberruns=1> <verbocity=False>
 class board:
     def __init__(self, list=None):
         if list == None:
-            self.board = [[0 for i in range(0, 8)] for j in range(0, 8)]
+            self.board = [[0 for i in range(0, 16)] for j in range(0, 16)]
             # initialize queens at random places
-            for i in range(0, 8):
+            for i in range(0, 16):
                 while 1:
                     rand_row = random.randint(0, 7)
                     rand_col = random.randint(0, 7)
@@ -32,8 +32,8 @@ class board:
 
     def __repr__(self):
         mstr = ""
-        for i in range(0, 8):
-            for j in range(0, 8):
+        for i in range(0, 16):
+            for j in range(0, 16):
                 mstr = mstr + str(self.board[i][j]) + " "
             mstr = mstr + "\n"
         return (mstr)
@@ -86,33 +86,33 @@ class queens:
         # these are separate for easier debugging
         totalhcost = 0
         totaldcost = 0
-        for i in range(0, 8):
-            for j in range(0, 8):
+        for i in range(0, 16):
+            for j in range(0, 16):
                 # if this node is a queen, calculate all violations
                 if tboard.board[i][j] == "Q":
                     # subtract 2 so don't count self
                     #sideways and vertical
                     totalhcost -= 2
-                    for k in range(0, 8):
+                    for k in range(0, 16):
                         if tboard.board[i][k] == "Q":
                             totalhcost += 1
                         if tboard.board[k][j] == "Q":
                             totalhcost += 1
                     # calculate diagonal violations
                     k, l = i+1, j+1
-                    while k < 8 and l < 8:
+                    while k < 16 and l < 16:
                         if tboard.board[k][l] == "Q":
                             totaldcost += 1
                         k += 1
                         l += 1
                     k, l = i+1, j-1
-                    while k < 8 and l >= 0:
+                    while k < 16 and l >= 0:
                         if tboard.board[k][l] == "Q":
                             totaldcost += 1
                         k += 1
                         l -= 1
                     k, l = i-1, j+1
-                    while k >= 0 and l < 8:
+                    while k >= 0 and l < 16:
                         if tboard.board[k][l] == "Q":
                             totaldcost += 1
                         k -= 1
@@ -131,12 +131,12 @@ class queens:
         lowcost = self.calc_cost(self.mboard)
         lowestavailable = self.mboard
         # move one queen at a time, the optimal single move by brute force
-        for q_row in range(0, 8):
-            for q_col in range(0, 8):
+        for q_row in range(0, 16):
+            for q_col in range(0, 16):
                 if self.mboard.board[q_row][q_col] == "Q":
                     # get the lowest cost by moving this queen
-                    for m_row in range(0, 8):
-                        for m_col in range(0, 8):
+                    for m_row in range(0, 16):
+                        for m_col in range(0, 16):
                             if self.mboard.board[m_row][m_col] != "Q":
                                 # try placing the queen here and see if it's any better
                                 tryboard = copy.deepcopy(self.mboard)
