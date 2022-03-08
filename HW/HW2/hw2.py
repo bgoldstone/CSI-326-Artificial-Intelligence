@@ -21,7 +21,7 @@ class Environment:
         for x in range(self.boundaries[0]):
             self.grid.append(list())
             for y in range(self.boundaries[1]):
-                self.grid[x].append(False)
+                self.grid[x].append(0)
         # Generates Dirty locations Dirty = True, Clean = False
         for _ in range(int(((self.boundaries[0])*(self.boundaries[1]))/2)):
             x = random.randint(0, self.boundaries[0]-1)

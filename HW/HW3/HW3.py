@@ -9,8 +9,6 @@ import time
 import os
 from data_structures import Queue, Stack
 
-# heapq
-
 
 class Graph:
     def __init__(self, filename: str) -> None:
@@ -37,7 +35,6 @@ class Graph:
                     weight = int(edge[2])
                 self.__graph[int(edge[0])].append((int(edge[1]), weight))
         file.close()
-
     """
     Helper methods:
         add_connections()
@@ -64,6 +61,7 @@ class Graph:
         if not self.node_exists(origin):
             self.add_node(origin)
         self.__graph[origin].append((destination, weight))
+        self.vertices += 1
 
     def remove_connections(self, origin: int, destination: int, weight: int) -> bool:
         """
@@ -80,6 +78,7 @@ class Graph:
         pair = (destination, weight)
         if self.node_exists(origin) and pair in self.__graph.get(origin):
             self.__graph.get(origin).pop(pair)
+            self.vertices -= 1
 
     def get_connections(self, origin=-1) -> list:
         """
@@ -260,29 +259,29 @@ Input a choice:
         time.sleep(1)
 
 
-def vertices_connected_to(graph: Graph):
+def vertices_connected_to(graph: Graph) -> None:
     origin = int(input("Please enter a verticy to get: "))
     print("\n".join(graph.get_connections(origin)))
 
 
-def bfs(graph: Graph):
+def bfs(graph: Graph) -> None:
     start_node = int(input("Enter a start node for BFS: "))
     graph.breath_first_search(start_node)
 
 
-def dfs(graph: Graph):
+def dfs(graph: Graph) -> None:
     start_node = int(input("Enter a start node for DFS: "))
     graph.depth_first_search(start_node)
 
 
-def add_connection(graph: Graph):
+def add_connection(graph: Graph) -> None:
     origin = int(input("Please enter an origin node: "))
     destination = int(input("Please enter a destination node: "))
     weight = int(input("Please enter the weight of the connection: ") or 0)
     graph.add_connections(origin, destination, weight)
 
 
-def store_to_file(graph: Graph):
+def store_to_file(graph: Graph) -> None:
     filename = str(input("Enter a filename to save to: "))
     connections = graph.get_connections()
     output = open(filename, "w")
