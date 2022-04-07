@@ -54,11 +54,12 @@ def get_files(directory: str, find_by: re.Pattern) -> None:
     ham['total_words'] = sum([value for value in ham.values()])
     # total ham files read
     ham['total_files'] = total_ham_files
-
+    # puts ham and spam into one dictionary.
+    knowledge = {"ham": ham, "spam": spam}
+    del(ham)
+    del(spam)
     # changes directory to same path as file.
     os.chdir(os.path.dirname(__file__))
     # write json files
-    with open(f'ham_{directory}.json', 'w') as f:
-        json.dump(ham, f)
-    with open(f'spam_{directory}.json', 'w') as f:
-        json.dump(spam, f)
+    with open(f'knowledge.json', 'w') as f:
+        json.dump(knowledge, f)
