@@ -3,15 +3,15 @@ import os
 import re
 import time
 from typing import Dict
-from webbrowser import get
 
 
-def get_files(directory: str) -> None:
+def get_files(directory: str, find_by: re.Pattern) -> None:
     """
     get_files Gets the spam and ham files and puts them into a json file in the root directory.
 
     Args:
-        directory (str): _description_
+        directory (str): Directory where the spam and ham files should be.
+        find_by (re.Pattern): Regular expression to match the words by.
     """
     enron1_path = os.path.join(os.path.dirname(__file__), directory)
     # gets ham directory
@@ -19,7 +19,6 @@ def get_files(directory: str) -> None:
     # gets spam directory
     spam_dir = os.path.join(enron1_path, 'spam')
     # regular expression to filter for in spam files.
-    find_by = re.compile(r'[A-Za-z$]+[0-9]?')
 
     # Finds Spam Words
     os.chdir(spam_dir)
@@ -34,8 +33,10 @@ def get_files(directory: str) -> None:
                 # puts word into spam dictionary.
                 spam[word] = spam.get(word, 0) + 1
         total_spam_files += 1
+    # total number of words in spam files.
+    spam['total_words'] = sum([value for value in spam.values()])
     # total spam files read
-    spam['total_spam_files'] = total_spam_files
+    spam['total_files'] = total_spam_files
     # Finds Ham Words
     os.chdir(ham_dir)
     ham = {}
@@ -49,8 +50,10 @@ def get_files(directory: str) -> None:
                 # puts word into ham dictionary.
                 ham[word] = ham.get(word, 0) + 1
         total_ham_files += 1
+    # total number of words in ham files.
+    ham['total_words'] = sum([value for value in ham.values()])
     # total ham files read
-    ham['total_ham_files'] = total_ham_files
+    ham['total_files'] = total_ham_files
 
     # changes directory to same path as file.
     os.chdir(os.path.dirname(__file__))
