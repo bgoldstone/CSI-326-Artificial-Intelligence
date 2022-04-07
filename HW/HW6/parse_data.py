@@ -5,13 +5,14 @@ import time
 from typing import Dict
 
 
-def get_files(directory: str, find_by: re.Pattern) -> None:
+def get_words(directory: str, find_by: re.Pattern, output_file: str) -> None:
     """
-    get_files Gets the spam and ham files and puts them into a json file in the root directory.
+    get_files Gets the spam and ham words from the files, and puts them into a json file in the root directory.
 
     Args:
         directory (str): Directory where the spam and ham files should be.
         find_by (re.Pattern): Regular expression to match the words by.
+        output_file (str): File to write the spam and ham json to.
     """
     enron1_path = os.path.join(os.path.dirname(__file__), directory)
     # gets ham directory
@@ -61,5 +62,5 @@ def get_files(directory: str, find_by: re.Pattern) -> None:
     # changes directory to same path as file.
     os.chdir(os.path.dirname(__file__))
     # write json files
-    with open(f'knowledge.json', 'w') as f:
+    with open(str(output_file), 'w') as f:
         json.dump(knowledge, f)
