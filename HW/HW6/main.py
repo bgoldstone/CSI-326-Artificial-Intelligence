@@ -1,6 +1,6 @@
 import re
 
-from parse_data import get_words
+from learn import get_words
 
 
 def main():
