@@ -2,7 +2,7 @@ import json
 import math
 import os
 import re
-from typing import Dict, List
+from typing import Dict
 
 
 def print_findings(findings: Dict) -> None:
@@ -132,7 +132,6 @@ def filter_messages(directory_to_filter: str, find_by: re.Pattern, knowledge_fil
             findings[message_count] = [email_type, 'ham']
             message_count += 1
     # prints all findings.
-    # print([finding for finding in findings.values()])
     print_findings(findings)
 
     return findings

@@ -2,7 +2,6 @@ import json
 import os
 import re
 import time
-from typing import Dict
 
 
 def get_words(directory: str, find_by: re.Pattern, output_file: str) -> None:
