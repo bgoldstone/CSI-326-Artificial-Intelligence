@@ -23,7 +23,16 @@ def get_words(directory: str, find_by: re.Pattern, output_file: str) -> None:
     # Finds Spam Words
     os.chdir(spam_dir)
     spam = {}
+    ham = {}
     total_spam_files = 0
+    total_ham_files = 0
+    # if knowledge exists...
+    if output_file in os.listdir(__file__):
+        with open(output_file, 'r') as knowledge:
+            spam = knowledge['spam']
+            ham = knowledge['ham']
+            total_spam_files = spam['total_files']
+            total_ham_files = ham['total_files']
     print("Reading Spam files")
     time.sleep(1)
     for f in os.listdir(spam_dir):
@@ -31,31 +40,27 @@ def get_words(directory: str, find_by: re.Pattern, output_file: str) -> None:
             print(f'Reading {f.name}')
             for word in re.findall(find_by, f.read()):
                 # puts word into spam dictionary.
-                spam[word] = spam.get(word, 0) + 1
-                if word not in spam:
+                if word not in spam or word not in ham:
                     unique_words += 1
+                spam[word] = spam.get(word, 0) + 1
         total_spam_files += 1
     # total number of words in spam files.
-    spam['total_words'] = len(spam.values())
     # total spam files read
     spam['total_files'] = total_spam_files
     # Finds Ham Words
     os.chdir(ham_dir)
-    ham = {}
     print("Reading Ham files")
     time.sleep(1)
-    total_ham_files = 0
+
     for f in os.listdir(ham_dir):
         with open(f, 'r', errors='ignore') as f:
             print(f'Reading {f.name}')
             for word in re.findall(find_by, f.read()):
                 # puts word into ham dictionary.
-                ham[word] = ham.get(word, 0) + 1
                 if word not in spam or word not in ham:
                     unique_words += 1
+                ham[word] = ham.get(word, 0) + 1
         total_ham_files += 1
-    # total number of words in ham files.
-    ham['total_words'] = len(ham.values())
     # total ham files read
     ham['total_files'] = total_ham_files
     # puts ham and spam into one dictionary.
