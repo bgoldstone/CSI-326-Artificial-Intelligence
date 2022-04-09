@@ -17,16 +17,17 @@ def print_findings(findings: Dict) -> None:
     real_spam = 0
     real_ham = 0
     for _, value in findings.items():
-        if value[0] == 'ham':
+        if value[0] == 'ham' and value[1] == 'ham':
             guess_ham += 1
-        else:
+        elif value[0] == 'spam' and value[1] == 'spam':
             guess_spam += 1
         if value[1] == 'ham':
             real_ham += 1
         else:
             real_spam += 1
-    print(f'Spam Caught:{guess_spam}/{real_spam}({guess_spam/real_spam})')
-    print(f'Ham Caught:{guess_ham}/{real_ham}({guess_ham/real_ham})')
+    print(
+        f'Spam Caught:{guess_spam}/{real_spam}({(guess_spam/real_spam):.2f})')
+    print(f'Ham Caught:{guess_ham}/{real_ham}({(guess_ham/real_ham):.2f})')
 
 
 def __get_probability(file_findings: Dict, knowledge: Dict) -> str:
