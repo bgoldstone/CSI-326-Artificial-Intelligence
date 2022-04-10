@@ -11,7 +11,7 @@ def main():
     """
     # get_words('enron1', re.compile(r'[A-Za-z$]+[0-9]?'), 'knowledge.json')
     start = time.time()
-    filter_messages('enron1', re.compile(
+    filter_messages('enron2', re.compile(
         r'[A-Za-z$]+[0-9]?'), 'knowledge.json')
     print(f'{time.time() - start:.2f} seconds')
 
