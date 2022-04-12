@@ -3,7 +3,9 @@ import math
 import os
 import re
 from typing import Dict
+import numpy as np
 
+ENGLISH_STOPWORDS = set(stopwords.words('english'))
 
 def print_findings(findings: Dict) -> None:
     """
@@ -30,7 +32,7 @@ def print_findings(findings: Dict) -> None:
     print(f'Ham Caught:{guess_ham}/{real_ham}({(guess_ham/real_ham):.2f})')
 
 
-def __get_probability(file_findings: Dict, knowledge: Dict) -> str:
+def __get_probability(file_findings: Dict, knowledge: Dict, stopwords: bool, lemmatization: bool) -> str:
     """
     __get_probability Gets the probability of one spam/ham email file.
 
@@ -42,8 +44,8 @@ def __get_probability(file_findings: Dict, knowledge: Dict) -> str:
         str: Spam or Ham depending on the probability of the email being either spam or ham.
     """
     # puts in set since order is not important.
-    spam_to_calculate = set()
-    ham_to_calculate = set()
+    spam_to_calculate = []
+    ham_to_calculate = []
     # gets the probability of the email being spam.
     p_spam = float(knowledge['spam']['total_files'] / int(knowledge['spam']
                    ['total_files']+knowledge['spam']['total_files']))
@@ -56,15 +58,16 @@ def __get_probability(file_findings: Dict, knowledge: Dict) -> str:
     # get the total number of unique words.
     unique_words = knowledge['unique_words']
     # puts probability of ham/spam in the sets.
-    spam_to_calculate.add(math.log(p_spam))
-    ham_to_calculate.add(math.log(p_ham))
+    spam_to_calculate.append(math.log(p_spam))
+    ham_to_calculate.append(math.log(p_ham))
     # for each word, add the probability of the email being spam.
-    for key, _ in file_findings.items():
+    for key, value in file_findings.items():
         # puts in ham set.
-        ham_to_calculate.add(
-            math.log((knowledge['ham'].get(key, 0)+1)/(ham_unique_word_count+unique_words)))
+        # log(x^y) = y * log(x)
+        ham_to_calculate.append(value *
+                                math.log((knowledge['ham'].get(key, 0)+1)/(ham_unique_word_count+unique_words)))
         # puts in spam set.
-        spam_to_calculate.add(math.log((knowledge['spam'].get(
+        spam_to_calculate.append(value * math.log((knowledge['spam'].get(
             key, 0)+1)/(spam_unique_word_count+unique_words)))
     # calculates the probabilities.
     spam_probability = sum(spam_to_calculate)
@@ -75,7 +78,7 @@ def __get_probability(file_findings: Dict, knowledge: Dict) -> str:
     return 'ham'
 
 
-def filter_messages(directory_to_filter: str, find_by: re.Pattern, knowledge_file: str) -> Dict:
+def filter_messages(directory_to_filter: str, find_by: re.Pattern, knowledge_file: str, stopwords=False, lemmatization=False) -> Dict:
     """
     filter_messages Filters messages given a specified directory to filter.
 
@@ -112,7 +115,8 @@ def filter_messages(directory_to_filter: str, find_by: re.Pattern, knowledge_fil
                 # adds one to the word count.
                 file_findings[word] = file_findings.get(word, 0) + 1
             # gets spam/ham email type.
-            email_type = __get_probability(file_findings, knowledge)
+            email_type = __get_probability(
+                file_findings, knowledge, stopwords, lemmatization)
             # records all findings.
             findings[message_count] = [email_type, 'spam']
             message_count += 1
