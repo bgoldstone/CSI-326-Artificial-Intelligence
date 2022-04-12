@@ -30,7 +30,7 @@ def print_findings(findings: Dict) -> None:
     print(f'Ham Caught:{guess_ham}/{real_ham}({(guess_ham/real_ham):.2f})')
 
 
-def __get_probability(file_findings: Dict, knowledge: Dict, stopwords: bool, lemmatization: bool) -> str:
+def __get_probability(file_findings: Dict, knowledge: Dict) -> str:
     """
     __get_probability Gets the probability of one spam/ham email file.
 
@@ -44,6 +44,7 @@ def __get_probability(file_findings: Dict, knowledge: Dict, stopwords: bool, lem
     # puts in set since order is not important.
     spam_to_calculate = []
     ham_to_calculate = []
+
     # gets the probability of the email being spam.
     p_spam = float(knowledge['spam']['total_files'] / int(knowledge['spam']
                    ['total_files']+knowledge['spam']['total_files']))
@@ -76,25 +77,35 @@ def __get_probability(file_findings: Dict, knowledge: Dict, stopwords: bool, lem
     return 'ham'
 
 
-def filter_messages(directory_to_filter: str, find_by: re.Pattern, knowledge_file: str, stopwords=False, lemmatization=False) -> Dict:
+def filter_messages(directory_to_filter: str, find_by: re.Pattern, stopwords=False, lemmatization=False) -> Dict:
     """
     filter_messages Filters messages given a specified directory to filter.
 
     Args:
         knowledge (str): Name of the json file with the knowledge to filter.
         find_by (re.Pattern): a pattern to match the words in the messages with.
-        directory_to_filter (str): directory name to filter messages.
+        stopwords (bool): if true, stopwords is enabled
+        lemmatization (bool): if true, lemmatization is enabled
     Returns:
         List: Dictionary of the findings of the messages.
     """
-    # changes to the current directory.
-    os.chdir(os.path.dirname(__file__))
+    string_to_add = ""
+    if stopwords and lemmatization:
+        string_to_add = "_lemmatization_stopwords"
+    if stopwords:
+        string_to_add = "_stopwords"
+    if lemmatization:
+        string_to_add = "_lemmatization"
     # generates email,spam and ham paths.
     email_path = os.path.join(os.path.dirname(__file__), directory_to_filter)
     spam_path = os.path.join(email_path, 'spam')
     ham_path = os.path.join(email_path, 'ham')
+    knowledge_directory = os.path.join(os.path.dirname(__file__), 'knowledge')
     knowledge: Dict
+    # changes to the knowledge directory.
+    os.chdir(knowledge_directory)
     # gets knowledge from the knowledge file.
+    knowledge_file = f'knowledge{string_to_add}.json'
     with open(knowledge_file, 'r') as kf:
         knowledge = json.load(kf)
     # records findings.
@@ -111,10 +122,13 @@ def filter_messages(directory_to_filter: str, find_by: re.Pattern, knowledge_fil
             # gets all the words in the spam email.
             for word in re.findall(find_by, f.read()):
                 # adds one to the word count.
-                file_findings[word] = file_findings.get(word, 0) + 1
+                file_findings[word[0]] = file_findings.get(word[0], 0) + 1
+                if word[1]:
+                    file_findings['number_of_numbers'] = file_findings.get(
+                        'number_of_numbers', 0) + 1
             # gets spam/ham email type.
             email_type = __get_probability(
-                file_findings, knowledge, stopwords, lemmatization)
+                file_findings, knowledge)
             # records all findings.
             findings[message_count] = [email_type, 'spam']
             message_count += 1

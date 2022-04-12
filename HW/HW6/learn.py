@@ -7,6 +7,8 @@ from nltk.corpus import stopwords
 # constants
 LEMMATIZER = WordNetLemmatizer()
 ENGLISH_STOPWORDS = set(stopwords.words('english'))
+# add subject to stopwords
+ENGLISH_STOPWORDS.add('subject')
 
 
 def get_words(directory: str, find_by: re.Pattern) -> None:
@@ -45,28 +47,32 @@ def get_words(directory: str, find_by: re.Pattern) -> None:
     # counts number of spam/ham files.
 
     # import all existing knowledge
-    if 'knowledge.json' in os.listdir():
-        with open('knowledge.json', 'r') as knowledge_file:
+    knowledge_json = 'knowledge.json'
+    if knowledge_json in os.listdir():
+        with open(knowledge_json, 'r') as knowledge_file:
             knowledge = json.load(knowledge_file)
             spam = knowledge['spam']
             ham = knowledge['ham']
             total_spam_files = spam['total_files']
             total_ham_files = ham['total_files']
             unique_words = knowledge['unique_words']
-    if 'knowledge_lemmatization.json' in os.listdir():
-        with open('knowledge_lemmatization.json', 'r') as knowledge_file:
+    knowledge_lemmatization = 'knowledge_lemmatization.json'
+    if knowledge_lemmatization in os.listdir():
+        with open( knowledge_lemmatization, 'r') as knowledge_file:
             knowledge = json.load(knowledge_file)
             spam_lemmatization = knowledge['spam']
             ham_lemmatization = knowledge['ham']
             unique_words_lemmatization = knowledge['unique_words']
-    if 'knowledge_stopwords.json' in os.listdir():
-        with open('knowledge_lemmatization.json', 'r') as knowledge_file:
+    knowledge_stopwords_json = 'knowledge_stopwords.json'
+    if knowledge_stopwords_json in os.listdir():
+        with open(knowledge_stopwords_json, 'r') as knowledge_file:
             knowledge = json.load(knowledge_file)
             spam_stopwords = knowledge['spam']
             ham_stopwords = knowledge['ham']
             unique_words_stopwords = knowledge['unique_words']
-    if 'knowledge_stopwords.json' in os.listdir():
-        with open('knowledge_lemmatization_stopwords.json', 'r') as knowledge_file:
+    knowledge_lemmatization_stopwords_json = 'knowledge_lemmatization_stopwords.json'
+    if knowledge_lemmatization_stopwords_json in os.listdir():
+        with open(knowledge_lemmatization_stopwords_json, 'r') as knowledge_file:
             knowledge = json.load(knowledge_file)
             spam_lemmatization_stopwords = knowledge['spam']
             ham_lemmatization_stopwords = knowledge['ham']
@@ -90,7 +96,7 @@ def get_words(directory: str, find_by: re.Pattern) -> None:
                         'number_of_numbers', 0) + 1
                 lemmatized_word = LEMMATIZER.lemmatize(word[0])
                 # stopwords
-                if word[0] not in ENGLISH_STOPWORDS:
+                if word[0].lower() not in ENGLISH_STOPWORDS:
                     spam_stopwords[word[0]] = spam_stopwords.get(
                         word[0], 0) + 1
                     # lemmatization and stopwords
@@ -123,7 +129,7 @@ def get_words(directory: str, find_by: re.Pattern) -> None:
                         'number_of_numbers', 0) + 1
                 lemmatized_word = LEMMATIZER.lemmatize(word[0])
                 # stopwords
-                if word[0] not in ENGLISH_STOPWORDS:
+                if word[0].lower() not in ENGLISH_STOPWORDS:
                     ham_stopwords[word[0]] = ham_stopwords.get(word[0], 0) + 1
                     # lemmatization and stopwords
                     ham_lemmatization_stopwords[lemmatized_word] = ham_lemmatization_stopwords.get(
@@ -169,11 +175,11 @@ def get_words(directory: str, find_by: re.Pattern) -> None:
     # changes directory back to the same path as this file.
     os.chdir(knowledge_directory)
     # write json files
-    with open(str('knowledge.json'), 'w') as spam_file:
+    with open(str(knowledge_json), 'w') as spam_file:
         json.dump(knowledge, spam_file)
-    with open(str('knowledge_lemmatization.json'), 'w') as spam_file:
+    with open(str( knowledge_lemmatization), 'w') as spam_file:
         json.dump(knowledge_lemmatization, spam_file)
-    with open(str('knowledge_stopwords.json'), 'w') as spam_file:
+    with open(str(knowledge_stopwords_json), 'w') as spam_file:
         json.dump(knowledge_stopwords, spam_file)
-    with open(str('knowledge_lemmatization_stopwords.json'), 'w') as spam_file:
+    with open(str(knowledge_lemmatization_stopwords_json), 'w') as spam_file:
         json.dump(knowledge_lemmatization_stopwords, spam_file)
