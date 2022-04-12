@@ -9,10 +9,11 @@ def main():
     """
     main Main runner function for Homework 6.
     """
-    # get_words('enron1', re.compile(r'[A-Za-z$]+[0-9]*'), 'knowledge.json')
+    regex = re.compile(
+        r'([A-Za-z$!]+)|[$ ]?([0-9]+)')
+    get_words('enron1', regex)
     start = time.time()
-    filter_messages('enron2', re.compile(
-        r'[A-Za-z$]+[0-9]*'), 'knowledge.json')
+    # filter_messages('enron2', regex)
     print(f'{time.time() - start:.2f} seconds')
 
 

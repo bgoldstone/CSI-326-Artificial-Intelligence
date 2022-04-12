@@ -3,9 +3,7 @@ import math
 import os
 import re
 from typing import Dict
-import numpy as np
 
-ENGLISH_STOPWORDS = set(stopwords.words('english'))
 
 def print_findings(findings: Dict) -> None:
     """
