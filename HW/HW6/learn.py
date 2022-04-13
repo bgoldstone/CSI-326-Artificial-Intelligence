@@ -120,7 +120,7 @@ def get_knowledge(directory: str, find_by: re.Pattern) -> None:
     unique_words = 0
     # changes directory to spam path.
     os.chdir(knowledge_directory)
-    # declares empty spam/ham directory.
+    # declares variables.
     spam = {}
     ham = {}
     total_spam_files = 0
@@ -168,9 +168,9 @@ def get_knowledge(directory: str, find_by: re.Pattern) -> None:
             spam_lemmatization_stopwords = knowledge['spam']
             ham_lemmatization_stopwords = knowledge['ham']
             unique_words_lemmatization_stopwords = knowledge['unique_words']
-
-    # for each spam file...
-    read_file_iter = [
+    
+    # list to iterate over reading files.
+    read_file_parameters = [
         (spam_path, spam, spam_stopwords, spam_lemmatization,
             spam_lemmatization_stopwords, total_spam_files),
         (ham_path, ham, ham_stopwords, ham_lemmatization,
@@ -179,7 +179,7 @@ def get_knowledge(directory: str, find_by: re.Pattern) -> None:
     print("Reading files...")
     time.sleep(1)
     # for each type of email.
-    for path, email_type, stopwords, lemmatization, lemmatization_stopwords, total_files in read_file_iter:
+    for path, email_type, stopwords, lemmatization, lemmatization_stopwords, total_files in read_file_parameters:
         os.chdir(path)
         for filename in os.listdir(path):
             # open file
@@ -190,7 +190,6 @@ def get_knowledge(directory: str, find_by: re.Pattern) -> None:
                     if word[0] not in spam or word[0] not in ham:
                         unique_words += 1
                     # puts word into spam dictionary.
-
                     if word[1]:
                         email_type['number_of_numbers'] = email_type.get(
                             'number_of_numbers', 0) + 1

@@ -162,7 +162,7 @@ def filter_messages(directory_to_filter: str, find_by: re.Pattern, stopwords=Fal
             # open the file in the iteration.
             with open(filename, 'r', errors='ignore') as f:
                 file_findings = {}
-                # gets all the words in the spam email.
+                # gets all the words in the email.
                 for word in re.findall(find_by, f.read()):
                     # adds one to the word count.
                     if lemmatization:
