@@ -2,13 +2,92 @@ import json
 import os
 import re
 import time
-from nltk.stem import WordNetLemmatizer
+from typing import Dict, Tuple
+
 from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+
 # constants
 LEMMATIZER = WordNetLemmatizer()
 ENGLISH_STOPWORDS = set(stopwords.words('english'))
 # add subject to stopwords
 ENGLISH_STOPWORDS.add('subject')
+
+
+def combine_into_one_dictionary(unique_words: int, spam: Dict[str, int], ham: Dict[str, int], total_ham_files: int, spam_lemmatization: Dict[str, int], ham_lemmatization: Dict[str, int], unique_words_lemmatization: int, spam_stopwords: Dict[str, int], ham_stopwords: Dict[str, int], unique_words_stopwords: int, spam_lemmatization_stopwords: Dict[str, int], ham_lemmatization_stopwords: Dict[str, int], unique_words_lemmatization_stopwords: int) -> Tuple[Dict[str, int], Dict[str, int], Dict[str, int], Dict[str, int]]:
+    """
+    combine_into_one_dictionary combine dictionaries into one dictionary to put into the json file
+
+    Args:
+        unique_words (int): number of unique words in regular knowledge
+        spam (Dict[str,int]): regular spam dictionary
+        ham (Dict[str,int]): regular ham dictionary
+        total_ham_files (int): total number of ham files
+        spam_lemmatization (Dict[str,int]): lemmatization spam dictionary
+        ham_lemmatization (Dict[str,int]): lemmatization ham dictionary
+        unique_words_lemmatization (int): number of unique words in lemmatization knowledge
+        spam_stopwords (Dict[str,int]): stopwords spam dictionary
+        ham_stopwords (Dict[str,int]): stopwords ham dictionary
+        unique_words_stopwords (int): number of unique words in stopwords knowledge
+        spam_lemmatization_stopwords (Dict[str,int]): lemmatization stopwords spam dictionary
+        ham_lemmatization_stopwords (Dict[str,int]): lemmatization stopwords ham dictionary
+        unique_words_lemmatization_stopwords (int): number of unique words in lemmatization stopwords knowledge
+
+    Returns:
+        Tuple[Dict[str,int],Dict[str,int],Dict[str,int],Dict[str,int]]: knowledge, knowledge_lemmatization, knowledge_lemmatization_stopwords, knowledge_stopwords
+    """
+    ham['total_files'] = ham.get('total_files', 0) + total_ham_files
+    ham_lemmatization['total_files'] = ham['total_files']
+    spam_lemmatization['total_files'] = spam['total_files']
+    ham_lemmatization_stopwords['total_files'] = ham['total_files']
+    spam_lemmatization_stopwords['total_files'] = spam['total_files']
+    ham_stopwords['total_files'] = ham['total_files']
+    spam_stopwords['total_files'] = spam['total_files']
+
+    # syncs number_of__numbers
+    ham_lemmatization['number_of_numbers'] = ham['number_of_numbers']
+    spam_lemmatization['number_of_numbers'] = spam['number_of_numbers']
+    ham_lemmatization_stopwords['number_of_numbers'] = ham['number_of_numbers']
+    spam_lemmatization_stopwords['number_of_numbers'] = spam['number_of_numbers']
+    ham_stopwords['number_of_numbers'] = ham['number_of_numbers']
+    spam_stopwords['number_of_numbers'] = spam['number_of_numbers']
+    # puts ham and spam into one dictionary.
+    knowledge = {"ham": ham, "spam": spam, 'unique_words': unique_words}
+    knowledge_lemmatization = {"ham": ham_lemmatization,
+                               "spam": spam_lemmatization, 'unique_words': unique_words_lemmatization}
+    knowledge_lemmatization_stopwords = {"ham": ham_lemmatization_stopwords,
+                                         "spam": spam_lemmatization_stopwords, 'unique_words': unique_words_lemmatization_stopwords}
+    knowledge_stopwords = {"ham": ham_stopwords,
+                           "spam": spam_stopwords, 'unique_words': unique_words_stopwords}
+
+    return knowledge, knowledge_lemmatization, knowledge_lemmatization_stopwords, knowledge_stopwords
+
+
+def write_json(knowledge_directory: str, knowledge_json: str, knowledge: Dict[str, int], knowledge_lemmatization_json: str, knowledge_stopwords_json: str, knowledge_lemmatization_stopwords_json: str, knowledge_lemmatization: Dict[str, int], knowledge_lemmatization_stopwords: Dict[str, int], knowledge_stopwords: Dict[str, int]) -> None:
+    """
+    write_json Writes json to the files.
+
+    Args:
+        knowledge_directory (str): Directory to write the json to.
+        knowledge_json (str): knowledge json file name.
+        knowledge (Dict[str, int]): knowledge dictionary.
+        knowledge_lemmatization_json (st): knowledge lemmatization json file name.
+        knowledge_stopwords_json (str): knowledge stopwords json file name.
+        knowledge_lemmatization_stopwords_json (str): knowledge lemmatization stopwords json file name.
+        knowledge_lemmatization (Dict[str, int]): knowledge lemmatization dictionary
+        knowledge_lemmatization_stopwords (Dict[str, int]): knowledge lemmatization stopwords dictionary
+        knowledge_stopwords (Dict[str, int]): knowledge stopwords dictionary
+    """
+    os.chdir(knowledge_directory)
+    # write json files
+    with open(str(knowledge_json), 'w') as spam_file:
+        json.dump(knowledge, spam_file)
+    with open(str(knowledge_lemmatization_json), 'w') as spam_file:
+        json.dump(knowledge_lemmatization, spam_file)
+    with open(str(knowledge_stopwords_json), 'w') as spam_file:
+        json.dump(knowledge_stopwords, spam_file)
+    with open(str(knowledge_lemmatization_stopwords_json), 'w') as spam_file:
+        json.dump(knowledge_lemmatization_stopwords, spam_file)
 
 
 def get_words(directory: str, find_by: re.Pattern) -> None:
@@ -147,39 +226,10 @@ def get_words(directory: str, find_by: re.Pattern) -> None:
         total_ham_files += 1
     # total ham files read
     # syncs number of files read
-    ham['total_files'] = ham.get('total_files', 0) + total_ham_files
-    ham_lemmatization['total_files'] = ham['total_files']
-    spam_lemmatization['total_files'] = spam['total_files']
-    ham_lemmatization_stopwords['total_files'] = ham['total_files']
-    spam_lemmatization_stopwords['total_files'] = spam['total_files']
-    ham_stopwords['total_files'] = ham['total_files']
-    spam_stopwords['total_files'] = spam['total_files']
-
-    # syncs number_of__numbers
-    ham_lemmatization['number_of_numbers'] = ham['number_of_numbers']
-    spam_lemmatization['number_of_numbers'] = spam['number_of_numbers']
-    ham_lemmatization_stopwords['number_of_numbers'] = ham['number_of_numbers']
-    spam_lemmatization_stopwords['number_of_numbers'] = spam['number_of_numbers']
-    ham_stopwords['number_of_numbers'] = ham['number_of_numbers']
-    spam_stopwords['number_of_numbers'] = spam['number_of_numbers']
-    # puts ham and spam into one dictionary.
-    knowledge = {"ham": ham, "spam": spam, 'unique_words': unique_words}
-    knowledge_lemmatization = {"ham": ham_lemmatization,
-                               "spam": spam_lemmatization, 'unique_words': unique_words_lemmatization}
-    knowledge_lemmatization_stopwords = {"ham": ham_lemmatization_stopwords,
-                                         "spam": spam_lemmatization_stopwords, 'unique_words': unique_words_lemmatization_stopwords}
-    knowledge_stopwords = {"ham": ham_stopwords,
-                           "spam": spam_stopwords, 'unique_words': unique_words_stopwords}
+    knowledge, knowledge_lemmatization, knowledge_lemmatization_stopwords, knowledge_stopwords = combine_into_one_dictionary(
+        unique_words, spam, ham, total_ham_files, spam_lemmatization, ham_lemmatization, unique_words_lemmatization, spam_stopwords, ham_stopwords, unique_words_stopwords, spam_lemmatization_stopwords, ham_lemmatization_stopwords, unique_words_lemmatization_stopwords)
     del(ham)
     del(spam)
     # changes directory back to the same path as this file.
-    os.chdir(knowledge_directory)
-    # write json files
-    with open(str(knowledge_json), 'w') as spam_file:
-        json.dump(knowledge, spam_file)
-    with open(str(knowledge_lemmatization_json), 'w') as spam_file:
-        json.dump(knowledge_lemmatization, spam_file)
-    with open(str(knowledge_stopwords_json), 'w') as spam_file:
-        json.dump(knowledge_stopwords, spam_file)
-    with open(str(knowledge_lemmatization_stopwords_json), 'w') as spam_file:
-        json.dump(knowledge_lemmatization_stopwords, spam_file)
+    write_json(knowledge_directory, knowledge_json, knowledge, knowledge_lemmatization_json, knowledge_stopwords_json,
+               knowledge_lemmatization_stopwords_json, knowledge_lemmatization, knowledge_lemmatization_stopwords, knowledge_stopwords)

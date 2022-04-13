@@ -41,7 +41,8 @@ def main():
     regex = re.compile(
         r'([A-Za-z$!]+)|[$ ]?([0-9]+)')
     # Gets the words from the folder and "learns" them.
-    '''get_words('enron1', regex)'''
+
+    # get_words('enron1', regex)
     # gets results with filter_messages
     get_results(regex, ['enron2', 'enron3'])
     print(f'Time taken: {time.time() - start:.2f} seconds')

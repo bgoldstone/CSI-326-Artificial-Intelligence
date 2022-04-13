@@ -63,9 +63,6 @@ def __get_probability(file_findings: Dict, knowledge: Dict, number_of_spam_words
     p_spam = float(knowledge['spam']['total_files'] / total_number_of_files)
     # gets the probability of the email being ham.
     p_ham = float(knowledge['ham']['total_files'] / total_number_of_files)
-    # gets total number of unique words. This does subtract 1 because of total_files key.
-    spam_unique_word_count = len(knowledge['spam'].values())-1
-    ham_unique_word_count = len(knowledge['ham'].values())-1
     # get the total number of unique words.
     unique_words = knowledge['unique_words']
     # puts probability of ham/spam in the sets.
