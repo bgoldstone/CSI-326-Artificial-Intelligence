@@ -1,12 +1,19 @@
+"""
+    Runner function for filter.py and learn.py
+
+    Name: Ben Goldstone
+    Professor: Dr. Jorge Silveyra
+    Date: 04/13/2022
+"""
 import re
 import time
 from typing import List
 
 from filter import filter_messages
-from learn import get_words
+from learn import get_knowledge
 
 
-def get_results(regex: re.Pattern, directory_list: List[str]) -> None:
+def __get_results(regex: re.Pattern, directory_list: List[str]) -> None:
     """
     get_results Gets the results from the knowledge jsons and prints it into a readable format.
 
@@ -42,9 +49,9 @@ def main():
         r'([A-Za-z$!]+)|[$ ]+([0-9]+)')
     # Gets the words from the folder and "learns" them.
 
-    # get_words('enron1', regex)
+    # get_knowledge('enron1', regex)
     # gets results with filter_messages
-    get_results(regex, ['enron2', 'enron3'])
+    __get_results(regex, ['enron2', 'enron3'])
     print(f'Time taken: {time.time() - start:.2f} seconds')
 
 

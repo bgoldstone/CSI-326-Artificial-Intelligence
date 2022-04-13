@@ -1,3 +1,10 @@
+"""
+    learns using the existing spam/ham files and gathers counts of how many words occur in total using the function get_knowledge().
+    
+    Name: Ben Goldstone
+    Professor: Dr. Jorge Silveyra
+    Date: 04/13/2022
+"""
 import json
 import os
 import re
@@ -7,14 +14,19 @@ from typing import Dict, Tuple
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
-# constants
-LEMMATIZER = WordNetLemmatizer()
+# ------------------------------------------------CONSTANTS----------------------------------
+"""ENGLISH_STOPWORDS (Dict): Dictionary of stopwords for the english language."""
 ENGLISH_STOPWORDS = set(stopwords.words('english'))
-# add subject to stopwords
+
+# adds 'subject' to stopwords
 ENGLISH_STOPWORDS.add('subject')
 
+"""LEMMATIZER (WordNetLemmatizer): object to lemmatize words"""
+LEMMATIZER = WordNetLemmatizer()
+# ---------------------------------------------END CONSTANTS--------------------------------
 
-def combine_into_one_dictionary(unique_words: int, spam: Dict[str, int], ham: Dict[str, int], total_ham_files: int, spam_lemmatization: Dict[str, int], ham_lemmatization: Dict[str, int], unique_words_lemmatization: int, spam_stopwords: Dict[str, int], ham_stopwords: Dict[str, int], unique_words_stopwords: int, spam_lemmatization_stopwords: Dict[str, int], ham_lemmatization_stopwords: Dict[str, int], unique_words_lemmatization_stopwords: int) -> Tuple[Dict[str, int], Dict[str, int], Dict[str, int], Dict[str, int]]:
+
+def __combine_into_one_dictionary(unique_words: int, spam: Dict[str, int], ham: Dict[str, int], total_ham_files: int, spam_lemmatization: Dict[str, int], ham_lemmatization: Dict[str, int], unique_words_lemmatization: int, spam_stopwords: Dict[str, int], ham_stopwords: Dict[str, int], unique_words_stopwords: int, spam_lemmatization_stopwords: Dict[str, int], ham_lemmatization_stopwords: Dict[str, int], unique_words_lemmatization_stopwords: int) -> Tuple[Dict[str, int], Dict[str, int], Dict[str, int], Dict[str, int]]:
     """
     combine_into_one_dictionary combine dictionaries into one dictionary to put into the json file
 
@@ -63,7 +75,7 @@ def combine_into_one_dictionary(unique_words: int, spam: Dict[str, int], ham: Di
     return knowledge, knowledge_lemmatization, knowledge_lemmatization_stopwords, knowledge_stopwords
 
 
-def write_json(knowledge_directory: str, knowledge_json: str, knowledge: Dict[str, int], knowledge_lemmatization_json: str, knowledge_stopwords_json: str, knowledge_lemmatization_stopwords_json: str, knowledge_lemmatization: Dict[str, int], knowledge_lemmatization_stopwords: Dict[str, int], knowledge_stopwords: Dict[str, int]) -> None:
+def __write_json(knowledge_directory: str, knowledge_json: str, knowledge: Dict[str, int], knowledge_lemmatization_json: str, knowledge_stopwords_json: str, knowledge_lemmatization_stopwords_json: str, knowledge_lemmatization: Dict[str, int], knowledge_lemmatization_stopwords: Dict[str, int], knowledge_stopwords: Dict[str, int]) -> None:
     """
     write_json Writes json to the files.
 
@@ -90,7 +102,7 @@ def write_json(knowledge_directory: str, knowledge_json: str, knowledge: Dict[st
         json.dump(knowledge_lemmatization_stopwords, spam_file)
 
 
-def get_words(directory: str, find_by: re.Pattern) -> None:
+def get_knowledge(directory: str, find_by: re.Pattern) -> None:
     """
     get_files Gets the spam and ham words from the files, and puts them into a json file in the root directory.
 
@@ -156,82 +168,55 @@ def get_words(directory: str, find_by: re.Pattern) -> None:
             spam_lemmatization_stopwords = knowledge['spam']
             ham_lemmatization_stopwords = knowledge['ham']
             unique_words_lemmatization_stopwords = knowledge['unique_words']
-    print("Reading Spam files...")
-    time.sleep(1)
+
     # for each spam file...
-    os.chdir(spam_path)
-    for filename in os.listdir(spam_path):
-        # open file
-        with open(filename, 'r', errors='ignore') as spam_file:
-            # find all words in file.
-            for word in re.findall(find_by, spam_file.read()):
-                # checks if word is in current knowledge dictionary.
-                if word[0] not in spam or word[0] not in ham:
-                    unique_words += 1
-                # puts word into spam dictionary.
-                if word[0] != "":
-                    spam[word[0]] = spam.get(word[0], 0) + 1
-                if word[1]:
-                    spam['number_of_numbers'] = spam.get(
-                        'number_of_numbers', 0) + 1
-                lemmatized_word = LEMMATIZER.lemmatize(word[0])
-                # stopwords
-                if word[0].lower() not in ENGLISH_STOPWORDS:
-                    spam_stopwords[word[0]] = spam_stopwords.get(
-                        word[0], 0) + 1
-                    # lemmatization and stopwords
-                    spam_lemmatization_stopwords[lemmatized_word] = spam_lemmatization_stopwords.get(
-                        lemmatized_word, 0)+1
-
-                # lemmatization
-                spam_lemmatization[lemmatized_word] = spam_lemmatization.get(
-                    lemmatized_word, 0) + 1
-        total_spam_files += 1
-    spam['total_files'] = spam.get('total_files', 0) + total_spam_files
-
-    # Finds Ham Words
-    os.chdir(ham_path)
-    print("Reading Ham files...")
+    read_file_iter = [
+        (spam_path, spam, spam_stopwords, spam_lemmatization,
+            spam_lemmatization_stopwords, total_spam_files),
+        (ham_path, ham, ham_stopwords, ham_lemmatization,
+            ham_lemmatization_stopwords, total_ham_files),
+    ]
+    print("Reading files...")
     time.sleep(1)
-    # for each ham file...
-    for filename in os.listdir(ham_path):
-        # open file
-        with open(filename, 'r', errors='ignore') as spam_file:
-            # find all words in file.
-            for word in re.findall(find_by, spam_file.read()):
-                # checks if word is in current knowledge dictionary.
-                if word[0] not in spam:
-                    unique_words += 1
-                # puts word into ham dictionary.
-                if word[0] != "":
-                    ham[word[0]] = ham.get(word[0], 0) + 1
-                if word[1]:
-                    ham['number_of_numbers'] = ham.get(
-                        'number_of_numbers', 0) + 1
-                lemmatized_word = LEMMATIZER.lemmatize(word[0])
-                # stopwords
-                if word[0].lower() not in ENGLISH_STOPWORDS:
-                    ham_stopwords[word[0]] = ham_stopwords.get(word[0], 0) + 1
-                    # lemmatization and stopwords
-                    ham_lemmatization_stopwords[lemmatized_word] = ham_lemmatization_stopwords.get(
-                        lemmatized_word, 0) + 1
-                    if word[0] not in spam_lemmatization_stopwords:
-                        unique_words_lemmatization_stopwords += 1
-                    if word[0] not in spam_stopwords:
-                        unique_words_stopwords += 1
+    # for each type of email.
+    for path, email_type, stopwords, lemmatization, lemmatization_stopwords, total_files in read_file_iter:
+        os.chdir(path)
+        for filename in os.listdir(path):
+            # open file
+            with open(filename, 'r', errors='ignore') as f:
+                # find all words in file.
+                for word in re.findall(find_by, f.read()):
+                    # checks if word is in current knowledge dictionary.
+                    if word[0] not in spam or word[0] not in ham:
+                        unique_words += 1
+                    # puts word into spam dictionary.
 
-                # lemmatization
-                ham_lemmatization[lemmatized_word] = ham_lemmatization.get(
-                    lemmatized_word, 0)+1
-                if word[0] not in ham_lemmatization:
-                    unique_words_lemmatization += 1
-        total_ham_files += 1
-    # total ham files read
-    # syncs number of files read
-    knowledge, knowledge_lemmatization, knowledge_lemmatization_stopwords, knowledge_stopwords = combine_into_one_dictionary(
+                    if word[1]:
+                        email_type['number_of_numbers'] = email_type.get(
+                            'number_of_numbers', 0) + 1
+                    elif word[0] != "":
+                        email_type[word[0]] = email_type.get(word[0], 0) + 1
+                    # gets a lemmatized_word
+                    lemmatized_word = LEMMATIZER.lemmatize(word[0])
+                    # stopwords
+                    if word[0].lower() not in ENGLISH_STOPWORDS:
+                        stopwords[word[0]] = stopwords.get(
+                            word[0], 0) + 1
+                        # lemmatization and stopwords
+                        lemmatization_stopwords[lemmatized_word] = lemmatization_stopwords.get(
+                            lemmatized_word, 0)+1
+
+                    # lemmatization
+                    lemmatization[lemmatized_word] = lemmatization.get(
+                        lemmatized_word, 0) + 1
+            total_files += 1
+        email_type['total_files'] = email_type.get(
+            'total_files', 0) + total_files
+    # combines ham and spam into one dictionary for each type.
+    knowledge, knowledge_lemmatization, knowledge_lemmatization_stopwords, knowledge_stopwords = __combine_into_one_dictionary(
         unique_words, spam, ham, total_ham_files, spam_lemmatization, ham_lemmatization, unique_words_lemmatization, spam_stopwords, ham_stopwords, unique_words_stopwords, spam_lemmatization_stopwords, ham_lemmatization_stopwords, unique_words_lemmatization_stopwords)
     del(ham)
     del(spam)
     # changes directory back to the same path as this file.
-    write_json(knowledge_directory, knowledge_json, knowledge, knowledge_lemmatization_json, knowledge_stopwords_json,
-               knowledge_lemmatization_stopwords_json, knowledge_lemmatization, knowledge_lemmatization_stopwords, knowledge_stopwords)
+    __write_json(knowledge_directory, knowledge_json, knowledge, knowledge_lemmatization_json, knowledge_stopwords_json,
+                 knowledge_lemmatization_stopwords_json, knowledge_lemmatization, knowledge_lemmatization_stopwords, knowledge_stopwords)
