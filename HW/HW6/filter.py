@@ -37,7 +37,7 @@ def get_findings(findings: Dict) -> Dict[str, float]:
         elif value[1] == 'spam' and value[0] == 'ham':
             false_negative += 1
         total = true_positive + true_negative + false_positive + false_negative
-    accuracy = float((true_negative+false_positive)/total)
+    accuracy = float((true_positive + true_negative) / total)
     precision = float(true_positive/(true_positive+false_positive))
     recall = float(true_positive/(true_positive+false_negative))
     return {"accuracy": accuracy, "precision": precision, "recall": recall}

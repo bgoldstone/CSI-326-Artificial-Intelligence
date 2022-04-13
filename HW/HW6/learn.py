@@ -169,7 +169,8 @@ def get_words(directory: str, find_by: re.Pattern) -> None:
                 if word[0] not in spam or word[0] not in ham:
                     unique_words += 1
                 # puts word into spam dictionary.
-                spam[word[0]] = spam.get(word[0], 0) + 1
+                if word[0] != "":
+                    spam[word[0]] = spam.get(word[0], 0) + 1
                 if word[1]:
                     spam['number_of_numbers'] = spam.get(
                         'number_of_numbers', 0) + 1
@@ -202,7 +203,8 @@ def get_words(directory: str, find_by: re.Pattern) -> None:
                 if word[0] not in spam:
                     unique_words += 1
                 # puts word into ham dictionary.
-                ham[word[0]] = ham.get(word[0], 0) + 1
+                if word[0] != "":
+                    ham[word[0]] = ham.get(word[0], 0) + 1
                 if word[1]:
                     ham['number_of_numbers'] = ham.get(
                         'number_of_numbers', 0) + 1

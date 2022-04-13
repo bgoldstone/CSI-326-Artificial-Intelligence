@@ -1,9 +1,9 @@
 import re
 import time
-from learn import get_words
-from filter import filter_messages
 from typing import List
-import cProfile
+
+from filter import filter_messages
+from learn import get_words
 
 
 def get_results(regex: re.Pattern, directory_list: List[str]) -> None:
@@ -39,14 +39,14 @@ def main():
     start = time.time()
     # group 1 is words group 2 is numbers
     regex = re.compile(
-        r'([A-Za-z$!]+)|[$ ]?([0-9]+)')
+        r'([A-Za-z$!]+)|[$ ]+([0-9]+)')
     # Gets the words from the folder and "learns" them.
 
     # get_words('enron1', regex)
     # gets results with filter_messages
-    get_results(regex, ['enron2', 'enron3'])
+    # get_results(regex, ['enron2', 'enron3'])
     print(f'Time taken: {time.time() - start:.2f} seconds')
 
 
 if __name__ == '__main__':
-    cProfile.run('main()')
+    main()
