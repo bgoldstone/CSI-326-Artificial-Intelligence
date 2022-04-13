@@ -2,35 +2,48 @@ import json
 import math
 import os
 import re
-from typing import Dict
+from typing import Dict, Tuple
 
 
-def print_findings(findings: Dict) -> None:
+def calculate_word_count(knowledge: Dict[str, int]) -> Tuple[int, int]:
+    spam = knowledge['spam']
+    ham = knowledge['ham']
+    number_of_spam_words = sum(
+        [value for key, value in spam.items() if key != 'total_files'])
+    number_of_ham_words = sum(
+        [value for key, value in ham.items() if key != 'total_files'])
+    return (number_of_spam_words, number_of_ham_words)
+
+
+def get_findings(findings: Dict) -> Dict[str, float]:
     """
-    print_findings Prints the findings as fractions and decimals.
+    get_findings get  the findings and puts it into a dictionary.
 
     Args:
         findings (Dict): dictionary of findings.
     """
-    guess_spam = 0
-    guess_ham = 0
-    real_spam = 0
-    real_ham = 0
+    true_positive = 0
+    true_negative = 0
+    false_negative = 0
+    false_positive = 0
+    # for each value in findings, get total true positives and false negatives.
     for _, value in findings.items():
         if value[0] == 'ham' and value[1] == 'ham':
-            guess_ham += 1
+            true_negative += 1
         elif value[0] == 'spam' and value[1] == 'spam':
-            guess_spam += 1
-        if value[1] == 'ham':
-            real_ham += 1
-        else:
-            real_spam += 1
-    print(
-        f'Spam Caught:{guess_spam}/{real_spam}({(guess_spam/real_spam):.2f})')
-    print(f'Ham Caught:{guess_ham}/{real_ham}({(guess_ham/real_ham):.2f})')
+            true_positive += 1
+        if value[1] == 'ham' and value[0] == 'spam':
+            false_positive += 1
+        elif value[1] == 'spam' and value[0] == 'ham':
+            false_negative += 1
+        total = true_positive + true_negative + false_positive + false_negative
+    accuracy = float((true_negative+false_positive)/total)
+    precision = float(true_positive/(true_positive+false_positive))
+    recall = float(true_positive/(true_positive+false_negative))
+    return {"accuracy": accuracy, "precision": precision, "recall": recall}
 
 
-def __get_probability(file_findings: Dict, knowledge: Dict) -> str:
+def __get_probability(file_findings: Dict, knowledge: Dict, number_of_spam_words: int, number_of_ham_words: int) -> str:
     """
     __get_probability Gets the probability of one spam/ham email file.
 
@@ -44,13 +57,12 @@ def __get_probability(file_findings: Dict, knowledge: Dict) -> str:
     # puts in set since order is not important.
     spam_to_calculate = []
     ham_to_calculate = []
-
+    total_number_of_files = int(knowledge['spam']
+                                ['total_files']+knowledge['ham']['total_files'])
     # gets the probability of the email being spam.
-    p_spam = float(knowledge['spam']['total_files'] / int(knowledge['spam']
-                   ['total_files']+knowledge['spam']['total_files']))
+    p_spam = float(knowledge['spam']['total_files'] / total_number_of_files)
     # gets the probability of the email being ham.
-    p_ham = float(knowledge['ham']['total_files'] / int(knowledge['ham']
-                  ['total_files']+knowledge['ham']['total_files']))
+    p_ham = float(knowledge['ham']['total_files'] / total_number_of_files)
     # gets total number of unique words. This does subtract 1 because of total_files key.
     spam_unique_word_count = len(knowledge['spam'].values())-1
     ham_unique_word_count = len(knowledge['ham'].values())-1
@@ -64,10 +76,10 @@ def __get_probability(file_findings: Dict, knowledge: Dict) -> str:
         # puts in ham set.
         # log(x^y) = y * log(x)
         ham_to_calculate.append(value *
-                                math.log((knowledge['ham'].get(key, 0)+1)/(ham_unique_word_count+unique_words)))
+                                math.log((knowledge['ham'].get(key, 0)+1)/(number_of_ham_words+unique_words)))
         # puts in spam set.
         spam_to_calculate.append(value * math.log((knowledge['spam'].get(
-            key, 0)+1)/(spam_unique_word_count+unique_words)))
+            key, 0)+1)/(number_of_spam_words+unique_words)))
     # calculates the probabilities.
     spam_probability = sum(spam_to_calculate)
     ham_probability = sum(ham_to_calculate)
@@ -77,7 +89,7 @@ def __get_probability(file_findings: Dict, knowledge: Dict) -> str:
     return 'ham'
 
 
-def filter_messages(directory_to_filter: str, find_by: re.Pattern, stopwords=False, lemmatization=False) -> Dict:
+def filter_messages(directory_to_filter: str, find_by: re.Pattern, stopwords=False, lemmatization=False) -> Dict[str, float]:
     """
     filter_messages Filters messages given a specified directory to filter.
 
@@ -89,13 +101,13 @@ def filter_messages(directory_to_filter: str, find_by: re.Pattern, stopwords=Fal
     Returns:
         List: Dictionary of the findings of the messages.
     """
-    string_to_add = ""
+    knowledge_type = ""
     if stopwords and lemmatization:
-        string_to_add = "_lemmatization_stopwords"
+        knowledge_type = "_lemmatization_stopwords"
     if stopwords:
-        string_to_add = "_stopwords"
+        knowledge_type = "_stopwords"
     if lemmatization:
-        string_to_add = "_lemmatization"
+        knowledge_type = "_lemmatization"
     # generates email,spam and ham paths.
     email_path = os.path.join(os.path.dirname(__file__), directory_to_filter)
     spam_path = os.path.join(email_path, 'spam')
@@ -105,9 +117,12 @@ def filter_messages(directory_to_filter: str, find_by: re.Pattern, stopwords=Fal
     # changes to the knowledge directory.
     os.chdir(knowledge_directory)
     # gets knowledge from the knowledge file.
-    knowledge_file = f'knowledge{string_to_add}.json'
+    knowledge_file = f'knowledge{knowledge_type}.json'
     with open(knowledge_file, 'r') as kf:
         knowledge = json.load(kf)
+    # gets total number of words in spam and ham files.
+    number_of_spam_words, number_of_ham_words = calculate_word_count(
+        knowledge)
     # records findings.
     findings = {}
     # starts message count at zero.
@@ -128,9 +143,9 @@ def filter_messages(directory_to_filter: str, find_by: re.Pattern, stopwords=Fal
                         'number_of_numbers', 0) + 1
             # gets spam/ham email type.
             email_type = __get_probability(
-                file_findings, knowledge)
+                file_findings, knowledge, number_of_spam_words, number_of_ham_words)
             # records all findings.
-            findings[message_count] = [email_type, 'spam']
+            findings[str(message_count)] = [email_type, 'spam']
             message_count += 1
 
     # filters through ham emails.
@@ -138,16 +153,20 @@ def filter_messages(directory_to_filter: str, find_by: re.Pattern, stopwords=Fal
     for filename in os.listdir(ham_path):
         # open the file in the iteration.
         with open(filename, 'r', errors='ignore') as f:
+            file_findings = {}
             # gets all the words in the ham email.
             for word in re.findall(find_by, f.read()):
                 # adds one to the word count.
-                file_findings[word] = file_findings.get(word, 0) + 1
+                file_findings[word[0]] = file_findings.get(word[0], 0) + 1
+                # if number_of_numbers
+                if word[1]:
+                    file_findings['number_of_numbers'] = file_findings.get(
+                        'number_of_numbers', 0) + 1
             # gets spam/ham email type.
-            email_type = __get_probability(file_findings, knowledge)
+            email_type = __get_probability(
+                file_findings, knowledge, number_of_spam_words, number_of_ham_words)
             # records all findings.
             findings[message_count] = [email_type, 'ham']
             message_count += 1
     # prints all findings.
-    print_findings(findings)
-
-    return findings
+    return get_findings(findings)
