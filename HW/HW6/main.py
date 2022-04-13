@@ -44,7 +44,7 @@ def main():
 
     # get_words('enron1', regex)
     # gets results with filter_messages
-    # get_results(regex, ['enron2', 'enron3'])
+    get_results(regex, ['enron2', 'enron3'])
     print(f'Time taken: {time.time() - start:.2f} seconds')
 
 
