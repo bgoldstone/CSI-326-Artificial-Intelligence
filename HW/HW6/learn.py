@@ -15,13 +15,13 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
 # ------------------------------------------------CONSTANTS----------------------------------
-"""ENGLISH_STOPWORDS (Dict): Dictionary of stopwords for the english language."""
+# ENGLISH_STOPWORDS (Dict): Dictionary of stopwords for the english language.
 ENGLISH_STOPWORDS = set(stopwords.words('english'))
 
 # adds 'subject' to stopwords
 ENGLISH_STOPWORDS.add('subject')
 
-"""LEMMATIZER (WordNetLemmatizer): object to lemmatize words"""
+# LEMMATIZER (WordNetLemmatizer): object to lemmatize words
 LEMMATIZER = WordNetLemmatizer()
 # ---------------------------------------------END CONSTANTS--------------------------------
 
@@ -168,7 +168,7 @@ def get_knowledge(directory: str, find_by: re.Pattern) -> None:
             spam_lemmatization_stopwords = knowledge['spam']
             ham_lemmatization_stopwords = knowledge['ham']
             unique_words_lemmatization_stopwords = knowledge['unique_words']
-    
+
     # list to iterate over reading files.
     read_file_parameters = [
         (spam_path, spam, spam_stopwords, spam_lemmatization,

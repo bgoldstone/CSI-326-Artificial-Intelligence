@@ -15,13 +15,13 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
 # ------------------------------------------------CONSTANTS----------------------------------
-"""ENGLISH_STOPWORDS (Dict): Dictionary of stopwords for the english language."""
+# ENGLISH_STOPWORDS (Dict): Dictionary of stopwords for the english language.
 ENGLISH_STOPWORDS = set(stopwords.words('english'))
 
 # adds 'subject' to stopwords
 ENGLISH_STOPWORDS.add('subject')
 
-"""LEMMATIZER (WordNetLemmatizer): object to lemmatize words."""
+# LEMMATIZER (WordNetLemmatizer): object to lemmatize words.
 LEMMATIZER = WordNetLemmatizer()
 # ---------------------------------------------END CONSTANTS--------------------------------
 
