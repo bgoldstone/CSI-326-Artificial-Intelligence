@@ -131,10 +131,11 @@ def filter_messages(directory_to_filter: str, find_by: re.Pattern, stopwords=Fal
     knowledge_type = ""
     if stopwords and lemmatization:
         knowledge_type = "_lemmatization_stopwords"
-    if stopwords:
+    elif stopwords:
         knowledge_type = "_stopwords"
-    if lemmatization:
+    elif lemmatization:
         knowledge_type = "_lemmatization"
+
     # generates email,spam and ham paths.
     email_path = os.path.join(os.path.dirname(__file__), directory_to_filter)
     spam_path = os.path.join(email_path, 'spam')
