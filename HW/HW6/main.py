@@ -25,7 +25,7 @@ def __get_results(regex: re.Pattern, directory_list: List[str]) -> None:
     line = '_' * 50
     for directory in directory_list:
         print(f'{directory.title()} Results\n{line}\n')
-        result1 = filter_messages(directory, regex, False, False)
+        result1 = filter_messages(directory, regex)
         print(
             f'No Improvements:\n\tAccuracy: {result1.get("accuracy",0)*100:.2f}%\n\tPrecision: {result1.get("precision",0)*100:.2f}%\n\tRecall: {result1.get("recall",0)*100:.2f}%\n')
         result2 = filter_messages(directory, regex, True, False)
