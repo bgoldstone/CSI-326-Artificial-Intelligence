@@ -4,6 +4,7 @@
     Name: Ben Goldstone
     Professor: Dr. Jorge Silveyra
     Date: 04/13/2022
+    Libaries: nltk(Natural Language Toolkit)
 """
 import json
 import os
