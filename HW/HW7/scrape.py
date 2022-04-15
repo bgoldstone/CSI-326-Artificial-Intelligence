@@ -10,6 +10,7 @@ def scrape_data(first_url: str):
     return_value = []
     stack = LifoQueue(501)
     first_url = first_url if first_url[-1] == '/' else f'{first_url}/'
+    root_url = re.findall(r'\.([\w\d]+\.[\w\d]{3})', first_url)[0]
     stack.put(first_url)
     while(len(visited) <= 500):
         stack_url = stack.get()
@@ -20,7 +21,7 @@ def scrape_data(first_url: str):
             return_value.append(current_url[0:4])
             visited.add(stack_url)
             for url in current_url[4]:
-                if url not in visited and 'muhlenberg.edu' in url and (url.startswith("http") or url.startswith("/")):
+                if url not in visited and root_url in url and (url.startswith("http") or url.startswith("/")):
                     stack.put(url)
     return return_value
 
