@@ -1,2 +1,4 @@
 nltk
 numpy
+autopep8
+requests
