@@ -51,7 +51,7 @@ def scrape_data(first_url: str) -> List[List]:
     while(len(visited) <= 500):
         stack_url = stack.get()
         # if url not visited, scrape the url.
-        if stack_url not in visited:
+        if stack_url not in visited and not stack_url.endswith('.pdf'):
             print(
                 f'Visited:{len(visited)} Stack: {stack.qsize()} URL: {stack_url}')
             # gets the url scraping.
@@ -91,6 +91,7 @@ def get_url(base_url: str, root_url: str) -> Union[List, bool]:
     # url, number of relative links, number of anchor links, html contents, list of links.
     return_val = [base_url, 0, 0, url.text, []]
     return_val[3] = url.text
+    # print(url.status_code, url.reason)
     # if url is successfully retrieved, get matches from regular expressions.
     for match in LINK_REGEX.findall(url.text):
         # if relative link.

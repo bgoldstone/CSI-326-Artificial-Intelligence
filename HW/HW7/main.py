@@ -3,10 +3,10 @@ import os
 import re
 
 
-def main():
+def main() -> None:
     """
     main Main function for HW7.
-    """    
+    """
     urls = scrape_data("http://www.muhlenberg.edu/")
     # os.chdir(os.path.join(os.path.dirname(__file__), "output"))
     # for index, url in enumerate(urls):
