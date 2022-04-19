@@ -12,7 +12,7 @@ LINK_REGEX = re.compile(r'<link rel=.*href=\"(.+)\"|<a.*href="([^ ]*)"')
 
 def add_forward_slash(url: str) -> str:
     """
-        add_forward_slash Adds forward slash to url if not already present.
+        add_forward_slash Adds a forward slash to url if not already present.
 
         Args:
             url (str): URL to check
