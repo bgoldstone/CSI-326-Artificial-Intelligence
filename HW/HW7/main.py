@@ -7,7 +7,7 @@ def main() -> None:
     """
     main Main function for HW7.
     """
-    urls = scrape_data("http://www.muhlenberg.edu/")
+    urls = scrape_data("https://muhlenberg.edu/")
     # os.chdir(os.path.join(os.path.dirname(__file__), "output"))
     # for index, url in enumerate(urls):
     #     filename = f'URL{index}.txt'
