@@ -1,4 +1,5 @@
 import copy
+import os
 import re
 import time
 from typing import List, Union, Dict
@@ -60,13 +61,21 @@ def scrape_data(first_url: str) -> List[List]:
         stack_url = stack.get()
         # if url not visited and not a pdf, scrape the url.
         if stack_url not in visited and not stack_url.endswith('.pdf'):
-            print(
-                f'Visited:{len(visited)} Stack: {stack.qsize()} URL: {stack_url}')
             # gets the url scraping.
             current_url = get_url(stack_url, root_url)
+            print(
+                f'Visited:{len(visited) if current_url else "404 Not Found"} Stack: {stack.qsize()} URL: {stack_url}')
             # checks if urls was successfully visited.
             if current_url:
                 # adds url to return list and visited stack.
+                os.chdir(os.path.join(os.path.dirname(__file__), 'output'))
+                with open(f'URL_{len(visited)}', 'w', errors='ignore') as f:
+                    # url, number of relative links, number of anchor links, html contents, list of links.
+                    f.write(f'{current_url[0]}\n')
+                    f.write(f'\n\nRelative Link Count: {current_url[1]}')
+                    f.write(f'\n\nAbsolute Link Count: {current_url[2]}')
+                    f.write(f'\n\nList of Links:\n\n{current_url[4]}')
+                    f.write(f'\n\nContents:\n\n{current_url[3]}')
                 return_value.append(current_url)
                 visited.add(stack_url)
                 # for all of the absolute links, add them to the stack.
@@ -94,16 +103,16 @@ def get_url(base_url: str, root_url: str) -> Union[List, bool]:
         Union[List, bool]: URL findings in the format of [url, # relative links(<link>), # anchor links(<a>), html contents, [**absolute links]]. Returns False if url not successfully reachable.
     """
 
-    # if url fails to resolve, return blank list.
+    # if url fails to resolve, return False.
     try:
         # added headers because some websites require them.
         url = requests.get(base_url, headers={"User-Agent": "*"})
     except requests.exceptions.ConnectionError:
         print("site is not reachable", base_url)
         return False
-    # sets html contents index.
     # url, number of relative links, number of anchor links, html contents, list of links.
     return_val = [base_url, 0, 0, url.text, []]
+    # sets html contents index.
     return_val[3] = url.text
     # if url is successfully retrieved, get matches from regular expressions.
     for match in LINK_REGEX.findall(url.text):
@@ -134,12 +143,15 @@ def get_robots_txt(domain: re.Pattern) -> Union[re.Pattern, None]:
     Returns:
        Union[re.Pattern, None]: regex for disallowed links. None if user_agent does not exist.
     """
+    # keeps list of not visitable links.
     not_visitable = []
+    # finds user agent.
     find_by = 'user-agent: *'
     # request robots.txt
     request = requests.get(f'{domain}robots.txt')
     # all lines split by new line or carriage return.
     lines = [line.lower() for line in re.split(r'\n|\r', request.text)]
+    # if no user agent is found, return None.
     try:
         index = lines.index(find_by)
     except ValueError:

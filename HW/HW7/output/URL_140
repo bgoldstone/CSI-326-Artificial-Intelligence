@@ -1,0 +1,394 @@
+https://support.muhlenberg.edu/organizations/wmuh
+
+
+Relative Link Count: 1
+
+Absolute Link Count: 3
+
+List of Links:
+
+['https://support.muhlenberg.edu/assets/sprite-926b4496bb0fb02813238d1f431837519d8e069c131faa81c7dec87c2d95c019.svg', 'mailto:%20themuhlenbergfund@muhlenberg.edu', 'https://www.givegab.com']
+
+Contents:
+
+<!DOCTYPE html><html class="fonts-loaded" lang="en"><head>
+<script>window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"NRJS-fa414e38dc2cf7fc15a","applicationID":"1465274152","transactionName":"dQ5cREUJCFUGRk1ZQFEAXFlNBxBQDFoRGUFeDkU=","queueTime":2,"applicationTime":235,"agent":""}</script>
+<script>(window.NREUM||(NREUM={})).init={ajax:{deny_list:["bam.nr-data.net"]}};(window.NREUM||(NREUM={})).loader_config={licenseKey:"NRJS-fa414e38dc2cf7fc15a",applicationID:"1465274152"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n,r){return function(){return s.recordSupportability("API/"+e+"/called"),o(t+e,[u.now()].concat(c(arguments)),n?null:this,r),n?void 0:this}}var o=t("handle"),a=t(10),c=t(11),f=t("ee").get("tracer"),u=t("loader"),s=t(4),d=NREUM;"undefined"==typeof window.newrelic&&(newrelic=d);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",v=l+"ixn-";a(p,function(t,e){d[e]=i(l,e,!0,"api")}),d.addPageAction=i(l,"addPageAction",!0),d.setCurrentRouteName=i(l,"routeName",!0),e.exports=newrelic,d.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(v+"tracer",[u.now(),t,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw f.emit("fn-err",[arguments,this,t],n),t}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(v,e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),s.recordSupportability("API/noticeError/called"),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){var r=!1;try{var i=Object.defineProperty({},"passive",{get:function(){r=!0}});window.addEventListener("testPassive",null,i),window.removeEventListener("testPassive",null,i)}catch(o){}e.exports=function(t){return r?{passive:!0,capture:!!t}:!!t}},{}],4:[function(t,e,n){function r(t,e){var n=[a,t,{name:t},e];return o("storeMetric",n,null,"api"),n}function i(t,e){var n=[c,t,{name:t},e];return o("storeEventMetrics",n,null,"api"),n}var o=t("handle"),a="sm",c="cm";e.exports={constants:{SUPPORTABILITY_METRIC:a,CUSTOM_METRIC:c},recordSupportability:r,recordCustom:i}},{}],5:[function(t,e,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=t(12);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],6:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],7:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?l("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&l("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();if(n.length>0){var r=n[n.length-1];if(u&&u<r.startTime)return;var i=[r],o=a({});o&&i.push(o),l("lcp",i)}}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||l("cls",[t])})}function a(t){var e=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(e)return e.type&&(t["net-type"]=e.type),e.effectiveType&&(t["net-etype"]=e.effectiveType),e.rtt&&(t["net-rtt"]=e.rtt),e.downlink&&(t["net-dlink"]=e.downlink),t}function c(t){if(t instanceof y&&!w){var e=Math.round(t.timeStamp),n={type:t.type};a(n),e<=v.now()?n.fid=v.now()-e:e>v.offset&&e<=Date.now()?(e-=v.offset,n.fid=v.now()-e):e=v.now(),w=!0,l("timing",["fi",e,n])}}function f(t){"hidden"===t&&(u=v.now(),l("pageHide",[u]))}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var u,s,d,p,l=t("handle"),v=t("loader"),m=t(9),g=t(3),y=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){s=new PerformanceObserver(r);try{s.observe({entryTypes:["paint"]})}catch(h){}d=new PerformanceObserver(i);try{d.observe({entryTypes:["largest-contentful-paint"]})}catch(h){}p=new PerformanceObserver(o);try{p.observe({type:"layout-shift",buffered:!0})}catch(h){}}if("addEventListener"in document){var w=!1,b=["click","keydown","mousedown","pointerdown","touchstart"];b.forEach(function(t){document.addEventListener(t,c,g(!1))})}m(f)}},{}],8:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}e.exports={agent:i,version:o,match:r}},{}],9:[function(t,e,n){function r(t){function e(){t(c&&document[c]?document[c]:document[o]?"hidden":"visible")}"addEventListener"in document&&a&&document.addEventListener(a,e,i(!1))}var i=t(3);e.exports=r;var o,a,c;"undefined"!=typeof document.hidden?(o="hidden",a="visibilitychange",c="visibilityState"):"undefined"!=typeof document.msHidden?(o="msHidden",a="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(o="webkitHidden",a="webkitvisibilitychange",c="webkitVisibilityState")},{}],10:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],11:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],12:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var c=e(i),f=m(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[w[n]];return p&&p.push([b,n,r,c]),c}}function o(t,e){h[t]=m(t).concat(e)}function v(t,e){var n=h[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return h[t]||[]}function g(t){return p[t]=p[t]||i(n)}function y(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var h={},w={},b={on:o,addEventListener:o,removeEventListener:v,emit:n,get:g,listeners:m,context:e,buffer:y,abort:c,aborted:!1};return b}function o(t){return u(t,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=t("gos"),s=t(10),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!P++){var t=M.info=NREUM.info,e=g.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(O,function(e,n){t[e]||(t[e]=n)});var n=a();c("mark",["onload",n+M.offset],null,"api"),c("timing",["load",n]);var r=g.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=v+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===g.readyState&&o()}function o(){c("mark",["domContent",a()+M.offset],null,"api")}var a=t(5),c=t("handle"),f=t(10),u=t("ee"),s=t(8),d=t(6),p=t(2),l=t(3),v=p.getConfiguration("ssl")===!1?"http":"https",m=window,g=m.document,y="addEventListener",h="attachEvent",w=m.XMLHttpRequest,b=w&&w.prototype,E=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:w,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,O={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1215.min.js"},T=w&&b&&b[y]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:T,userAgent:s,disabled:E};if(!E){t(1),t(7),g[y]?(g[y]("DOMContentLoaded",o,l(!1)),m[y]("load",r,l(!1))):(g[h]("onreadystatechange",i),m[h]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var P=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],t)}c(n+"start",[o,a,f],s,u);try{return p=e.apply(a,o)}catch(v){throw c(n+"err",[o,a,v],s,u),v}finally{c(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)f=e[u],c=t[f],a(c)||(t[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!v||e){var c=v;v=!0;try{t.emit(n,r,o,e,a)}catch(f){i([f,n,r,o],t)}v=c}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function c(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function f(t,e,n){var r=t[e];t[e]=c(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(11),p="nr@original",l=Object.prototype.hasOwnProperty,v=!1;e.exports=r,e.exports.wrapFunction=c,e.exports.wrapInPlace=f,e.exports.argsToArray=u},{}]},{},["loader"]);</script><title>Give to WMUH | Muhlenberg College Crowdfunding</title>
+<meta name="description" content="THE ONLY STATION THAT MATTERS">
+<meta name="keywords" content="day of giving">
+<meta property="og:title" content="Support WMUH in ! | Muhlenberg College Crowdfunding">
+<meta property="og:description" content="
+  I’m ready to support WMUH on August 11, 2020 during Muhlenberg College Crowdfunding.
+  Learn more about WMUH and all the other initiatives
+  participating in .
+">
+<meta property="og:url" content="https://support.muhlenberg.edu/organizations/wmuh">
+<meta property="og:image" content="https://user-content.givegab.com/uploads/group/logo/490750/77fb209f3694935196321f6ae053cc5ebd4aaf9a.png">
+<meta property="og:type" content="profile">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="
+  I’m ready to support WMUH on August 11, 2020 during Muhlenberg College Crowdfunding.
+  Learn more about WMUH and all the other initiatives
+  participating in .
+">
+<meta name="twitter:image" content="https://user-content.givegab.com/uploads/group/logo/490750/77fb209f3694935196321f6ae053cc5ebd4aaf9a.png">
+<meta name="twitter:site" content="@MuhlenbergAlum">
+<meta name="twitter:title" content="Support WMUH in ! | Muhlenberg College Crowdfunding"><link rel="stylesheet" media="all" href="/assets/application-71d6ae346a93f8d79b36590dfa361453283798fa19e0acf6bee26f7a6b2e0f94.css" /><style type="text/css">.gg-branding-lead {
+  color: #A41D36;
+}
+
+.gg-branding-supporting {
+  color: #000000;
+}
+
+.gg-branding-backdrop {
+  color: #a4a9ad;
+}
+
+.gg-branding-white {
+  color: #ffffff;
+}
+
+.gg-branding-lead-bg {
+  background-color: #A41D36;
+}
+
+.gg-branding-supporting-bg {
+  background-color: #000000;
+}
+
+.gg-branding-backdrop-bg {
+  background-color: #a4a9ad;
+}
+
+.gg-branding-white-bg {
+  background-color: #ffffff;
+}
+
+.translucent-lead-bg-80 {
+  background-color: rgba(164,29,54, .80);
+}
+
+.translucent-supporting-bg-80 {
+  background-color: rgba(0,0,0, .80);
+}
+
+.translucent-backdrop-bg-80 {
+  background-color: rgba(164,169,173, .80);
+}
+
+.gg-branding-lead-link {
+  color: #A41D36;
+}
+
+.gg-branding-lead-link:hover,
+.gg-branding-lead-link:focus,
+.gg-branding-lead-link:active {
+  color: #A41D36;
+  opacity: 0.8;
+}
+
+.gg-branding-lead-link:active {
+  opacity: 1;
+}
+
+.gg-branding-supporting-link {
+  color: #000000;
+}
+
+.gg-branding-supporting-link:hover,
+.gg-branding-supporting-link:focus,
+.gg-branding-supporting-link:active {
+  color: #000000;
+  opacity: 0.8;
+}
+
+.gg-branding-supporting-link:active {
+  opacity: 1;
+}
+
+.gg-branding-backdrop-link {
+  color: #a4a9ad;
+}
+
+.gg-branding-backdrop-link:hover,
+.gg-branding-backdrop-link:focus,
+.gg-branding-backdrop-link:active {
+  color: #a4a9ad;
+  opacity: 0.8;
+}
+
+.gg-branding-backdrop-link:active {
+  opacity: 1;
+}
+
+.gg-branding-white-link,
+.gg-branding-white-link:hover,
+.gg-branding-white-link:focus,
+.gg-branding-white-link:active,
+.gg-branding-white-link a {
+  color: #ffffff;
+}
+
+.gg-branding-lead-border {
+  border-color: #A41D36;
+}
+
+.gg-branding-lead-btn {
+  background-color: #A41D36;
+}
+
+.gg-branding-supporting-btn {
+  background-color: #000000;
+}
+
+.menu-btn-shadow,
+.menu-btn-shadow:hover,
+.menu-btn-shadow:active,
+.menu-btn-shadow:focus {
+  box-shadow: 0 2px #A41D36;
+}
+
+.menu-btn-shadow:hover:after,
+.menu-btn-shadow:focus:after {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  box-shadow: 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.menu-btn-shadow:active:after {
+  box-shadow: 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.gift-basket-checkout:hover,
+.gift-basket-checkout:focus {
+  color: #A41D36;
+  filter: brightness(120%);
+}
+
+.gift-basket-checkout:active {
+  color: #A41D36;
+  filter: brightness(100%);
+}
+
+.nav-pills .nav-link:hover,
+.nav-pills .nav-link:focus,
+.nav-pills .nav-link:active,
+.nav-pills .nav-link.active {
+  background-color: #A41D36;
+  color: white;
+}</style><style type="text/css">.gg-branding-primary-bg {
+  background-image: url(https://giving-day-content.givegab.com/muhlenbergcrowdfunding/app/images/img-bg-primary-sm.jpg);
+  background-size: cover;
+}
+
+@media screen and (min-width: 576px) {
+  .gg-branding-primary-bg {
+    background-image: url(https://giving-day-content.givegab.com/muhlenbergcrowdfunding/app/images/img-bg-primary-lg.jpg);
+  }
+}
+
+.gg-branding-secondary-bg {
+  background-image: url(https://giving-day-content.givegab.com/muhlenbergcrowdfunding/app/images/img-bg-secondary-sm.jpg);
+  background-size: cover;
+}
+
+@media screen and (min-width: 576px) {
+  .gg-branding-secondary-bg {
+    background-image: url(https://giving-day-content.givegab.com/muhlenbergcrowdfunding/app/images/img-bg-secondary-lg.jpg);
+  }
+}
+
+.gg-branding-tertiary-bg {
+  background-image: url(https://giving-day-content.givegab.com/muhlenbergcrowdfunding/app/images/img-bg-tertiary-sm.jpg);
+  background-size: cover;
+}
+
+@media screen and (min-width: 576px) {
+  .gg-branding-tertiary-bg {
+    background-image: url(https://giving-day-content.givegab.com/muhlenbergcrowdfunding/app/images/img-bg-tertiary-lg.jpg);
+  }
+}</style><style type="text/css">.hero-tagline, .dog-date-text, .countdown-heading, .countdown,
+.pause-animation,
+.pause-animation:hover,
+.pause-animation:focus,
+.pause-animation:active {
+  color: #ffffff;
+}
+
+.profile-stats .number {
+  color: #000000;
+}
+
+#profile-stats .number {
+  color: white;
+}
+
+.stats-bar .announcement {
+  color: #A41D36;
+}</style><script>(function (i, s, o, g, r, a, m) {
+  i['GoogleAnalyticsObject'] = r;
+  i[r] = i[r] || function () {
+    (i[r].q = i[r].q || []).push(arguments);
+  };
+  i[r].l = 1 * new Date();
+  a = s.createElement(o);
+  m = s.getElementsByTagName(o)[0];
+  a.async = 1;
+  a.src = g;
+  m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+if (typeof ga !== 'undefined') {
+  ga('create', 'UA-148369497-52', 'auto');
+}</script><script src="https://www.google.com/recaptcha/api.js?render=6Leou4kUAAAAAE5jEzYWytjLQd3txZSFPorN9dBz"></script><script>window.intercomSettings = { app_id: "ui460wfq" };
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/' + "ui460wfq";var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script><meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="5l9/jLOX1pH91TTX0TmChADNwN4TCDyYZJhDzwOYuzIbBoAn+j4lqtgceyFJkVCpQc7usmCQWfe1QyQTU/6Cmw==" /><meta content="236229868035143" property="fb:app_id" /><meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" /><link href="https://giving-day-content.givegab.com/muhlenbergcrowdfunding/app/images/apple-touch-icon.png" rel="apple-touch-icon" type="image/png" /><link href="https://giving-day-content.givegab.com/muhlenbergcrowdfunding/app/images/favicon.png" rel="shortcut icon" type="image/x-icon" /><link href="https://giving-day-content.givegab.com/Agnostic+DoG+Resources/6_14_21.css" rel="stylesheet" /></head><body class="breed-muhlenbergcrowdfunding dog-muhlenbergcrowdfunding giving"><style type="text/css">#ie-browser-notice {
+  position: fixed;
+  top: 0;
+  height: 175px;
+  width: 100%;
+  background: white;
+  z-index: 10000;
+  padding: 1rem;
+  text-align: center;
+}
+
+#ie-browser-notice a {
+  border-radius: 20px;
+  background: #5ab400;
+  margin: .5rem;
+}</style><script>if (window.document.documentMode) {
+  var ieElement = document.createElement("div");
+  ieElement.id = "ie-browser-notice";
+  ieElement.innerHTML = "<h3>Your web browser (Internet Explorer) is out of date.</h3>" + 
+    "<p>Please update your browser for more security, speed and the best experience on this site.</p>" +
+    "<a class='btn' href='https://browser-update.org/update.html'>Update browser</a>";
+  document.body.appendChild(ieElement);
+  document.body.style.paddingTop = "175px";
+}</script><div id="fb-root"></div><a class="skip-to-content" href="#main-container">Skip to main content</a><header><div class="desktop-header d-none d-sm-flex"><a class="logo-link" href="/"><img alt="Muhlenberg College Crowdfunding home" src="https://giving-day-content.givegab.com/muhlenbergcrowdfunding/app/images/day-of-giving-logo-horizontal.svg" /></a><ul class="header-items-container"><li class="menu-button header-item btn gg-branding-lead-btn" data-target=".header-dropdown-menu" data-toggle="collapse" tabindex="0"><svg alt="" class="icon-sprite"><use xlink:href="https://support.muhlenberg.edu/assets/sprite-926b4496bb0fb02813238d1f431837519d8e069c131faa81c7dec87c2d95c019.svg#menu-down-arrow"></use></svg>Menu<ul class="header-dropdown-menu gg-branding-lead-bg collapse fadein"><li><a class="gg-branding-white-link" href="/">Home</a></li><li><a class="gg-branding-white-link login-link" href="https://www.givegab.com/giving_days/muhlenbergcrowdfunding/login">Log In</a></li></ul></li><li class="gift-basket-container" data-container="header" data-placement="bottom" data-toggle="tooltip" title="Gift Basket"><a class="gift-basket-checkout gg-branding-lead" href="/donate?gift_basket=true"><svg alt="Gift Basket" class="icon-sprite"><use xlink:href="https://support.muhlenberg.edu/assets/sprite-926b4496bb0fb02813238d1f431837519d8e069c131faa81c7dec87c2d95c019.svg#giftbasket"></use></svg><div class="gift-basket-count gg-branding-supporting-bg gg-branding-white hidden"></div></a></li></ul></div><div class="mobile-header d-flex d-sm-none"><div class="hamburger-menu" data-target=".header-dropdown-mobile" data-toggle="collapse"><svg alt="" class="icon-sprite"><use xlink:href="https://support.muhlenberg.edu/assets/sprite-926b4496bb0fb02813238d1f431837519d8e069c131faa81c7dec87c2d95c019.svg#hamburger-menu"></use></svg></div><div class="mobile-header-items-right gift-basket-container"><a class="gift-basket-checkout gg-branding-lead" href="/donate?gift_basket=true"><svg alt="Gift Basket" class="icon-sprite"><use xlink:href="https://support.muhlenberg.edu/assets/sprite-926b4496bb0fb02813238d1f431837519d8e069c131faa81c7dec87c2d95c019.svg#giftbasket"></use></svg><div class="gift-basket-count gg-branding-supporting-bg gg-branding-white hidden"></div></a></div></div><div class="dropdowns-container"><div class="header-search" style="display: none;"><form action="/search" autocomplete="off" method="get" role="search"><input aria-label="Search" class="gg-branding-backdrop-bg gg-branding-white" name="query" placeholder="Search..." type="search" /><button class="gg-branding-lead-bg gg-branding-white" type="submit">Submit</button></form></div><ul class="header-dropdown-mobile collapse fadein"><li><a class="gg-branding-lead-link" href="/">Home</a></li><li><a class="gg-branding-lead-link login-link" href="https://www.givegab.com/giving_days/muhlenbergcrowdfunding/login">Log In</a></li></ul></div></header><div class="header-spacer"></div><main id="main-container" role="main"><div class="profile-container"><org-profile :org="org"></org-profile></div><div class="giftbasket-full modal fade"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">Your gift basket is full!</h4><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span alt="" aria-hidden="true">&times;</span></button></div><div class="modal-body"><p>You’ve reached the limit of 10 donations. Proceed to checkout or stay on this page.</p></div><div class="modal-footer"><a class="btn gg-branding-lead-btn" href="/donate">Checkout</a><button class="btn gg-branding-supporting-btn" data-dismiss="modal" type="button">Stay</button></div></div></div></div><script id="org-profile-template" type="x-template"><div id="group-profile"><div class="profile-sections"><template v-for="group in activeProfileComponents"><div class="container-xl" v-if="group.contained"><div class="row" v-for="row in group.rows"><component :is="&#39;profile-&#39; + section" :key="section" @profile-section-rendered="updateLinks" v-bind="sectionProps(section)" v-for="section in row"></component></div></div><template v-else=""><template v-for="row in group.rows"><component :is="&#39;profile-&#39; + section" :key="section" @profile-section-rendered="updateLinks" v-bind="sectionProps(section)" v-for="section in row"></component></template></template></template></div></div></script><script id="profile-causes-template" type="x-template"><section id="profile-causes" v-if="showSection"><div class="d-flex flex-column align-items-center"><h2 class="gg-branding-supporting text-center mb-4">Causes</h2><a :href="searchUrlBase + cause.id" :key="cause.id" class="gg-branding-lead-link" v-for="cause in causes"><h3>{{ cause.name }}</h3></a></div></section></script><script id="profile-contact-austin-template" type="x-template"><section class="text-center" id="profile-contact-austin"><h2 class="mb-4 gg-branding-supporting">Contact Information</h2><div v-if="website"><a :href="website" target="_blank">{{website}}</a></div><div v-if="contact.email"><a :href="&#39;mailto:&#39; + contact.email">{{contact.email}}</a></div><div class="margin-top" v-if="address">Address: {{address.address1}}, {{address.city}}, {{address.state}} {{address.postal_code}}</div><div v-if="contact.phone">Phone Number: {{contact.phone}}</div><div>EIN: {{ein}}</div></section></script><script id="profile-contact-info-template" type="x-template"><section class="col-12 order-2 col-md-5 col-lg-4" id="profile-contact-info"><h2 class="mb-4 text-center gg-branding-supporting">Contact</h2><h4 class="gg-branding-lead">{{orgName}}</h4><p>{{address.address1}} {{address.address2}}<br />{{address.city}}, {{address.state}} {{address.postal_code}}</p><p><template v-if="contact.name">{{contact.name}}<br /></template><template v-if="contact.email"><a :href="&#39;mailto:&#39; + contact.email" class="gg-branding-lead-link">{{contact.email}}</a><br /></template><template v-if="contact.phone">Phone: {{contact.phone}}<br /></template><a :href="website" class="gg-branding-lead-link text-break" target="_blank">{{website}}</a></p><button class="print-profile d-block btn btn-lg gg-branding-lead-btn mx-auto" onclick="window.print()" v-if="custom(&#39;print_profile_button&#39;)">Print Profile</button></section></script><script id="profile-custom-data-template" type="x-template"><div class="dog-custom-data"><div class="d-flex" id="customPropertiesTabs" v-if="showSection"><div class="gg-branding-supporting-bg w-100 d-none d-sm-block"><div class="container-xl"><div class="row"><ul class="nav nav-fill w-100 px-1 px-sm-3 gg-branding-supporting-bg d-flex"><li class="nav-item"><a :aria-selected="activeTab === &#39;profile&#39;" :class="{active: activeTab === &#39;profile&#39;}" @click="updateActiveTab(&#39;profile&#39;)" aria-controls="profile" class="nav-link gg-branding-white-link" data-toggle="tab" href="#profile" id="profile-tab" role="tab">Summary</a></li><li class="nav-item" v-for="category in customFields"><a :aria-controls="_.kebabCase(category.name)" :aria-selected="activeTab === _.kebabCase(category.name)" :class="{active: activeTab === _.kebabCase(category.name)}" :href="&#39;#&#39; + _.kebabCase(category.name)" :id="_.kebabCase(category.name) + &#39;-tab&#39;" @click="updateActiveTab(category.name)" class="nav-link gg-branding-white-link" data-toggle="tab" role="tab">{{category.name}}</a></li></ul></div></div></div><select class="custom-select d-inline-block d-sm-none my-2 mx-5" id="tab-select" v-model="activeTab"><option value="profile">Summary</option><option :value="_.kebabCase(category.name)" v-for="category in customFields">{{category.name}}</option></select></div><div class="container-xl" v-show="onDataTab"><div class="tab-content row" id="customPropertiesTabContent"><div :class="activeTab === &#39;profile&#39; ? &#39;show active&#39; : &#39;&#39;" aria-labelledby="profile-tab" class="tab-pane col-12 fade" id="profile" role="tabpanel"></div><html-partial :html="categoriesHtml"></html-partial><profile-contact-info :address="org.address" :contact="org.contact" :org-name="org.name" :website="org.website" v-if="onDataTab"></profile-contact-info></div></div></div></script><script id="profile-document-template" type="x-template"><section class="text-center" id="profile-document" v-if="showSection"><h2 class="gg-branding-supporting mb-4">{{settings.heading}}</h2><p>{{settings.description}}</p><a :href="document.file_url" class="btn gg-branding-lead-btn" target="_blank">View Document</a></section></script><script id="profile-donation-levels-template" type="x-template"><section class="my-4" id="donation-levels" v-if="showSection"><div class="row"><div class="col-6 col-sm-4 py-3 donation-level" v-for="lvl in levels"><a :href="baseUrl + &#39;&amp;amount=&#39; + lvl.amount + &#39;&amp;dtn_lvl_id=&#39; + lvl.id" class="dark-gray-link"><img :src="lvl.image_url" alt="" class="d-none d-sm-block" /><span class="lvl-amount gg-branding-supporting">{{ lvl.amount | centsToDollars('auto', true) }}</span><p class="d-none d-sm-block font-italic mw-100">{{ lvl.description }}</p></a></div></div><a :href="baseUrl" class="btn btn-lg gg-branding-lead-btn my-2 mx-auto">Choose your own amount</a><hr class="w-100 mt-5 mb-0" /></section></script><script id="profile-fundraisers-template" type="x-template"><section id="profile-fundraisers" v-if="showSection"><h2 class="gg-branding-supporting text-center mb-4">Fundraisers</h2><div :key="p2p.id" class="fundraiser-listing mb-2" v-for="(p2p, i) in fundraisers"><div class="d-flex justify-content-between"><div class="d-flex"><div class="rank-bubble mr-2 gg-branding-lead-bg">{{ i + 1 }}</div><h3><a :href="&#39;/p2p/&#39; + p2p.id + &#39;/&#39; + p2p.user_slug" class="dark-gray-link">{{ p2p.title }}</a></h3></div><h3 class="gg-branding-supporting">{{ p2p.stats.total_amount_raised | centsToDollars(false, true) }}</h3></div></div><p class="text-center" v-if="showLoadMore"><button @click="loadMore" class="btn btn-sm gg-branding-lead-btn">See More Fundraisers</button></p></section></script><script id="profile-header-template" type="x-template"><div class="profile-header-container w-100"><section :style="&#39;background-image: url(&#39; + coverPhotoUrl + &#39;)&#39;" aria-hidden="true" class="profile-cover-photo" v-if="!custom(&#39;hero_everywhere&#39;)"></section><section class="gg-branding-lead-bg text-center container-fluid" id="profile-header"><div class="row"><div class="col"><div class="sharing-links row gg-branding-white-link mb-4"><div class="col d-flex justify-content-around justify-content-md-end"><a :data-url="shareUrl" aria-label="Facebook" class="fb-share-url" data-toggle="tooltip" href="#" title="Connect with Facebook to share"><svg alt="" class="icon-sprite"><use xlink:href="https://support.muhlenberg.edu/assets/sprite-926b4496bb0fb02813238d1f431837519d8e069c131faa81c7dec87c2d95c019.svg#facebook"></use></svg></a><a :href="&#39;https://www.twitter.com/intent/tweet?text=&#39; + twitterData.text + &#39;&amp;url=&#39; + twitterData.share_url" aria-label="Twitter" data-toggle="tooltip" title="Share to Twitter"><svg alt="" class="icon-sprite"><use xlink:href="https://support.muhlenberg.edu/assets/sprite-926b4496bb0fb02813238d1f431837519d8e069c131faa81c7dec87c2d95c019.svg#twitter"></use></svg></a></div><img :src="logo" alt="" class="org-logo" v-if="logo" /><div class="col d-flex justify-content-around justify-content-md-start"><a @click.prevent="addToBasket" class="add-to-basket" data-toggle="tooltip" href="#" title="Add to Gift Basket" v-if="showGiftBasket"><svg alt="" class="icon-sprite"><use xlink:href="https://support.muhlenberg.edu/assets/sprite-926b4496bb0fb02813238d1f431837519d8e069c131faa81c7dec87c2d95c019.svg#giftbask_addto"></use></svg></a><a @click.prevent="showSharingModal" aria-label="Share URL" class="sharing-modal-toggle" data-toggle="tooltip" href="#" title="Share URL"><svg alt="" class="icon-sprite"><use xlink:href="https://support.muhlenberg.edu/assets/sprite-926b4496bb0fb02813238d1f431837519d8e069c131faa81c7dec87c2d95c019.svg#share"></use></svg></a></div></div><h1 class="gg-branding-white mb-4" v-if="profileType === &#39;fundraiser&#39;"><span>{{ userCampaign.title }} is a fundraiser for</span><br /><a :href="userCampaign.fundable_path" class="gg-branding-white-link">{{ userCampaign.fundable_name }}</a></h1><h1 class="gg-branding-white mb-4" v-else="">{{ profileTitle }}</h1><p class="gg-branding-white mt-n4 mb-4" v-if="profileType === &#39;campaign&#39;">at<a :href="&#39;/organizations/&#39; + campaign.group.slug" class="gg-branding-white-link ml-1">{{ campaign.group.name }}</a></p><div class="profile-actions mb-4"><div class="d-flex justify-content-center"><a :href="donatePath" class="btn btn-lg gg-branding-supporting-btn m-2">{{ custom('donate_text') }}</a><button @click="openFundraiserModal" class="btn btn-lg gg-branding-supporting-btn create-fundraiser m-2" v-if="showFundraiseButton">Fundraise</button></div></div><div class="d-inline-block mb-4" v-html="statusStickerHtml" v-if="statusStickerHtml"></div></div></div></section><sharing-modal :url="shareUrl"></sharing-modal></div></script><script id="profile-section-links-template" type="x-template"><div class="col-12"><nav class="nav justify-content-around mb-4 d-none d-sm-flex" id="section-links" v-if="sectionLinks.length &gt; 1"><a :class="{active: link.active}" :href="&#39;#profile-&#39; + link.name" :key="link.title" class="nav-link gg-branding-lead-link" v-for="link in sectionLinks" v-scroll-to="{ el: &#39;#profile-&#39; + link.name, offset: -70 }">{{ link.title }}</a></nav></div></script><script id="profile-matches-template" type="x-template"><section id="profile-matches" v-if="showSection"><h2 class="gg-branding-supporting text-center mb-4">{{ custom('match_copy').profile_header }}<span :data-content="popover" class="small popover-wrapper" data-placement="bottom" data-trigger="focus hover" rel="popover" tabindex="0" v-if="popover"><svg alt="" class="icon-sprite gg-branding-supporting info-icon"><use xlink:href="https://support.muhlenberg.edu/assets/sprite-926b4496bb0fb02813238d1f431837519d8e069c131faa81c7dec87c2d95c019.svg#info-2"></use></svg></span></h2><div class="profile-matches-container"><div :key="match.id" class="col-12 py-3" v-for="match in matches"><div class="profile-match mx-auto d-flex flex-column justify-content-between h-100"><div class="profile-match-body mb-3"><div class="d-flex"><div class="profile-match-logo mr-3" v-if="match.sponsor.logo_url &amp;&amp; !match.anonymous"><a :href="match.sponsor.url" target="_blank" v-if="match.sponsor.url"><img :src="match.sponsor.logo_url" alt="" class="img-fluid mb-2" /></a><img :src="match.sponsor.logo_url" alt="" class="img-fluid mb-2" v-else="" /></div><h3><template v-if="match.anonymous">Anonymous: {{ match.name }}</template><a :href="match.sponsor.url" class="dark-gray-link" target="_blank" v-else-if="match.sponsor.url">{{ match.sponsor.name }}: {{ match.name }}</a><template v-else="">{{ match.sponsor.name }}: {{ match.name }}</template></h3></div><div>{{ match.description }}</div></div><div class="profile-match-progress"><progress-bar :percent-complete="match.progress_percent" :show-percent="false" class="mb-3"></progress-bar><template v-if="match.match_type === &#39;dollar_match&#39;"><div class="dollar-match-amounts"><div><strong class="gg-branding-supporting">{{ match.total_amount | centsToDollars(true, true) }} </strong>Match</div><div><template v-if="match.amount_remaining"><strong class="gg-branding-supporting">{{ match.amount_remaining | centsToDollars(true, true) }} </strong>Remaining</template><strong class="gg-branding-supporting" v-else="">Completed</strong></div></div></template><template v-else=""><div class="text-center"><template v-if="match.dollars_needed"><strong class="gg-branding-supporting">{{ match.dollars_needed | formatDollars('auto',true) }} </strong>more unlocks </template><template v-else-if="match.donors_needed"><strong class="gg-branding-supporting">{{ match.donors_needed }} </strong>more donors unlocks </template><strong class="gg-branding-supporting">{{ match.total_amount | centsToDollars(true,true) }} <template v-if="!match.dollars_needed &amp;&amp; !match.donors_needed">unlocked!</template></strong></div></template></div></div></div></div><p class="text-center" v-if="!onBusFundProfile"><a :href="viewAllUrl" class="btn btn-sm gg-branding-lead-btn">See More Matches</a></p></section></script><script id="profile-rankings-template" type="x-template"><div class="mt-n3 pb-3 px-3 d-flex flex-column flex-sm-row flex-wrap justify-content-center align-items-center gg-branding-supporting-bg gg-branding-white" id="profile-rankings" v-if="showSection"><div :class="i &gt; 0 ? &#39;ml-sm-4 mt-2 mt-sm-0&#39; : &#39;&#39;" class="profile-ranking text-xl" v-for="(rank, i) in rankings">{{ rank.name }}: <span class="font-weight-bold text-nowrap">{{ rank.rank }}<span :class="rank.iconClass" class="change-icon" v-html="rank.changeIcon" v-if="rank.changeIcon"></span></span></div></div></script><script id="profile-recent-donors-template" type="x-template"><section id="profile-recent-donors" v-if="showSection"><h2 class="gg-branding-supporting text-center mb-4">Recent Donors</h2><div :key="dtn.id" class="donor-listing mb-2" v-for="dtn in donations"><div class="flex justify-content-between"><h3>{{ dtn.public_name }}</h3><h3 class="gg-branding-supporting" v-if="!dtn.hide_amount">{{ dtn.intended_donation | centsToDollars('auto', true) }}</h3></div><div class="matched-by pl-2" v-if="custom(&#39;include_recent_donor_matches&#39;) &amp;&amp; dtn.matched_amount &gt; 0"><span class="pr-2"></span>Matched <span v-if="!dtn.hide_amount">with {{ dtn.matched_amount | centsToDollars('auto', true) }}</span></div><p class="ml-3 font-italic" v-if="dtn.message">{{ dtn.message }}</p></div><p class="text-center" v-if="collection.length === params.per_page"><button @click="loadMore" class="btn btn-sm gg-branding-lead-btn show-more-donations">See More Donations</button></p></section></script><script id="profile-related-dog-causes-template" type="x-template"><section class="related-causes" id="profile-related-dog-causes" v-if="showSection"><h2 class="gg-branding-supporting text-center mb-4">Related Causes</h2><div class="row"><div :key="cause.id" class="col-lg-4 col-md-6" v-for="cause in causes"><a :href="&#39;/causes/&#39; + cause.slug"><div :class="&#39;cause-&#39; + cause.id + &#39;-bg&#39;" class="cause my-3"><div class="cause-name gg-branding-lead-bg">{{ cause.name }}</div></div></a><div v-html="causeBackgroundCss(cause)"></div></div></div></section></script><script id="profile-secondary-donate-button-template" type="x-template"><section><div class="d-flex justify-content-center mb-4 d-md-none"><a :href="donatePath" class="btn btn-lg gg-branding-supporting-btn">{{ custom('donate_text') }}</a></div></section></script><script id="profile-stats-template" type="x-template"><section class="gg-branding-supporting-bg py-4" id="profile-stats" v-if="showSection"><div class="container"><div class="row"><div class="col"><progress-bar :background-color="dog.lead_color" :percent-complete="percent_raised" class="mb-3 mx-auto" v-if="goal"></progress-bar><div class="d-flex flex-wrap justify-content-center align-items-center gg-branding-white"><div class="profile-stat" v-if="total_amount_raised != null"><div class="number">{{ total_amount_raised | centsToDollars(true, true) }}</div> <span>Raised</span></div><div class="profile-stat" v-if="goal != null"><div class="number">{{ goal | centsToDollars(true, true) }}</div> <span>Goal</span></div><div class="profile-stat" v-if="total_donors_count != null"><div class="number">{{ total_donors_count }}</div> <span>Donors</span></div><div class="profile-stat" v-if="total_donations_count != null"><div class="number">{{ total_donations_count }}</div> <span>Gifts</span></div></div></div></div></div></section></script><script id="profile-story-template" type="x-template"><section id="profile-story" v-if="showSection"><h2 class="gg-branding-supporting text-center mb-4">Our Story</h2><div class="video-container embed-responsive embed-responsive-16by9" v-html="campaign.video_embed_code" v-if="campaign.video_embed_code"></div><div v-html="campaign.story"></div></section></script><script id="profile-support-areas-template" type="x-template"><section id="profile-support-areas" v-if="showSection"><h2 class="gg-branding-supporting text-center mb-4">{{ custom('support_area_heading') }}</h2><div class="row"><div :key="area.id" class="col-md-6 col-lg-4 py-3" v-for="area in supportAreas"><div class="profile-campaign mx-auto d-flex flex-column justify-content-between h-100"><h3 class="text-center"><a :href="&#39;/campaigns/&#39; + area.slug" class="dark-gray-link">{{ area.title }}</a></h3><div class="d-flex justify-content-center align-items-end"><a :href="&#39;/campaigns/&#39; + area.slug" class="campaign-image mr-3"><img :alt="area.title" :src="area.story_image_url" class="img-fluid" /></a><a :href="&#39;/donate?campaign_id=&#39; + area.id" class="btn gg-branding-lead-btn">{{ custom('donate_text') }}</a></div></div></div></div><p class="text-center call-to-action" v-if="showMoreSupportAreas"><a :href="&#39;/campaigns?group_id=&#39; + orgId" class="gg-branding-lead-link">See More</a></p></section></script><script id="profile-volunteer-opportunities-template" type="x-template"><section id="profile-volunteer-opportunities" v-if="showSection"><div class="d-flex flex-column align-items-center"><h2 class="gg-branding-supporting text-center mb-4">Volunteer Opportunities</h2><div :key="opp.id" class="volunteer-opp text-center" v-for="opp in opps"><a :href="opp.web_url" class="gg-branding-lead-link" target="_blank"><h3 class="mb-0">{{ opp.name }}</h3></a><p class="mb-0">{{ oppDate(opp) }}</p></div></div></section></script><script id="profile-volunteermatch-results-template" type="x-template"><section class="opps-list" id="profile-volunteermatch-results" v-if="showSection"><h2 class="gg-branding-supporting text-center mb-4">VolunteerMatch Opportunities</h2><div :key="result.id" class="opps-listing" v-for="result in limitedResults"><a :href="url(result)" class="opp-thumbnail" v-if="result.imageUrl"><img :src="result.imageUrl" alt="" /></a><div><h3><a :href="url(result)" target="_blank">{{ result.title }}</a></h3><p>{{ location(result) }} (Date Posted: {{ result.datePosted }})</p></div></div><a :href="limitedResults[0].parentOrg.url" target="_blank" v-if="numberOfResults &gt; 5">View all VolunteerMatch opportunities</a></section></script><script id="progress-bar-template" type="x-template"><div class="progress"><div :aria-valuenow="percentComplete" :style="barStyle" aria-valuemax="100" aria-valuemin="0" class="progress-bar" role="progressbar"><template v-if="showPercent">{{percentComplete}}%</template></div></div></script><script id="sharing-modal-template" type="x-template"><div class="sharing-modal modal fade"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">Share URL</h4><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span alt="" aria-hidden="true">&times;</span></button></div><div class="modal-body"><label for="share-url">Share this link:</label><input :value="fullUrl" class="form-control select-text" id="share-url" type="text" /></div></div></div></div></script></main><footer class="gg-branding-backdrop-bg gg-branding-white"><div class="container"><div class="footer"><div class="flexbox-container"><div class="flex-item"><ul class="list-unstyled"><li><a class="gg-branding-white-link" href="/">Home</a></li><li><a class="gg-branding-white-link" href="/info/faq">FAQ</a></li><li><a class="gg-branding-white-link" href="/info/terms-of-service">Terms of Service</a></li></ul></div><div class="flex-item footer-social"><ul class="list-unstyled"><li><a aria-label="Follow berg.alum on Facebook" class="link-with-icon gg-branding-white-link" href="https://www.facebook.com/berg.alum" target="_blank"><svg alt="" class="icon-sprite"><use xlink:href="https://support.muhlenberg.edu/assets/sprite-926b4496bb0fb02813238d1f431837519d8e069c131faa81c7dec87c2d95c019.svg#facebook"></use></svg>Follow us on Facebook</a></li><li><a aria-label="Follow @MuhlenbergAlum on Twitter" class="link-with-icon gg-branding-white-link" href="https://www.twitter.com/@MuhlenbergAlum" target="_blank"><svg alt="" class="icon-sprite"><use xlink:href="https://support.muhlenberg.edu/assets/sprite-926b4496bb0fb02813238d1f431837519d8e069c131faa81c7dec87c2d95c019.svg#twitter"></use></svg>Follow us on Twitter</a></li><li><a aria-label="Follow muhlenbergalum on Instagram" class="link-with-icon gg-branding-white-link" href="https://www.instagram.com/muhlenbergalum" target="_blank"><svg alt="" class="icon-sprite"><use xlink:href="https://support.muhlenberg.edu/assets/sprite-926b4496bb0fb02813238d1f431837519d8e069c131faa81c7dec87c2d95c019.svg#instagram"></use></svg>Follow us on Instagram</a></li></ul></div><div class="flex-item contact-info text-break"><h3 class="gg-branding-lead">Muhlenberg College Crowdfunding</h3><div class="gg-branding-white-link"><p><p style="font-family:Merriweather;">Office of Annual Giving:
+<br /><a href="mailto:%20themuhlenbergfund@muhlenberg.edu">themuhlenbergfund@muhlenberg.edu</a>
+<br />1-800-859-2243</p>
+
+<p>2400 Chew Street
+<br />Allentown, PA 18104</p></p></div></div></div><div class="made"><div class="d-sm-none">Powered by <br /><a class="gg-branding-lead-link" href="https://www.givegab.com" target="_blank">GiveGab,<br />The Nonprofit Giving Platform</a></div><div class="d-none d-sm-block">Powered by <a class="gg-branding-lead-link" href="https://www.givegab.com" target="_blank">GiveGab, The Nonprofit Giving Platform</a></div></div></div></div></footer><script src="/assets/vendor-8fc21e3fb42c752a3c9567888a927f7827a5c667e61834d2c2e30c3633da957c.js" data-turbolinks-track="false"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script><script src="https://unpkg.com/vuex@2.0.0"></script><script>window.app = {
+  algolia: {
+    appId: 'HK0J3OMZVI',
+    apiKey: '1695e41c64c67fc7c85761678265aade',
+    indexName: 'giving_day_structure',
+  },
+  customizations: {"volunteermatch_opportunities":false,"always_show_search":false,"daf_foundation_name":"the foundation","daf_foundations":[],"donate_text":"Donate","fundraisers_hero_subheading":null,"gg_tip_heading":"Tip GiveGab","heading_donation":null,"hide_amount_default":false,"hide_daf_fund_number":false,"landing_hero_text_color":"#ffffff","live_app_video_url":null,"prizes_landing_copy":null,"profile_juicer_feed":{},"reveal_location_in_search":true,"search_heading":null,"show_dog_causes_after_donation":false,"show_p2p_dropdown":false,"single_column_profiles":false,"sitewide_redirect_url":null,"super_anon_message_target":null,"text_to_give_number":null,"leaderboards_index_custom_heading":null,"gg_tip_description":"GiveGab, [DoG Name]'s technology partner, has a 0% platform fee for nonprofits and relies on the generosity of donors to operate our platform.","cause_hero_banner":false,"currency":"usd","default_country":"United States","disable_intercom":false,"donation_scroller":false,"featured_lb":null,"fundraisers_results_heading":null,"google_tag_manager":false,"header_logo":false,"header_partial":false,"hide_back_to_top_btn":false,"leaderboard_filter_killswitch":false,"leaderboards_index_custom_hero":false,"print_profile_button":false,"recurring_checkbox_copy":"Make this a monthly gift.","reveal_hide_amount_checkbox":true,"search_view_all_by_default":false,"super_anonymous_default":false,"tie_profile_recent_donor_to_stats":false,"umbrella_stats":false,"use_dog_causes":false,"validate_phone_presence":false,"prizes_subheader":null,"survey_partial":false,"landing_hero_cta":false,"donor_prefix":false,"enterprise_donation_form_enabled":false,"fundraiser_sign_up_info":null,"gg_live_enabled":false,"hide_cents_on_leaderboards":false,"international_enabled":false,"tabbed_leaderboards":false,"leaderboard_percent_decimal_places":0,"meta_tags":false,"multigive_double_dropdown":false,"org_profile_contact":false,"path_redirects":{},"profile_logo_override":null,"profile_stats_color":null,"reveal_location_in_lbs":false,"show_dog_matches_first":false,"show_next_hourly_challenge":false,"sortable_lb_contestant_header":false,"sub_fund_dropdown_label":"Select a sub fund","thank_you":false,"top_level_stats_color":null,"vip_message":{},"tls_verification_tag":"kGnrLNcR0xYEbNbIrWaCShj6GQ-k1pyDgF2zI8_fuP","use_deprecated_profiles":false,"causes_index_subheader":null,"current_matches_only":true,"custom_pages_dog_id":null,"custom_profile_stats":false,"disable_search_page_fallback":false,"display_name_suppressed":false,"donor_email_suggested_domains":[],"external_stylesheets":null,"footer_heading":null,"footer_image":null,"footer_partial":false,"google_analytics":null,"header_logo_url":"/","hero_everywhere":false,"hide_log_in":false,"hide_negative_percents_on_leaderboards":false,"highlighted_campaigns_on_landing":3,"multigive_double_dropdown_options":{"alphabetize_fallback":false,"prefill_primary_if_dog_campaign":false,"exclude_dog_campaign_in_secondary":false},"org_profile_support_area_limit":3,"prizes_page_heading":null,"random_sponsors":null,"search_killswitch_redirect":"/donate","show_business_fundraisers_in_menu":true,"super_anonymous_help_copy":null,"tip_the_host_search":false,"video_titles":{},"multi_dog_stats":false,"random_orgs_header":null,"cms_page_additional_tags":[],"daf_minimum":0,"donations_closed_message":null,"donor_message_suppressed":false,"enterprise_donation_form_url":null,"fallback_heading":{"single_fallback":"Can't decide where to give? Give to:","multiple_fallbacks":"Can't decide where to give?"},"fundraisers_list_heading":null,"fundraisers_search_heading":null,"gg_tip_suggested_levels":[5,10,15],"highlighted_campaigns_heading":{"plural":"Featured Community Initiatives","singular":"Featured Community Initiative"},"intercom_app_id":null,"new_donor_popover":"This information helps us determine our current reach and improves our efforts to continue spreading our impact to new communities. Thank you!","new_header":false,"org_profile_support_area_lbs":[],"participate_search_header":null,"participate_search_subheader":null,"leaderboards_page_disclaimer":null,"registration_link_copy":null,"saved_payment_methods":null,"search":null,"support_area_heading":"Fundraising Campaigns","donation_search_label":null,"fundraisers_hero_heading":null,"include_recent_donor_matches":false,"fundraiser_included_stats":null,"lb_contestant_header":"Name","leaderboards_dog_id":null,"payment_step_heading":"Enter Your Payment Information","prizes_won_copy":null,"search_result_placeholder":null,"scroller_exclusions":[],"leaderboard_selector_options":null,"tip_the_host_donation":{"tagline":"Your gift to The Muhlenberg Fund supports the College's strategic priorities and allows President Harring the flexibility to support innovation, scholarship and community when and where it is most needed.","campaign_id":86899},"display_name_label":"Name to display (optional):","profile_status_sticker":false,"fee_copy_file_path":null,"alpha_search_label":"Partner","group_profile_with_params":null,"invalid_email_regex":null,"landing_leaderboard_custom_link":null,"multi_sites_live_stats":null,"parent_profile_search":false,"prize_page_partial":false,"show_ranks_on_profiles":false,"spritesheet_path":"sprite.svg","stats_in_header":false,"org_profile_sections":[{"rows":[["header"],["stats"]],"contained":false},{"rows":[["donation-levels"],["section-links"],["story"],["matches"],["support-areas"],["fundraisers","recent-donors"],["volunteer-opportunities"],["secondary-donate-button"]],"contained":true}],"bus_funds_recent_donors":false,"header_menu_buttons":[],"leaderboards_bottom_partial":false,"match_copy":{"index_text":null,"index_header":"Donation Matches and Challenges","profile_header":"Matches","profile_popover":null},"menu_links":null,"payment_info_step_copy":false,"post_day_allow_org_redirect":false,"search_exporter":false,"show_dog_causes_on_profiles":false,"sitewide_stats":false,"use_algolia_search":false,"survey_choice_filters":[],"support_area_profile_sections":[{"rows":[["header"],["stats"]],"contained":false},{"rows":[["donation-levels"],["section-links"],["story"],["matches"],["fundraisers","recent-donors"],["secondary-donate-button"]],"contained":true}],"goal_thermometer":null,"advanced_search":false,"allow_scripts_on_landing_page":false,"always_show_profile_stats":false,"anonymous_default":false,"calendar_description":null,"campaign_select_limit":300,"chart_colors":[],"cms_page_additional_attributes":[],"display_last_submitted_at":false,"donor_message_opened":false,"donor_message_placeholder":false,"donor_middle_name":false,"early_giving_thank_you":false,"fallback_message_placeholder":"Add specific fund information","fallback_message_required":true,"business_fundraiser_included_stats":["percent_raised","percent_employees","total_amount_raised","dollar_goal","donor_goal","total_donors_count"],"thermometer_goal":null,"bus_fund_copy":{"index":{"header":"Business Fundraisers","no_match":"No business names match your search."},"profile":{"raised":"Raised","percent":"Employee participation","num_donors":"Employee Donors"},"multigive":{"prompt":"Are you an employee of one of these businesses?","confirmation":"Your donation will count towards employee giving for","dropdown_text":"Employer"}},"address_autocomplete_enabled":false,"leaderboards_subheader":{"donors_goal":"Donors Goal","donors_count":"Donors","gift_percent":"Gift %","amount_raised":"Amount Raised","donors_percent":"Participation %","previous_gifts":"Previous Year's Gifts","dollars_percent":"Amount Raised %","donations_count":"Gifts","previous_donors":"Previous Year's Participation","previous_totals":"Previous Year's Amount","donors_remaining":"Donors Remaining","employees_percent":"Employee Participation %","gift_percent_diff":"Gifts % Difference","cached_total_raised":"Total Raised","donors_percent_diff":"Participation % Difference","gift_percent_of_total":"% of Total Gifts","patterson_donor_gifts":"Donor Gifts","patterson_total_raised":"Total Raised","donors_percent_of_total":"% of Bonus","dollars_percent_of_total":"% of Total Raised","gift_percent_of_total_pool":"Bonus","patterson_match_and_prizes":"TPF Match \u0026 Prizes","donors_percent_of_total_pool":"Share of Challenge Fund","ranked_total_donations_count":"Participation Rank","sum_amounts_match_incentives":"Matches \u0026 Incentives","dollars_percent_of_total_pool":"Bonus","gift_percent_diff_positive_pool":"Bonus Awarded","ranked_bonus_total_amount_raised":"Bonus Awarded","ranked_bonus_total_donations_count":"Bonus Awarded","sum_amounts_match_donations_incentives":"Matches, Dollars Raised, \u0026 Incentives"},"public_group_document":{},"recurring_donations_default":true,"reveal_anonymous_checkbox":true,"reveal_fundable_name_in_p2p_lbs":false,"sub_funds_enabled":false,"suppress_business_fundraiser_matches_on_index":false,"thermometer_stats_settings":null,"early_give_enabled":false,"hide_donation_search_result_logos":false,"disable_search_suggestions":false,"profile_status_sticker_copy":null,"profile_status_sticker_hover":null,"header_search_placeholder":"Search...","landing_search_subheading":null,"profile_nav_highlighting":false,"search_subheading":null,"fundraiser_select_limit":300,"volunteer_opportunity_filter":false,"fundraiser_profile_sections":[{"rows":[["header"],["stats"]],"contained":false},{"rows":[["fundraiser-story"],["donation-levels"],["section-links"],["story"],["recent-donors"],["secondary-donate-button"]],"contained":true}],"survey_choice_checkboxes":[],"allow_multiple_gifts_to_group":false,"match_search_filter":false,"disable_lazy_loading":false,"show_gg_branding":true,"displayed_stats":{"overall":["total_donors_count","num_receiving_orgs"],"organizations":["total_donors_count","goal"],"support_areas":["total_donors_count","goal"],"p2p_fundraisers":["total_donors_count","goal"]},"included_stats":["goal","total_donors_count","percent_raised","num_receiving_orgs"],"use_custom_css":false,"donation_step_ladder":true,"leaderboard_selector_header":null,"confetti_celebration_settings":null,"fee_hover_copy":"Every transaction incurs a technology fee and a credit card (2.5% + $0.30) or ACH processing fee in order to support the costs of running a giving event and site. Please see the FAQs posted on the giving site for a full breakdown."},
+  defaultSearchRadius: 50,
+  dog: {"alpha_dog_id":null,"backdrop_color":"#a4a9ad","business_fundraisers_enabled":false,"business_cover_photo_url":"https://www.givegab.com/images/fallback/cover-photo-3.jpg","centrally_routed":true,"dog_date":"2020-08-11T00:00:00.000-04:00","everyday_giving":false,"expanded_title":"Muhlenberg College Crowdfunding (2020)","id":788,"lead_color":"#A41D36","logo_url":"https://user-content.givegab.com/uploads/dog/logo/788/4d7f013218c70af1590b74acb8b50eadefeac027.png","name":"muhlenbergcrowdfunding","supporting_color":"#000000","title":"Muhlenberg College Crowdfunding","to_dog_time_zone":"2020-08-11T01:00:00.000-04:00","tzoffset":5,"url":"https://support.muhlenberg.edu","allow_donors_to_cover_fees":false,"always_collect_donor_data":false,"ask_new_donor_question":false,"bus_fund_registration_header":null,"bus_fund_self_registration_enabled":false,"dedications_enabled":false,"dog_breed_only_registration_enabled":false,"donation_levels_enabled":true,"donations_enabled":true,"e_cards_enabled":false,"faf_enabled":false,"fallback_enabled":true,"frozen_stats":{},"gift_basket_enabled":true,"groups_approval_required":true,"header_search_enabled":false,"landing_page":"giving","landing_page_date":"","leaderboards_include_offline":true,"length_of_day":24,"min_donation_cents":100,"p2ps_enabled":true,"paypal_account_id":null,"payment_methods":"credit_card, plaid, stripe_payment_request","philanthropy_hub":false,"precheck_cover_fees":false,"rate_stripe_bss_pts":0,"recurring_donations_enabled":true,"registration_links_enabled":false,"reveal_countdown":false,"reveal_leaderboards":false,"reveal_matches_page":false,"show_days_on_giving_countdown":false,"show_gg_branding":true,"show_prizes":false,"single_org":false,"stats_enabled":true,"success_redirect_url":"","support_areas_enabled":true,"gg_tip_model_enabled":false,"totally_anonymous_enabled":false,"daf_confirmation_message":null,"daf_legal_copy":null,"dtn_thx_msg":"Thank you for making a gift today.\r\n\r\n\u003cb\u003e*If you elected to make a monthly gift, please learn more about how to manage your recurring gift \u003ca href=\"https://support.givegab.com/en/articles/348038-how-do-i-view-the-details-of-my-monthly-gift\"\u003ehere\u003c/a\u003e.\u003c/b\u003e","dtn_thx_video_link":"","footer_contact_copy":"\u003cp style=\"font-family: Merriweather;\"\u003eOffice of Annual Giving:\r\n\u003ca href=\"mailto: themuhlenbergfund@muhlenberg.edu\"\u003ethemuhlenbergfund@muhlenberg.edu\u003c/a\u003e\r\n1-800-859-2243\r\n\r\n2400 Chew Street\r\nAllentown, PA 18104\u003c/p\u003e","open_graph_description":"Join me and give back!","prize_page_copy":"","site_description":"This Day of Giving is all about giving back to your community.","site_keywords":"day of giving","dog_breed":{"id":372,"cause_search_enabled":false,"display_name":"Muhlenberg College Crowdfunding","donation_noun":"donation","donations_dog_id":788,"facebook_app_id":"236229868035143","facebook_page":"berg.alum","facebook_pixel_id":"","fundraiser_label_set":{"singular":"fundraiser","plural":"fundraisers","verb":"fundraise","article":"a"},"fundraiser_search_enabled":false,"general_search_placeholder":"Search","google_analytics_tracking_id":"UA-148369497-52","google_verification_code":null,"hashtag":"","instagram_page":"muhlenbergalum","location_search_enabled":false,"location_search_placeholder":"Location (e.g. Ithaca, NY)","name":"muhlenbergcrowdfunding","org_label_set":{"singular":"initiative","plural":"initiatives","article":"an"},"prize_label":"prize","registerable_dog_id":null,"search_region":"","support_area_search_enabled":true,"tagboard_slug":"","twitter_page":"@MuhlenbergAlum","university":true},"readable_date":"August 11, 2020","start_of_day":"08/11/2020 00:00:00","end_of_day":"08/12/2020 00:00:00","countdown_offset":5,"timezone":"America/Chicago"},
+  dogBreed: {"id":372,"cause_search_enabled":false,"display_name":"Muhlenberg College Crowdfunding","donation_noun":"donation","donations_dog_id":788,"facebook_app_id":"236229868035143","facebook_page":"berg.alum","facebook_pixel_id":"","fundraiser_label_set":{"singular":"fundraiser","plural":"fundraisers","verb":"fundraise","article":"a"},"fundraiser_search_enabled":false,"general_search_placeholder":"Search","google_analytics_tracking_id":"UA-148369497-52","google_verification_code":null,"hashtag":"","instagram_page":"muhlenbergalum","location_search_enabled":false,"location_search_placeholder":"Location (e.g. Ithaca, NY)","name":"muhlenbergcrowdfunding","org_label_set":{"singular":"initiative","plural":"initiatives","article":"an"},"prize_label":"prize","registerable_dog_id":null,"search_region":"","support_area_search_enabled":true,"tagboard_slug":"","twitter_page":"@MuhlenbergAlum","university":true},
+  dtnHoneypotEnabled: true,
+  emailRegex: new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i),
+  featureFlags: {
+    giftBasketActive: true && storageAvailable(),
+    landingSuccess: false,
+    realTimeStatsEnabled: true
+  },
+  ggApiUrl: 'https://api.givegab.com/',
+  ggStatsApiUrl: 'https://stats-api.givegab.com/',
+  ggWebUrl: 'https://www.givegab.com',
+  images: {
+    dogLogo: 'https://giving-day-content.givegab.com/muhlenbergcrowdfunding/app/images/day-of-giving-logo-dark.svg',
+    error: 'https://support.muhlenberg.edu/assets/error-e4538d89f857938c7fff3cea23766e7906a2e99cae5a95950b8cb4b2af1782a4.svg',
+    noSearchResults: 'https://support.muhlenberg.edu/assets/no-search-results-5ea9a72c81f2d3ea64697c8b2d73a21be8aa54d26877efeca83a7bf901274e2c.svg',
+    recentGift: 'https://support.muhlenberg.edu/assets/recent-gift-f2e86f4aba105afb057ae2afa1797357ae69ad77bf9d3e0e84242aff6e3da365.svg',
+    security: 'https://support.muhlenberg.edu/assets/security-bfc196ac053528452e189561232f657f05e89ef0a5dc96a9c497237cb7133ab4.svg',
+    sprite: 'https://support.muhlenberg.edu/assets/sprite-926b4496bb0fb02813238d1f431837519d8e069c131faa81c7dec87c2d95c019.svg'
+  },
+  leaderboardApiUrl: 'https://lb-api.givegab.com/',
+  matchIndexCacheTime: 60,
+  maxLeaderboardResults: 905,
+  multigiveLimit: 10,
+  paymentMethods: 'credit_card, plaid, stripe_payment_request'.replace(/\s+/g, '').split(','),
+  plaidEnv: "production",
+  plaidMinimumAmount: 5000,
+  plaidPublicKey: "5c6558062ee7e6afb72ca0171133a1",
+  productionEnv: true,
+  recaptchaV3PublicKey: '6Leou4kUAAAAAE5jEzYWytjLQd3txZSFPorN9dBz',
+  skipRecaptcha: false,
+  stripeApiKey: 'pk_live_gd8tQSzs33aahyz5p4ULMsGu',
+  pusher: {
+    key: 'c1ee89e9ab6f4fbf567c',
+    cluster: 'us2',
+    channel: 'dog-production'
+  }
+};
+function storageAvailable () {
+  try {
+    window.sessionStorage.setItem('test', {a: 'b'});
+    window.sessionStorage.removeItem('test');
+    return true;
+  } catch (e) { return false; }
+};</script><script src="/assets/application-97d99c8c63ac2769e9e41198c1227d7737d6c1abd5ad679f7c85768d10b1d5de.js" data-turbolinks-track="false"></script><script src="https://cdn.jsdelivr.net/npm/vue-scrollto"></script><script>$(function () {
+  if ('' === 'true') { app.storage.set('leader', 'true'); }
+  var org = new app.Group({"id":490750,"description":null,"donatable":false,"ein":null,"logo":"https://user-content.givegab.com/uploads/group/logo/490750/77fb209f3694935196321f6ae053cc5ebd4aaf9a.png","logo_url":"https://user-content.givegab.com/uploads/group/logo/490750/77fb209f3694935196321f6ae053cc5ebd4aaf9a.png","name":"WMUH","slug":"wmuh","group_dog":{"id":82022,"approval_status":"approved","last_submitted_at":null,"visible":true,"donatable":false},"registered_for_dog":true,"website":"http://WMUH.ORG","who_we_are":null,"campaign":{"allow_p2p_campaigns":true,"collect_donor_address":false,"cover_photo_url":"https://user-content.givegab.com/uploads/campaign/cover_photo/100942/f3e08360fdc739908e42f60b986be8203bc48c74.png","end_date":"2022-12-31T00:00:00.000-05:00","fundraise_link":"https://www.givegab.com/user_campaigns/new?campaign_id=100942","goal":null,"has_profile":true,"publication_status":"draft","start_date":"2020-08-11T00:00:00.000-04:00","story":"\u003cstyle\u003e\r\n .org-logo-wrapper {display: none;}\r\n\u003c/style\u003e\r\n\r\n\u003ch5 style=\"margin: 0in 0in 8pt; line-height: 15.6933px;\"\u003e\u003c/h5\u003e\u003ch3 style=\"text-align: justify;\"\u003e\u003cfont color=\"#222222\" style=\"font-weight: normal;\"\u003eBroadcasting since 1948, WMUH offers a free-form college radio experience unlike any in the area.\u003c/font\u003e\u003c/h3\u003e\u003ch3 style=\"text-align: justify;\"\u003e\u003cfont color=\"#222222\"\u003e\u003cspan style=\"font-weight: 400;\"\u003e\u003cbr\u003e\u003c/span\u003e\u003c/font\u003e\u003cspan style=\"font-weight: normal;\"\u003e\u003cspan style=\"font-family: inherit;\"\u003eThe birthplace of community radio in the Lehigh Valley, WMUH provides a space for the students, staff and faculty of Muhlenberg College as well as community staff volunteers to develop, amplify and extend a variety of voices on campus and beyond.\u003c/span\u003e\u003c/span\u003e\u003c/h3\u003e\u003ch3 style=\"text-align: justify;\"\u003e\u003cspan style=\"font-weight: normal;\"\u003e\u003cspan style=\"font-family: inherit;\"\u003e\u003cbr\u003e\u003c/span\u003e\u003cspan style=\"font-family: inherit;\"\u003eShow your love for the station, your favorite DJ, or favorite show by making a donation today.\u0026nbsp;\u003c/span\u003e\u003c/span\u003e\u003c/h3\u003e\u003ch3 style=\"text-align: justify;\"\u003e\u003cspan style=\"font-weight: normal;\"\u003e\u003cfont color=\"#222222\"\u003e\u003cbr\u003e\u003c/font\u003e\u003cfont color=\"#222222\" style=\"font-family: inherit;\"\u003eCheck out \u003ca href=\"http://wmuh.org\" target=\"_blank\"\u003ewmuh.org\u003c/a\u003e\u0026nbsp;or follow us on Instagram, Twitter, and Facebook @wmuhfm to keep up with what's going on at \u003c/font\u003e\u003c/span\u003e\u003cfont color=\"#222222\" style=\"font-family: inherit; font-weight: 700;\"\u003eThe Only Station That Matters\u003c/font\u003e\u003cfont color=\"#222222\" style=\"font-family: inherit;\"\u003e.\u003c/font\u003e\u003c/h3\u003e\u003ch3 style=\"text-align: justify;\"\u003e\u003cfont color=\"#222222\"\u003e\u003cspan style=\"font-weight: 400;\"\u003e\u003cbr\u003e\u003c/span\u003e\u003c/font\u003e\u003cspan style=\"color: inherit; font-family: inherit; font-weight: normal;\"\u003eThank you for your continued support and thanks for listening!\u003c/span\u003e\u003c/h3\u003e","story_image_url":"https://www.givegab.com/images/fallback/story-image-default.png","tagline":"THE ONLY STATION THAT MATTERS","url":"https://www.givegab.com/campaigns/muhlenberg-college-crowdfunding-dae534b5-c4ca-468f-8a1f-8e0a8f4ea45f","video_embed_code":null,"id":100942,"dog_campaign":true,"dog_id":788,"group_id":490750,"highlight":false,"slug":"muhlenberg-college-crowdfunding-dae534b5-c4ca-468f-8a1f-8e0a8f4ea45f","title":"Muhlenberg College Crowdfunding","group":{"id":490750,"donatable":false,"logo_url":"https://user-content.givegab.com/uploads/group/logo/490750/77fb209f3694935196321f6ae053cc5ebd4aaf9a.png","name":"WMUH","slug":"wmuh"}},"causes":[]});
+  org.set({
+    opps: [],
+    support_areas: [],
+    support_area_lb: null,
+    showMoreSupportAreas: false,
+    volunteermatch_results: null
+  });
+  if (app.dog.philanthropy_hub) { org.set({custom_fields: null }) }
+  if (app.custom('profile_logo_override')) { org.set('logo', app.custom('profile_logo_override')); }
+  if (app.custom('use_deprecated_profiles')) {
+    new app.OrganizationProfileView({ model: org }).render().loadDynamicParts();
+  } else {
+    new Vue({
+      el: '.profile-container',
+      data: { org: org.toJSON() }
+    });
+  }
+  if(window.parent != window) {
+    $('body > *').css('pointer-events', 'none');
+    $('#customPropertiesTabs').css('pointer-events', 'all');
+  }
+});</script><script>$(function () {
+  $('.header-dropdown-menu').on('show.bs.collapse', function() {
+    $('.menu-button').addClass('flat-bottom-radius menu-btn-shadow');
+  }).on('hidden.bs.collapse', function() {
+    $('.menu-button').removeClass('flat-bottom-radius menu-btn-shadow');
+  });
+
+  $("body").click(function(e) {
+    $('.header-dropdown-menu.collapse, .header-dropdown-mobile.collapse').collapse('hide');
+  });
+
+  $('.menu-button').keyup(function(e) {
+    if (e.keyCode == 9) {
+      $('.header-dropdown-menu').collapse('show');
+    }
+  });
+  $('.mobile-header-search').click(function() {
+    $(".dropdowns-container .header-search").slideToggle('fast');
+  });
+  if (! storageAvailable() ) { $('.gift-basket-checkout').addClass('hidden') }
+});</script><script>$(function () {
+  Backbone.history.start({ pushState: true });
+  if ('') {
+    app.setCookie('referralId', '');
+  }
+});
+app.setTrafficSourceCookies();
+if (typeof ga !== 'undefined') {
+  ga('send', 'pageview');
+}</script><script>window.fbAsyncInit = function() {
+  FB.init({
+    appId      : "236229868035143",
+    cookie     : true,
+    xfbml      : false,
+    version    : 'v7.0'
+  });
+  FB.AppEvents.logPageView();
+};
+
+(function(d, s, id){
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script></body></html>

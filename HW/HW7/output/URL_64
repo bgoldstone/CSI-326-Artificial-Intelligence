@@ -1,0 +1,88 @@
+http://muhlenberg.edu/sports/vblive/topview.htm
+
+
+Relative Link Count: 0
+
+Absolute Link Count: 10
+
+List of Links:
+
+['vstats.htm', 'vstats.htm', 'snapshot.htm', 'xindiv.htm', 'summary.htm', 'plays1.htm', 'plays2.htm', 'plays3.htm', 'hstats.htm', 'hstats.htm']
+
+Contents:
+
+<html>
+<head>
+<title>Top View</title>
+<meta http-equiv="refresh" content="30">
+</head>
+<body background="grey.jpg" text="#000000" link="#000000" vlink="#000000">
+
+<table border=0 cellspacing=1 cellpadding=1 width=100%>
+
+<tr>
+
+<td align=left rowspan=3><center>
+<font face=verdana size=1>
+<a href="vstats.htm" target="STATS"><img src="vlogo.gif"></a>
+<br><a href="vstats.htm" target="STATS">Ursinus</a>
+</center></td>
+
+<td>
+<center>
+<font face=verdana size=1>
+<a href="snapshot.htm" target="STATS">'Quick' stats</a> &#149;
+<a href="xindiv.htm" target="STATS">Individual stats</a> &#149;
+<a href="summary.htm" target="STATS">Summary</a>
+</center>
+</td>
+
+<td rowspan=3>
+<font face=verdana size=1>
+<center>
+<a href="plays1.htm#end" target="STATS">Game-1</a><br>
+<a href="plays2.htm#end" target="STATS">Game-2</a><br>
+<a href="plays3.htm#end" target="STATS">Game-3</a><br>
+</center>
+</td>
+
+<td align=right rowspan=3><center>
+<font face=verdana size=1>
+<a href="hstats.htm" target="STATS"><img src="hlogo.gif"></a>
+<br><a href="hstats.htm" target="STATS">Muhlenberg</a>
+</center></td>
+
+<tr><td>
+<center>
+<table border=0 cellspacing=2 cellpadding=3>
+<tr bgcolor="#00008b">
+<td bgcolor="#ffff00"><font face=verdana color="#00008b" size=1><b>Match</b></td>
+<td><font face=verdana color="#ffffff" size=1><b>Ursinus</b></td>
+<td align=right><font face=verdana size=1 color="#ffffff"><b>9</b></td>
+<td align=right><font face=verdana size=1 color="#ffffff"><b>17</b></td>
+<td align=right><font face=verdana size=1 color="#ffffff"><b>9</b></td>
+</tr>
+<tr bgcolor="#00008b">
+<td bgcolor="#ffff00"><font face=verdana color="#00008b" size=1><b>Over</b></td>
+<td><font face=verdana color="#ffffff" size=1><b>Muhlenberg</b></td>
+<td align=right><font face=verdana size=1 color="#ffffff"><b>25</b></td>
+<td align=right><font face=verdana size=1 color="#ffffff"><b>25</b></td>
+<td align=right><font face=verdana size=1 color="#ffffff"><b>25</b></td>
+</tr>
+</table>
+</center>
+</td></tr>
+
+<tr><td bgcolor="#cacaca">
+<center>
+<font face=verdana size=1 color="#000000">
+Last play: Point MUHL - (Julia Elkin) Kill by Sarah Weyhmuller (from Vanessa Pulice).
+</center>
+</td></tr>
+
+</tr>
+
+</table>
+
+</body>
+</html>

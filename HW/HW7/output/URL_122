@@ -1,0 +1,112 @@
+https://servicedesk.muhlenberg.edu/HEAT/alp.aspx?Scope=SelfService&amp;CommandId=NewServiceRequestByOfferingId&amp;Tab=ServiceCatalog&amp;Template=C316D5F94FCD4BDAB713980454CBAC47
+
+
+Relative Link Count: 2
+
+Absolute Link Count: 0
+
+List of Links:
+
+[]
+
+Contents:
+
+<!DOCTYPE html>
+
+
+<html manifest="">
+<head>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>Self Service</title>
+    <link rel="icon" type="image/x-icon" href="/HEAT/favicon.ico" />
+    <link rel="Stylesheet" type="text/css" href="/HEAT/css/dynamic/DynamicStyleGenerator.ashx" />
+  
+    <script type="text/javascript" src="/HEAT/Modules/SelfService/angularbof/assets/loader.js"></script>
+    <!-- Environment Setup-->
+	<script language="javascript">
+        var $_AppPath = '/HEAT/';
+        var $_ModulePath = '/HEAT/Modules/SelfService';
+	    
+        var $_SessionLocale = 'en-US';
+        var $_SessionLanguagePack = 'en-US';
+        
+
+	</script>
+
+    
+    <script language="javascript">
+        var ss_ui_theme = 'cdltheme';
+        var docusingUrl = '';
+        var appInsights=window.appInsights||function(a){ function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement('script');b.src=a.url||'https://az416426.vo.msecnd.net/scripts/a/ai.0.js',d.getElementsByTagName('script')[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=['Event','Exception','Metric','PageView','Trace','Dependency'];f.length;)b('track'+f.pop());if(b('setAuthenticatedUserContext'),b('clearAuthenticatedUserContext'),b('startTrackEvent'),b('stopTrackEvent'),b('startTrackPage'),b('stopTrackPage'),b('flush'),!a.disableExceptionTracking){f='onerror',b('_'+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c['_'+f](a,b,d,e,h),i}}return c}({instrumentationKey: '460a1006-6b4e-4c07-bdf9-8da8f79a3c1b',enableSessionStorageBuffer: false});window.appInsights = appInsights, appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView();var DataCenterRegion='E:\Data';
+var LandscapeType='production';
+var ProductName='NA';
+var ProductVersion='202130';
+var AssetManagerVersion='NA';
+;
+        if (docusingUrl && docusingUrl !== '') {
+            var dynamicScript = document.createElement('script');
+            dynamicScript.setAttribute('src', docusingUrl);
+            document.head.appendChild(dynamicScript);
+        }
+    </script>
+
+
+	
+
+	<script language="javascript">
+	    var Ext = Ext || {};
+	    Ext.manifest = "/HEAT/Modules/SelfService/production/app.json";
+	</script>
+
+	<script id="microloader" data-app="ad185939-617f-4e0c-94c7-5458866c3dc9" src="/HEAT/Modules/SelfService/production/microloader.js"></script>
+
+</head>
+<body>
+    
+
+
+
+
+
+<style>
+    html {
+
+        background-image: url(./SelfServiceStylesGenerator/DownloadAttachment?attachId=DAEBBAA77BF942578A2A7BE8CE2E0C16);
+        background-size: 138px 27px;
+
+        background-position: 50% 80%;
+        background-repeat: no-repeat;
+        min-height: 100%;
+        background-color: rgba(255,255,255,1);
+    }
+
+    .hs-loading-title {
+        display: block;
+        position: absolute;
+        top: 40%;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-family: 'Open Sans', Arial, Verdana, sans-serif;
+        font-weight: 300;
+        font-size: 32px;
+        z-index: -100;
+        color: rgba(85,85,85,1);
+    }
+
+    @font-face {
+        font-family: 'Open Sans';
+        src: url(production/resources/fonts/OpenSans-Light.ttf);
+        font-weight: 300;
+        font-style: normal;
+    }
+</style>
+
+<div class="hs-loading-title">IT Support Portal</div>
+
+
+</body>
+</html>
