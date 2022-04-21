@@ -1,29 +1,0 @@
-http://muhlenberg.edu/sports/fhlive/xlive.htm
-
-
-Relative Link Count: 0
-
-Absolute Link Count: 0
-
-List of Links:
-
-[]
-
-Contents:
-
-<html>
-<head>
-<title>Live Field Hockey Action</title>
-</head>
-
-<frameset rows="25%,*,10%">
-<frame name="TOP"   src="topview.htm"  >
-<frame name="STATS" src="xindiv.htm" >
-<frame name="AD"    src="xbottom.htm"  >
-</frameset>
-
-<body bgcolor="#000000" text="#ffffff" link="#00ff00" vlink="#ff0000">
-
-<!--#include virtual="/js/googleAnalytics.js"--></body>
-
-</html>

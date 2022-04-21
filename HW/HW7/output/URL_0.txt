@@ -7,7 +7,7 @@ Absolute Link Count: 60
 
 List of Links:
 
-['http://muhlenberg.edu/', 'http://muhlenberg.edu/', 'http://muhlenberg.edu/admissions/types-of-visits/', 'http://muhlenberg.edu/admissions/', 'http://muhlenberg.edu/inquire/', 'https://give.muhlenberg.edu/', 'http://muhlenberg.edu/', 'http://muhlenberg.edu/viewbook/', 'http://muhlenberg.edu/viewbook/', 'http://muhlenberg.edu/viewbook/opportunitieswithimpact/', 'http://muhlenberg.edu/viewbook/opportunitieswithimpact/', 'https://www.muhlenberg.edu/offices/healthcenter/coronavirus/', 'http://muhlenberg.edu/academics/majorsandprograms.html', 'http://muhlenberg.edu/academics/biology/', 'http://muhlenberg.edu/academics/education/', 'http://muhlenberg.edu/academics/mathcs/mathematics/', 'http://muhlenberg.edu/continuingstudies/courseschedules/summersemester/', 'http://muhlenberg.edu/news/2019/immersivelearning.html', 'http://muhlenberg.edu/academics/global-education/', 'http://muhlenberg.edu/alumni/', 'http://muhlenberg.edu/aboutus/careercenter/', 'http://muhlenberg.edu/academics/faculty/', 'http://muhlenberg.edu/academics/majorsandprograms.html', 'http://muhlenberg.edu/news/bettertogether/', 'http://muhlenberg.edu/news/hackerhunter/', 'http://muhlenberg.edu/news/honored/', 'http://muhlenberg.edu/news/speakingup/', 'http://muhlenberg.edu/news/andscene/', 'http://muhlenberg.edu/news/writingpandemicplaybook/', 'http://muhlenberg.edu/news/lookingbeyondcampus/', 'http://muhlenberg.edu/news/behindthemusic/', 'http://muhlenberg.edu/news/2022/alumniweek2022.html', 'http://muhlenberg.edu/news/2022/programmingwin.html', 'http://muhlenberg.edu/news/2022/ballotquestions.html', 'http://muhlenberg.edu/news/2022/studentresearchposterspresentations.html', 'http://muhlenberg.edu/news/2022/coppavidding.html', 'https://www.muhlenberg.edu/news/2022/', 'https://www.muhlenberg.edu/', 'http://muhlenberg.edu/', 'tel:484-664-3100', 'http://muhlenberg.edu/campus-map/', 'http://muhlenberg.edu/offices/oit/webresources/accessibility/', 'http://trexler.muhlenberg.edu/', 'https://www.facebook.com/MuhlenbergCollege/', 'https://www.instagram.com/muhlenbergcollege/', 'https://twitter.com/Muhlenberg', 'https://www.youtube.com/user/MuhlenbergCollege', 'https://ie.linkedin.com/school/muhlenberg-college/', 'http://muhlenberg.edu/', 'http://muhlenberg.edu/aboutus/', 'http://muhlenberg.edu/admissions/', 'http://muhlenberg.edu/academics/', 'http://muhlenberg.edu/student-life/', 'http://muhlenberg.edu/powerfuloutcomes/', 'http://muhlenberg.edu/admissions/types-of-visits/', 'http://muhlenberg.edu/admissions/', 'http://muhlenberg.edu/inquire/', 'https://give.muhlenberg.edu/', 'http://muhlenberg.edu/gateways/current-students/index.php', 'http://muhlenberg.edu/news/']
+['http://muhlenberg.edu/', 'http://muhlenberg.edu/', 'http://muhlenberg.edu/admissions/types-of-visits/', 'http://muhlenberg.edu/admissions/', 'http://muhlenberg.edu/inquire/', 'https://give.muhlenberg.edu/', 'http://muhlenberg.edu/', 'http://muhlenberg.edu/viewbook/', 'http://muhlenberg.edu/viewbook/', 'http://muhlenberg.edu/viewbook/communitythatcares/', 'http://muhlenberg.edu/viewbook/communitythatcares/', 'https://www.muhlenberg.edu/offices/healthcenter/coronavirus/', 'http://muhlenberg.edu/academics/majorsandprograms.html', 'http://muhlenberg.edu/academics/mathcs/mathematics/', 'http://muhlenberg.edu/academics/mathcs/computerscience/', 'http://muhlenberg.edu/academics/history/', 'http://muhlenberg.edu/continuingstudies/courseschedules/summersemester/', 'http://muhlenberg.edu/news/2019/immersivelearning.html', 'http://muhlenberg.edu/academics/global-education/', 'http://muhlenberg.edu/alumni/', 'http://muhlenberg.edu/aboutus/careercenter/', 'http://muhlenberg.edu/academics/faculty/', 'http://muhlenberg.edu/academics/majorsandprograms.html', 'http://muhlenberg.edu/news/bettertogether/', 'http://muhlenberg.edu/news/hackerhunter/', 'http://muhlenberg.edu/news/honored/', 'http://muhlenberg.edu/news/speakingup/', 'http://muhlenberg.edu/news/andscene/', 'http://muhlenberg.edu/news/writingpandemicplaybook/', 'http://muhlenberg.edu/news/lookingbeyondcampus/', 'http://muhlenberg.edu/news/behindthemusic/', 'http://muhlenberg.edu/news/2022/alumniweek2022.html', 'http://muhlenberg.edu/news/2022/programmingwin.html', 'http://muhlenberg.edu/news/2022/ballotquestions.html', 'http://muhlenberg.edu/news/2022/studentresearchposterspresentations.html', 'http://muhlenberg.edu/news/2022/coppavidding.html', 'https://www.muhlenberg.edu/news/2022/', 'https://www.muhlenberg.edu/', 'http://muhlenberg.edu/', 'tel:484-664-3100', 'http://muhlenberg.edu/campus-map/', 'http://muhlenberg.edu/offices/oit/webresources/accessibility/', 'http://trexler.muhlenberg.edu/', 'https://www.facebook.com/MuhlenbergCollege/', 'https://www.instagram.com/muhlenbergcollege/', 'https://twitter.com/Muhlenberg', 'https://www.youtube.com/user/MuhlenbergCollege', 'https://ie.linkedin.com/school/muhlenberg-college/', 'http://muhlenberg.edu/', 'http://muhlenberg.edu/aboutus/', 'http://muhlenberg.edu/admissions/', 'http://muhlenberg.edu/academics/', 'http://muhlenberg.edu/student-life/', 'http://muhlenberg.edu/powerfuloutcomes/', 'http://muhlenberg.edu/admissions/types-of-visits/', 'http://muhlenberg.edu/admissions/', 'http://muhlenberg.edu/inquire/', 'https://give.muhlenberg.edu/', 'http://muhlenberg.edu/gateways/current-students/index.php', 'http://muhlenberg.edu/news/']
 
 Contents:
 
@@ -248,7 +248,7 @@ if ( document.getElementsByClassName('SmartBoard_Message')[0] != undefined) {
 					</div>
           
 					<!--Start of processed tags--><!-- Left Feature -->
-<article class="spotlight spotlight_436989">
+<article class="spotlight spotlight_436988">
 						<div class="spotlight_background" "" data-background-options='{"source":{"poster":"/media/contentassets/images/homepage/Haas-Homepage1.jpg", "mp4":"/media/contentassets/video/homepage/HomepageViewbookLoop.mp4"}}'></div>   
   
 						<div class="spotlight_inner">
@@ -282,7 +282,7 @@ if ( document.getElementsByClassName('SmartBoard_Message')[0] != undefined) {
 								</a>
                                
                               
-								<button class="js-swap spotlight_trigger" data-swap-target=".spotlight_436989" data-swap-group="spotlights" title="more info" aria-hidden="true">
+								<button class="js-swap spotlight_trigger" data-swap-target=".spotlight_436988" data-swap-group="spotlights" title="more info" aria-hidden="true">
 									<span class="spotlight_trigger_icon spotlight_trigger_icon_open"><svg class="icon icon_info">
 											<use xlink:href="/media/muhlenbergedu/siteassets/images/icons.svg#info"></use>
 										</svg>
@@ -326,27 +326,27 @@ if ( document.getElementsByClassName('SmartBoard_Message')[0] != undefined) {
 <!-- Right Feature -->
 <article class="spotlight spotlight_58">
 						<div class="spotlight_background" "" data-background-options='{"source": {
-"1220px": "/media/contentassets/images/homepage/viewbook/Viewbook-Opportunities1.jpg", "740px": "/media/contentassets/images/homepage/viewbook/Viewbook-Opportunities1.jpg", "500px": "/media/contentassets/images/homepage/viewbook/Viewbook-Opportunities2.jpg", "0px": "/media/contentassets/images/homepage/viewbook/Viewbook-Opportunities3.jpg"}}'></div>
+"1220px": "/media/contentassets/images/homepage/viewbook/Viewbook-Community1.jpg", "740px": "/media/contentassets/images/homepage/viewbook/Viewbook-Community1.jpg", "500px": "/media/contentassets/images/homepage/viewbook/Viewbook-Community2.jpg", "0px": "/media/contentassets/images/homepage/viewbook/Viewbook-Community3.jpg"}}'></div>
 						<div class="spotlight_inner">
 							<div class="spotlight_body" tabindex="0">
 								<header class="spotlight_header">
 									<figure class="spotlight_figure">
 										<picture class="spotlight_picture">
-											<source media="(min-width: 1220px)" srcset="/media/contentassets/images/homepage/viewbook/viewbook-impact-inset2.jpg">
-											<source media="(min-width: 500px)" srcset="/media/contentassets/images/homepage/viewbook/viewbook-impact-inset1.jpg">
-											<img class="spotlight_image" src="/media/contentassets/images/homepage/viewbook/viewbook-impact-inset2.jpg" alt="Opportunities with Impact image">
+											<source media="(min-width: 1220px)" srcset="/media/contentassets/images/homepage/viewbook/viewbook-care-inset2.jpg">
+											<source media="(min-width: 500px)" srcset="/media/contentassets/images/homepage/viewbook/viewbook-care-inset1.jpg">
+											<img class="spotlight_image" src="/media/contentassets/images/homepage/viewbook/viewbook-care-inset2.jpg" alt="Community that Cares image">
 										</picture>
 									</figure>
-									<span class="spotlight_label">Open Doors</span>
-									<h2 class="spotlight_title">Opportunities with Impact</h2>
+									<span class="spotlight_label">Who We Are</span>
+									<h2 class="spotlight_title">Community that Cares</h2>
 									<div class="spotlight_caption_wrapper">
-										<p class="spotlight_caption">At Muhlenberg, we understand that challenging coursework is only part of what makes a great education. </p>
+										<p class="spotlight_caption">At Muhlenberg, you&rsquo;ll become part of an active, diverse community that cares&mdash;not only for each other, but for the greater Allentown community as well.</p>
 									</div>
 								</header>
 								
                             
-                                <a class="spotlight_link" target="_blank" href="/viewbook/opportunitieswithimpact/">
-									<span class="spotlight_link_label">Find Opportunities</span>
+                                <a class="spotlight_link" target="_blank" href="/viewbook/communitythatcares/">
+									<span class="spotlight_link_label">Discover Allentown</span>
 									<span class="spotlight_link_icon" aria-hidden="true">
 										<svg class="icon icon_caret_right">
 											<use xlink:href="/media/muhlenbergedu/siteassets/images/icons.svg#caret_right"></use>
@@ -368,18 +368,18 @@ if ( document.getElementsByClassName('SmartBoard_Message')[0] != undefined) {
 							<div class="spotlight_details" aria-hidden="true">
 								<figure class="spotlight_detail_figure">
 									<picture class="spotlight_detail_picture">
-                                        <source media='(min-width: 740px)' srcset='/media/contentassets/images/homepage/viewbook/viewbook-impact-inset2.jpg'>
-										<source media='(min-width: 500px)' srcset='/media/contentassets/images/homepage/viewbook/viewbook-impact-inset1.jpg'>
-										<img class="spotlight_detail_image" src="/media/contentassets/images/homepage/viewbook/viewbook-impact-inset1.jpg" alt="">
+                                        <source media='(min-width: 740px)' srcset='/media/contentassets/images/homepage/viewbook/viewbook-care-inset2.jpg'>
+										<source media='(min-width: 500px)' srcset='/media/contentassets/images/homepage/viewbook/viewbook-care-inset1.jpg'>
+										<img class="spotlight_detail_image" src="/media/contentassets/images/homepage/viewbook/viewbook-care-inset1.jpg" alt="">
 									</picture>
-									<figcaption class="spotlight_detail_caption">At Muhlenberg, we understand that challenging coursework is only part of what makes a great education. </figcaption>
+									<figcaption class="spotlight_detail_caption">At Muhlenberg, you&rsquo;ll become part of an active, diverse community that cares&mdash;not only for each other, but for the greater Allentown community as well.</figcaption>
 								</figure>
 								<div class="spotlight_detail_link_wrapper">
 								 
 									
                                  
-                                  <a class="spotlight_detail_link" href="/viewbook/opportunitieswithimpact/">
-								  		<span class="spotlight_detail_link_label">Find Opportunities</span>
+                                  <a class="spotlight_detail_link" href="/viewbook/communitythatcares/">
+								  		<span class="spotlight_detail_link_label">Discover Allentown</span>
 										<span class="spotlight_detail_link_icon" aria-hidden="true">
 											<svg class="icon icon_caret_right">
 												<use xlink:href="/media/muhlenbergedu/siteassets/images/icons.svg#caret_right"></use>
@@ -477,28 +477,28 @@ border:10px solid #A41E34;
 								<div class="fields">
 								
 									<div class="fields_inner">
-										<a class="field" target="_blank" href="/academics/biology/">
-											<div class="js-background field_background" "" data-background-options='{"source": {
-"0px": "/media/contentassets/images/homepage/academicprograms/Biology-Homepage2.jpg", "980px": "/media/contentassets/images/homepage/academicprograms/Biology-Homepage1.jpg"}, "lazy": true, "lazyEdge": "100"}'></div>
-											<div class="field_header">
-												<span class="field_label">Observe &amp; Interact</span>
-												<span class="field_title">Biology</span>
-											</div>
-										</a>
-										<a class="field" target="_blank" href="/academics/education/">
-											<div class="js-background field_background" "" data-background-options='{"source": {
-"0px": "/media/contentassets/images/homepage/academicprograms/Education-Homepage2.jpg", "980px": "/media/contentassets/images/homepage/academicprograms/Education-Homepage2.jpg"}, "lazy": true, "lazyEdge": "100"}'></div>
-											<div class="field_header">
-												<span class="field_label">Teach &amp; Inspire</span>
-												<span class="field_title">Education</span>
-											</div>
-										</a>
 										<a class="field" target="_blank" href="/academics/mathcs/mathematics/">
 											<div class="js-background field_background" "" data-background-options='{"source": {
-"0px": "/media/contentassets/images/homepage/academicprograms/Analytics-Homepage2.jpg", "980px": "/media/contentassets/images/homepage/academicprograms/Analytics-Homepage2.jpg"}, "lazy": true, "lazyEdge": "100"}'></div>
+"0px": "/media/contentassets/images/academics/mathcs/cardrowheader-math.jpg", "980px": "/media/contentassets/images/academics/mathcs/math-cs-header-740x555.jpg"}, "lazy": true, "lazyEdge": "100"}'></div>
 											<div class="field_header">
-												<span class="field_label">Assess &amp; Interpret</span>
-												<span class="field_title">Analytics</span>
+												<span class="field_label">Explore &amp; Collaborate</span>
+												<span class="field_title">Math</span>
+											</div>
+										</a>
+										<a class="field" target="_blank" href="/academics/mathcs/computerscience/">
+											<div class="js-background field_background" "" data-background-options='{"source": {
+"0px": "/media/contentassets/images/academics/mathcs/cardrowheader-computerscience.jpg", "980px": "/media/contentassets/images/academics/mathcs/cardrowheader-computerscience.jpg"}, "lazy": true, "lazyEdge": "100"}'></div>
+											<div class="field_header">
+												<span class="field_label">Analyze &amp; Produce</span>
+												<span class="field_title">Computer Science</span>
+											</div>
+										</a>
+										<a class="field" target="_blank" href="/academics/history/">
+											<div class="js-background field_background" "" data-background-options='{"source": {
+"0px": "/media/contentassets/images/academics/history/pete.jpg", "980px": "/media/contentassets/images/academics/history/pete.jpg"}, "lazy": true, "lazyEdge": "100"}'></div>
+											<div class="field_header">
+												<span class="field_label">Question &amp; Discover</span>
+												<span class="field_title">History</span>
 											</div>
 										</a>
 									</div>

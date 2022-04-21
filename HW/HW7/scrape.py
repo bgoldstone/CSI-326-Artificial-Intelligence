@@ -8,8 +8,9 @@ from queue import LifoQueue
 import requests
 
 # contants
-# regex for link and anchor tags. group 0 is rel, group 1 is absolute.
-LINK_REGEX = re.compile(r'<link rel=.*href=\"(.+)\"|<a.*href="([^ ]*)"')
+# regex for link and anchor tags. group 0 is link, group 1 is href.
+LINK_REGEX = re.compile(
+    r'<a[^>]*href=["\']([A-Za-z\d/_#-;?=@]*)["\']')
 ROOT_URL_REGEX = re.compile(r"w*\.?[\w]+\.[.\w]+\/?")
 
 
@@ -69,7 +70,7 @@ def scrape_data(first_url: str) -> List[List]:
             if current_url:
                 # adds url to return list and visited stack.
                 os.chdir(os.path.join(os.path.dirname(__file__), 'output'))
-                with open(f'URL_{len(visited)}', 'w', errors='ignore') as f:
+                with open(f'URL_{len(visited)}.txt', 'w', errors='ignore') as f:
                     # url, number of relative links, number of anchor links, html contents, list of links.
                     f.write(f'{current_url[0]}\n')
                     f.write(f'\n\nRelative Link Count: {current_url[1]}')
@@ -117,18 +118,22 @@ def get_url(base_url: str, root_url: str) -> Union[List, bool]:
     # if url is successfully retrieved, get matches from regular expressions.
     for match in LINK_REGEX.findall(url.text):
         # if relative link.
-        if match[0]:
+        if match and match.startswith("/"):
             return_val[1] += 1
+            try:
+                index = current_match.index(match) == -1
+                return_val[4].append(f'{root_url}{current_match[1:index]}')
+            except ValueError:
+                return_val[4].append(f'{root_url}{current_match[1:]}')
         # if absolute link.
-        elif match[1]:
-            current_match = str(match[1])
+        elif match and match.startswith("http"):
+            current_match = str(match)
             # if id, ignore up to id.
             current_match = current_match[:current_match.find(
-                "#")] if "#" in match[1] else current_match
+                "#")] if "#" in match else current_match
             return_val[2] += 1
             # add to list of links if not relative link, or blank, else return root_url + (blank or relative url)
-            return_val[4].append(current_match if not (current_match.startswith(
-                '/') or current_match == "") else f'{root_url}{current_match[1:]}')
+            return_val[4].append(current_match)
     # returns return_val if successful request.
     return return_val if url.status_code == 200 else False
 
