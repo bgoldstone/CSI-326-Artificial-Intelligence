@@ -57,7 +57,7 @@ def scrape_data(first_url: str) -> List[List]:
     # time.sleep(2)
     stack.put(first_url)
     # scrape until 500 urls are scraped and more links to parse...
-    while(len(visited) <= 500 and not stack.empty()):
+    while(len(visited) < 500 and not stack.empty()):
         stack_url = stack.get()
         # if url not visited and not a pdf, scrape the url.
         if stack_url not in visited and not stack_url.endswith('.pdf'):
