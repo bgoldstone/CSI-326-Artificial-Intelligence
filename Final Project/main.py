@@ -1,13 +1,14 @@
 from scrape import scrape_data
 import os
 import re
+import cProfile
 
 
 def main() -> None:
     """
     main Main function for HW7.
     """
-    urls = scrape_data("https://muhlenberg.edu/")
+    urls = scrape_data("https://muhlenberg.edu/", 100)
     # os.chdir(os.path.join(os.path.dirname(__file__), "output"))
     # for index, url in enumerate(urls):
     #     filename = f'URL{index}.txt'
@@ -19,4 +20,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    cProfile.run("main()")
