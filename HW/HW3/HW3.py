@@ -284,6 +284,7 @@ def add_connection(graph: Graph) -> None:
 def store_to_file(graph: Graph) -> None:
     filename = str(input("Enter a filename to save to: "))
     connections = graph.get_connections()
+    # file deepcode ignore PT: <please specify a reason of ignoring this>, file deepcode ignore PT: <please specify a reason of ignoring this>
     output = open(filename, "w")
     output.write(f'{graph.vertices}\n')
     for connection in connections:
