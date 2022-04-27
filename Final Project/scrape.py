@@ -69,7 +69,7 @@ def scrape_data(first_url: str, num_of_urls: int, path: str) -> None:
             continue
         if current_url[0] in visited:
             print(
-                f'URL Already Visisted! Stack: {stack.qsize()} URL: {stack_url}')
+                f'URL Already Visited! Stack: {stack.qsize()} URL: {stack_url}')
             continue
         # writes url and text to file
         print(
