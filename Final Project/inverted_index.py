@@ -11,7 +11,7 @@ def create_inverted_index(input_path: str, output_path: str):
         os.makedirs(output_path)
     os.chdir(input_path)
     data_file = os.path.join(output_path, "data.json")
-    # for each page.
+    # for each page...
     for index, filename in enumerate(os.listdir(input_path)):
         current_words: str
         with open(filename, 'r') as f:
