@@ -44,7 +44,7 @@ def scrape_data(first_url: str, num_of_urls: int, path: str) -> None:
     # gets domain and top level domain of url. Ex. 'example.com'
     domain = re.findall(r"https?:\/\/w*\.?([\w]+\.[.\w]+)\/?", first_url)[0]
     URL_TO_MATCH = re.compile(
-        r'^https?:\/\/[a-zA-Z0-9]*\.?w*\.?{}/'.format(domain))
+        r'^https?:\/\/[a-zA-Z0-9]*\.?w*\.?{}\/'.format(domain))
     # gets full root url Ex. 'http://www.example.com/'
     root_url = f'http://{re.findall(ROOT_URL, first_url)[0]}'
     root_url = add_forward_slash(root_url)
@@ -57,9 +57,16 @@ def scrape_data(first_url: str, num_of_urls: int, path: str) -> None:
     # scrape until 500 urls are scraped and more links to parse...
     while(len(visited) < num_of_urls and len(stack) != 0):
         stack_url = stack.pop()
+        # prevent duplicate http/https links
+        stack_url = stack_url.replace("http://", "https://")
         # if url not visited and not a pdf, scrape the url.
         # gets the url scraping.
+        root_url = re.findall(
+            r'^https?:\/\/[a-zA-Z0-9]*\.?w*\.?\/', stack_url)
         current_url = get_url(stack_url, root_url[:-1])
+        HTML_PATH = os.path.join(path, "HTML")
+        if not os.path.exists(HTML_PATH):
+            os.makedirs(HTML_PATH)
         # checks if urls was successfully visited.
         if not current_url:
             print(
@@ -81,6 +88,10 @@ def scrape_data(first_url: str, num_of_urls: int, path: str) -> None:
             f.write(f'{current_url[0]}\n')
             # one token per space
             f.write(re.sub(r'[\s]{2,}', ' ', current_url[2]))
+        os.chdir(HTML_PATH)
+        # writes html to file
+        with open(f'HTML_{len(visited)}.txt', 'w', errors='ignore') as h:
+            h.write(current_url[3])
         visited.add(stack_url)
         # for all of the absolute links, add them to the stack.
         for url in current_url[1]:
@@ -92,6 +103,9 @@ def scrape_data(first_url: str, num_of_urls: int, path: str) -> None:
                         stack.append(url)
                 else:
                     stack.append(url)
+    os.chdir(path)
+    with open(f'not_visitable.txt', 'w', errors='ignore') as n:
+        n.write("\n".join(not_visitable))
 
 
 def get_url(base_url: str, root_url: str) -> Union[List, bool]:
@@ -105,7 +119,6 @@ def get_url(base_url: str, root_url: str) -> Union[List, bool]:
     Returns:
         Union[List, bool]: URL findings in the format of [url, # relative links(<link>), # anchor links(<a>), html contents, [**absolute links]]. Returns False if url not successfully reachable.
     """
-    base_url.replace("http://", "https://")
     # if url fails to resolve, return False.
     try:
         # added headers because some websites require them.
@@ -131,6 +144,7 @@ def get_url(base_url: str, root_url: str) -> Union[List, bool]:
             return_val[1].append(current_match)
         # gets all text from webpage.
     return_val[2] = " ".join(re.findall(TEXT, url.text))
+    return_val.append(url.text)
     # returns return_val if successful request.
     return return_val
 

@@ -1,6 +1,5 @@
 import os
 import json
-from pydoc import doc
 import statistics
 from typing import Dict
 
@@ -15,13 +14,15 @@ def create_inverted_index(input_path: str, output_path: str) -> None:
     """
     # contains inverted index, max frequencies & word count, and term frequencies & inverted document frequency
     data = {"inverted_index": {}, "max_freq_wc": [],
-            "tf_idf": {}, "list_of_words": {}}
+            "tf_idf": {}, "list_of_words": {}, "urls": [], "idf": {}}
     if not os.path.isdir(output_path):
         os.makedirs(output_path)
     os.chdir(input_path)
     # for each page...
     document_number = 0
     for filename in os.listdir(input_path):
+        if os.path.isdir(filename):
+            continue
         current_words: str
         print(f"Processing document #{document_number}")
         with open(filename, 'r') as f:
@@ -30,6 +31,7 @@ def create_inverted_index(input_path: str, output_path: str) -> None:
             # if not text, skip.
             if len(lines) < 2:
                 continue
+            data["urls"].append(lines[0])
             current_words = lines[1].split(" ")
         # puts word into dictionary
         for word in current_words:
@@ -77,6 +79,9 @@ def get_tf_idf(data: Dict,) -> Dict:
             word_parsed = word.replace("\"", "")
             if word_parsed == "":
                 continue
+            if not data["idf"].get(word_parsed, False):
+                data["idf"][word_parsed] = NUMBER_OF_DOCUMENTS / \
+                    len(data["inverted_index"][word_parsed])
             data["tf_idf"][document_number][word_parsed] = (
-                data["inverted_index"][word_parsed][document_number]/freq_wc)*(NUMBER_OF_DOCUMENTS/len(data["inverted_index"][word_parsed]))
+                data["inverted_index"][word_parsed][document_number]/freq_wc*data["tf_idf"][word_parsed])
     return data
