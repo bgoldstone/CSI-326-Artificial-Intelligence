@@ -23,7 +23,7 @@ def create_inverted_index(input_path: str, output_path: str) -> None:
     document_number = 0
     for filename in os.listdir(input_path):
         current_words: str
-        print(f"Processing document{document_number}")
+        print(f"Processing document #{document_number}")
         with open(filename, 'r') as f:
             print(filename)
             lines = f.readlines()
