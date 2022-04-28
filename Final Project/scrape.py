@@ -9,7 +9,7 @@ import requests
 LINK = re.compile(
     r'<a[^>]*href=["\']([A-Za-z\d/_#-;=@]*)["\']')
 ROOT_URL = re.compile(r"w*\.?[\w]+\.[.\w]+\/?")
-TEXT = re.compile(r'>([\w \-&\'"]+)<\/')
+TEXT = re.compile(r'>([\w \-&\']+)<\/')
 
 
 def add_forward_slash(url: str) -> str:

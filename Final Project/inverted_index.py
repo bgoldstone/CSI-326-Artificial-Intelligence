@@ -1,5 +1,6 @@
 import os
 import json
+from pydoc import doc
 import statistics
 from typing import Dict
 
@@ -19,29 +20,40 @@ def create_inverted_index(input_path: str, output_path: str) -> None:
         os.makedirs(output_path)
     os.chdir(input_path)
     # for each page...
-    for document_number, filename in enumerate(os.listdir(input_path)):
+    document_number = 0
+    for filename in os.listdir(input_path):
         current_words: str
+        print(f"Processing document{document_number}")
         with open(filename, 'r') as f:
-            current_words = f.readlines()[1].split(" ")
+            print(filename)
+            lines = f.readlines()
+            # if not text, skip.
+            if len(lines) < 2:
+                continue
+            current_words = lines[1].split(" ")
         # puts word into dictionary
         for word in current_words:
+            word_parsed = word.replace("\"", "")
+            if word_parsed == "":
+                continue
             # if dictionary key doesn't exist, create it.
-            if not data["inverted_index"].get(word, None):
-                data["inverted_index"][word] = {}
+            if not data["inverted_index"].get(word_parsed, None):
+                data["inverted_index"][word_parsed] = {}
             # if word count doesn't exist, create it.
-            if not data["inverted_index"][word].get(document_number, False):
-                data["inverted_index"][word][document_number] = current_words.count(
-                    word)
+            if not data["inverted_index"][word_parsed].get(document_number, False):
+                data["inverted_index"][word_parsed][document_number] = current_words.count(
+                    word_parsed)
         # puts each document into a set of words
-        data["list_of_words"][document_number] = set(current_words)
+        data["list_of_words"][document_number] = list(set(current_words))
         # gets mode to get the maximum frequency & number of words in document.
         data["max_freq_wc"].append(current_words.count(
             statistics.mode(current_words)))
+        document_number += 1
     data = get_tf_idf(data)
     # dumps json.
     os.chdir(output_path)
     for keys, values in data.items():
-        with open(f'{keys}'.json, 'w') as f:
+        with open(f'{keys}.json', 'w') as f:
             json.dump(values, f, sort_keys=True, indent=4)
 
 
@@ -57,10 +69,14 @@ def get_tf_idf(data: Dict,) -> Dict:
     """
     NUMBER_OF_DOCUMENTS = len(data["max_freq_wc"])
     # for each document in the data.
-    for document_number, freq_wc in enumerate(data["max_freq_wc"].items()):
+    for document_number, freq_wc in enumerate(data["max_freq_wc"]):
+        print(f'Document #{document_number}')
         data["tf_idf"][document_number] = {}
         # for each word in the document.
         for word in data["list_of_words"][document_number]:
-            data["tf_idf"][document_number][word] = (
-                data["inverted_index"][word][document_number]/freq_wc)*(NUMBER_OF_DOCUMENTS/len(data["inverted_index"][word]))
+            word_parsed = word.replace("\"", "")
+            if word_parsed == "":
+                continue
+            data["tf_idf"][document_number][word_parsed] = (
+                data["inverted_index"][word_parsed][document_number]/freq_wc)*(NUMBER_OF_DOCUMENTS/len(data["inverted_index"][word_parsed]))
     return data
