@@ -17,7 +17,7 @@ def main() -> None:
     gc.enable()
     scrape_data("https://muhlenberg.edu/", 10_000, web_scrape)
     # create_inverted_index(web_scrape, data)
-    query(data)
+    # query(data)
 
 
 if __name__ == "__main__":
