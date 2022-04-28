@@ -153,4 +153,6 @@ cython_debug/
 .vscode/
 .venv/
 .dccache
+# Parsing Data
 Final Project/output/
+Final Project/data/
