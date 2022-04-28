@@ -8,7 +8,7 @@ import requests
 # regex for link and anchor tags. group 0 is href.
 LINK = re.compile(
     r'<a[^>]*href=["\']([A-Za-z\d/_#-;=@]*)["\']')
-ROOT_URL = re.compile(r"w*\.?[\w]+\.[.\w]+\/?")
+ROOT_URL = re.compile(r'w*\.?[\w]+\.[.\w]+\/?')
 TEXT = re.compile(r'>([\w \-&\']+)<\/')
 
 
@@ -42,7 +42,7 @@ def scrape_data(first_url: str, num_of_urls: int, path: str) -> None:
     # first url to start the web scrape from.
     first_url = add_forward_slash(first_url)
     # gets domain and top level domain of url. Ex. 'example.com'
-    domain = re.findall(r"https?:\/\/w*\.?([\w]+\.[.\w]+)\/?", first_url)[0]
+    domain = re.findall(r'https?:\/\/w*\.?([\w]+\.[.\w]+)\/?', first_url)[0]
     URL_TO_MATCH = re.compile(
         r'^https?:\/\/[a-zA-Z0-9]*\.?w*\.?{}\/'.format(domain))
     # gets full root url Ex. 'http://www.example.com/'
@@ -58,13 +58,13 @@ def scrape_data(first_url: str, num_of_urls: int, path: str) -> None:
     while(len(visited) < num_of_urls and len(stack) != 0):
         stack_url = stack.pop()
         # prevent duplicate http/https links
-        stack_url = stack_url.replace("http://", "https://")
+        stack_url = re.sub(r'^http://', 'https://', stack_url,)
         # if url not visited and not a pdf, scrape the url.
         # gets the url scraping.
         root_url = re.findall(
             r'^https?:\/\/[a-zA-Z0-9]*\.?w*\.?\/', stack_url)
         current_url = get_url(stack_url, root_url[:-1])
-        HTML_PATH = os.path.join(path, "HTML")
+        HTML_PATH = os.path.join(path, 'HTML')
         if not os.path.exists(HTML_PATH):
             os.makedirs(HTML_PATH)
         # checks if urls was successfully visited.
@@ -105,7 +105,7 @@ def scrape_data(first_url: str, num_of_urls: int, path: str) -> None:
                     stack.append(url)
     os.chdir(path)
     with open(f'not_visitable.txt', 'w', errors='ignore') as n:
-        n.write("\n".join(not_visitable))
+        n.write('\n'.join(not_visitable))
 
 
 def get_url(base_url: str, root_url: str) -> Union[List, bool]:
@@ -124,26 +124,26 @@ def get_url(base_url: str, root_url: str) -> Union[List, bool]:
         # added headers because some websites require them.
         url = requests.get(base_url, headers={"User-Agent": "*"})
     except requests.exceptions.ConnectionError:
-        print("site is not reachable", base_url)
+        print('site is not reachable', base_url)
         return False
     # only take html pages
     if 'text/html' not in url.headers.get('content-type', 'text/html') or url.status_code != 200:
         return False
     # base url, links, text
-    return_val = [base_url, [], ""]
+    return_val = [base_url, [], '']
     # if url is successfully retrieved, get matches from regular expressions.
     for match in LINK.findall(url.text):
         # if relative link.
         current_match = match[:match.find(
-            "#")] if "#" in match else match
-        if current_match.startswith("/"):
+            '#')] if '#' in match else match
+        if current_match.startswith('/'):
             return_val[1].append(f'{root_url}{current_match}')
         # if absolute link.
-        elif current_match.startswith("http"):
+        elif current_match.startswith('http'):
             # add to list of links if not relative link, or blank, else return root_url + (blank or relative url)
             return_val[1].append(current_match)
         # gets all text from webpage.
-    return_val[2] = " ".join(re.findall(TEXT, url.text))
+    return_val[2] = ' '.join(re.findall(TEXT, url.text))
     return_val.append(url.text)
     # returns return_val if successful request.
     return return_val
@@ -179,7 +179,7 @@ def get_robots_txt(domain: re.Pattern) -> Union[re.Pattern, None]:
             blank_lines += 1
             if blank_lines >= 2:
                 # parsees into one string to compile in regex
-                return_val = "|".join(not_visitable)
+                return_val = '|'.join(not_visitable)
                 return re.compile(return_val) if return_val else None
 
         else:
