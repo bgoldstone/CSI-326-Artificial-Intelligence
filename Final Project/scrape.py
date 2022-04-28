@@ -59,10 +59,11 @@ def scrape_data(first_url: str, num_of_urls: int, path: str) -> None:
         stack_url = stack.pop()
         # prevent duplicate http/https links
         stack_url = re.sub(r'^http://', 'https://', stack_url)
+        print(stack_url)
         # if url not visited and not a pdf, scrape the url.
         # gets the url scraping.
         current_root_url = re.findall(
-            r'^https?:\/\/[a-zA-Z0-9]*\.?w*\.?\/', stack_url)[0]
+            r'^https:\/\/w?w?w?\.?[a-zA-Z0-9.]+\/', stack_url)[0]
         current_url = get_url(stack_url, current_root_url[:-1])
         HTML_PATH = os.path.join(path, 'HTML')
         if not os.path.exists(HTML_PATH):
