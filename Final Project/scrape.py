@@ -105,6 +105,7 @@ def get_url(base_url: str, root_url: str) -> Union[List, bool]:
     Returns:
         Union[List, bool]: URL findings in the format of [url, # relative links(<link>), # anchor links(<a>), html contents, [**absolute links]]. Returns False if url not successfully reachable.
     """
+    base_url.replace("http://", "https://")
     # if url fails to resolve, return False.
     try:
         # added headers because some websites require them.

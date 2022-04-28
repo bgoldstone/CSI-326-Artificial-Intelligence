@@ -75,7 +75,7 @@ def get_tf_idf(data: Dict,) -> Dict:
         # for each word in the document.
         for word in data["list_of_words"][document_number]:
             word_parsed = word.replace("\"", "")
-            if word_parsed == "":
+            if not word_parsed:
                 continue
             data["tf_idf"][document_number][word_parsed] = (
                 data["inverted_index"][word_parsed][document_number]/freq_wc)*(NUMBER_OF_DOCUMENTS/len(data["inverted_index"][word_parsed]))
