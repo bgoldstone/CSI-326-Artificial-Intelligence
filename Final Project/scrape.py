@@ -37,15 +37,14 @@ def scrape_data(first_url: str, num_of_urls: int, path: str) -> None:
     # keeps track of visited urls.
     visited = set()
     not_visitable = set()
-    # return value list.
-    return_value = []
     # stack for DFS of urls.
-    stack = LifoQueue()
+    stack = []
     # first url to start the web scrape from.
     first_url = add_forward_slash(first_url)
     # gets domain and top level domain of url. Ex. 'example.com'
     domain = re.findall(r"https?:\/\/w*\.?([\w]+\.[.\w]+)\/?", first_url)[0]
-    url_to_match = re.compile(r'^https?:\/\/w*\.?{}/'.format(domain))
+    URL_TO_MATCH = re.compile(
+        r'^https?:\/\/[a-zA-Z0-9]*\.?w*\.?{}/'.format(domain))
     # gets full root url Ex. 'http://www.example.com/'
     root_url = f'http://{re.findall(ROOT_URL, first_url)[0]}'
     root_url = add_forward_slash(root_url)
@@ -54,27 +53,27 @@ def scrape_data(first_url: str, num_of_urls: int, path: str) -> None:
     # gets robots.txt file
     robots = get_robots_txt(root_url)
     # time.sleep(2)
-    stack.put(first_url)
+    stack.append(first_url)
     # scrape until 500 urls are scraped and more links to parse...
-    while(len(visited) < num_of_urls and not stack.empty()):
-        stack_url = stack.get()
+    while(len(visited) < num_of_urls and len(stack) != 0):
+        stack_url = stack.pop()
         # if url not visited and not a pdf, scrape the url.
         # gets the url scraping.
         current_url = get_url(stack_url, root_url[:-1])
         # checks if urls was successfully visited.
         if not current_url:
             print(
-                f'404 Not Found or Not Visitable! Stack: {stack.qsize()} URL: {stack_url}')
+                f'404 Not Found or Not Visitable! Stack: {len(stack)} URL: {stack_url}')
             not_visitable.add(stack_url)
             continue
         if current_url[0] in visited:
             print(
-                f'URL Already Visited! Stack: {stack.qsize()} URL: {stack_url}')
+                f'URL Already Visited! Stack: {len(stack)} URL: {stack_url}')
             continue
         # writes url and text to file
         print(
-            f'Visited: {len(visited)} {current_url[0]} Stack: {stack.qsize()}')
-        if not os.path.isdir(path):
+            f'Visited: {len(visited)} {current_url[0]} Stack: {len(stack)}')
+        if not os.path.exists(path):
             os.makedirs(path)
         os.chdir(path)
         with open(f'URL_{len(visited)}.txt', 'w', errors='ignore') as f:
@@ -82,18 +81,17 @@ def scrape_data(first_url: str, num_of_urls: int, path: str) -> None:
             f.write(f'{current_url[0]}\n')
             # one token per space
             f.write(re.sub(r'[\s]{2,}', ' ', current_url[2]))
-        return_value.append(current_url)
         visited.add(stack_url)
         # for all of the absolute links, add them to the stack.
         for url in current_url[1]:
             # makes sure urls is not visited, the url is part of current domain, url is a absolute url, and is not disallowable by robots.txt.
-            if re.findall(url_to_match, url) and url not in not_visitable and url not in visited:
+            if re.findall(URL_TO_MATCH, url) and url not in not_visitable and url not in visited and url not in stack:
                 # if robots regex is found, check against that.
                 if robots:
                     if len(re.findall(robots, url)) == 0:
-                        stack.put(url)
+                        stack.append(url)
                 else:
-                    stack.put(url)
+                    stack.append(url)
 
 
 def get_url(base_url: str, root_url: str) -> Union[List, bool]:

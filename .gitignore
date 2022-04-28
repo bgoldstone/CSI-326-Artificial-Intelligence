@@ -153,3 +153,4 @@ cython_debug/
 .vscode/
 .venv/
 .dccache
+Final Project/output/
