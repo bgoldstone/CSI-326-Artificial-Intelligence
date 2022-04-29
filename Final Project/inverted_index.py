@@ -91,7 +91,7 @@ def create_inverted_index(input_path: str, output_path: str) -> None:
             statistics.mode(data_stopwords_stemming['list_of_words'][str(document_number)])))
         data['max_freq_wc'].append(data_stemming['list_of_words'][str(document_number)].count(
             statistics.mode(data_stemming['list_of_words'][str(document_number)])))
-        str(document_number) += 1
+        document_number += 1
     data = get_tf_idf(data)
     data_stopwords = get_tf_idf(data_stopwords)
     data_stopwords_stemming = get_tf_idf(data_stopwords_stemming)
