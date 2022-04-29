@@ -15,8 +15,8 @@ def main() -> None:
     print(web_scrape)
     data = os.path.join(os.path.abspath(__file__), "..", "data")
     gc.enable()
-    scrape_data("https://muhlenberg.edu/", 10_000, web_scrape)
-    # create_inverted_index(web_scrape, data)
+    # scrape_data("https://muhlenberg.edu/", 10_000, web_scrape)
+    create_inverted_index(web_scrape, data)
     # query(data)
 
 
