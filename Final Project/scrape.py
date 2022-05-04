@@ -1,7 +1,8 @@
 import os
 import re
-from typing import List, Union
 from queue import LifoQueue
+from typing import List, Union
+
 import requests
 
 # contants

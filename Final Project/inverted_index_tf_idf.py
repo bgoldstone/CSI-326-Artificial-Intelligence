@@ -1,9 +1,10 @@
-import os
 import json
+import os
 import statistics
-from typing import Dict
-from nltk.stem import PorterStemmer
 from copy import deepcopy
+from typing import Dict
+
+from nltk.stem import PorterStemmer
 
 
 def create_inverted_index(input_path: str, output_path: str) -> None:
@@ -53,6 +54,7 @@ def create_inverted_index(input_path: str, output_path: str) -> None:
             line.replace("\n", "") for line in lines[0]]
         data_stopwords_stemming['urls'][document_number] = [
             line.replace("\n", "") for line in lines[0]]
+
         # gets titles
         data["title"][document_number] = lines[2].replace("\n", "")
         data_stopwords['title'][document_number] = lines[2].replace("\n", "")
@@ -121,11 +123,13 @@ def create_inverted_index(input_path: str, output_path: str) -> None:
         data_stemming['max_freq_wc'][document_number] = data_stemming['list_of_words'][document_number].count(
             statistics.mode(data_stemming['list_of_words'][document_number]))
 
-    # all datasets
+    # all datasets.
     all_data = {'': data, '_stopwords': data_stopwords,
                 '_stemming': data_stemming, '_stopwords_stemming': data_stopwords_stemming}
+    # for each dataset, get tf_idf.
     for key, dataset in all_data.items():
         all_data[key] = get_tf_idf(dataset)
+
     # dumps json.
     os.chdir(output_path)
     for file_extension, dataset in all_data.items():
@@ -152,9 +156,11 @@ def get_tf_idf(data: Dict) -> Dict:
         for word in data["list_of_words"][document_number]:
             if word == "":
                 continue
+            # if word's idf not generated, generate it.
             if word not in data["idf"].keys():
                 data["idf"][word] = NUMBER_OF_DOCUMENTS / \
                     len(data["inverted_index"][word])
+            # set tf_idf value.
             data["tf_idf"][document_number][word] = (
                 data["inverted_index"][word][document_number]/freq_wc*data["idf"][word])
     return data
