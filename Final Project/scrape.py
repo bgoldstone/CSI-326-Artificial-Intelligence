@@ -8,8 +8,9 @@ import requests
 # regex for link and anchor tags. group 0 is href.
 LINK = re.compile(
     r'<a[^>]*href=["\']([A-Za-z\d/_#-;=@]*)["\']')
-ROOT_URL = re.compile(r'w*\.?[\w]+\.[.\w]+\/?')
+ROOT_URL = re.compile(r'https?://w*\.?[\w]+\.[.\w]+\/?')
 TEXT = re.compile(r'>([\w \-&\']+)<\/')
+TITLE = re.compile(r'<title>([^<]+)<\/title>')
 
 
 def add_forward_slash(url: str) -> str:
@@ -43,10 +44,14 @@ def scrape_data(first_url: str, num_of_urls: int, path: str) -> None:
     first_url = add_forward_slash(first_url)
     # gets domain and top level domain of url. Ex. 'example.com'
     domain = re.findall(r'https?:\/\/w*\.?([\w]+\.[.\w]+)\/?', first_url)[0]
+    # For Subdomains
+    # URL_TO_MATCH = re.compile(
+    #     r'^https?:\/\/[a-zA-Z0-9]*\.?w*\.?{}\/'.format(domain))
+    # For Domain
     URL_TO_MATCH = re.compile(
-        r'^https?:\/\/[a-zA-Z0-9]*\.?w*\.?{}\/'.format(domain))
+        r'^[htps:/]*w*\.?{}\/'.format(domain))
     # gets full root url Ex. 'http://www.example.com/'
-    root_url = f'http://{re.findall(ROOT_URL, first_url)[0]}'
+    root_url = f'{re.findall(ROOT_URL, first_url)[0]}'
     root_url = add_forward_slash(root_url)
     print(root_url)
     # puts first url in stack to start.
@@ -58,11 +63,12 @@ def scrape_data(first_url: str, num_of_urls: int, path: str) -> None:
     while(len(visited) < num_of_urls and len(stack) != 0):
         stack_url = stack.pop()
         # prevent duplicate http/https links
-        stack_url = re.sub(r'^http://', 'https://', stack_url)
-        # if url not visited and not a pdf, scrape the url.
+        if stack_url.startswith("http://"):
+            stack_url = re.sub(r'^http://', 'https://', stack_url)
         # gets the url scraping.
         current_root_url = re.findall(
             r'^https:\/\/w?w?w?\.?[a-zA-Z0-9.]+\/', stack_url)[0]
+        # if url has one of these extensions, skip it.
         if len(re.findall(r'\.jpg$|\.jpeg$|\.tif$|\.png$|\.pdf$', stack_url.lower())) > 0:
             print(
                 f'404 Not Found or Not Visitable! Stack: {len(stack)} URL: {stack_url}')
@@ -93,6 +99,7 @@ def scrape_data(first_url: str, num_of_urls: int, path: str) -> None:
             f.write(f'{current_url[0]}\n')
             # one token per space
             f.write(re.sub(r'[\s]{2,}', ' ', current_url[2]))
+            f.write(f'\n{current_url[4]}')
         os.chdir(HTML_PATH)
         # writes html to file
         with open(f'HTML_{len(visited)}.txt', 'w', errors='ignore') as h:
@@ -102,7 +109,7 @@ def scrape_data(first_url: str, num_of_urls: int, path: str) -> None:
         for url in current_url[1]:
             # makes sure urls is not visited, the url is part of current domain, url is a absolute url, and is not disallowable by robots.txt.
             if re.findall(URL_TO_MATCH, url) and url not in not_visitable and url not in visited and url not in stack:
-                # if robots regex is found, check against that.
+                # if robots is found, check against that.
                 if robots:
                     if len(re.findall(robots, url)) == 0:
                         stack.append(url)
@@ -147,9 +154,16 @@ def get_url(base_url: str, root_url: str) -> Union[List, bool]:
         elif current_match.startswith('http'):
             # add to list of links if not relative link, or blank, else return root_url + (blank or relative url)
             return_val[1].append(current_match)
-        # gets all text from webpage.
+
+    # gets all text from webpage.
     return_val[2] = ' '.join(re.findall(TEXT, url.text))
     return_val.append(url.text)
+
+    # gets URL Title
+    try:
+        return_val.append(re.findall(TITLE, url.text)[0])
+    except IndexError:
+        return_val.append('No Title')
     # returns return_val if successful request.
     return return_val
 
