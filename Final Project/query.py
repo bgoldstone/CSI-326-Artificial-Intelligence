@@ -3,6 +3,7 @@ import math
 import os
 import statistics
 from typing import List, Tuple
+from nltk.stem import PorterStemmer
 
 
 def query(data_path: str, postfix: str, query_terms: str) -> List[Tuple[str, str]]:
@@ -35,6 +36,15 @@ def query(data_path: str, postfix: str, query_terms: str) -> List[Tuple[str, str
     tf_idf_query = {}
     # splits query into tokens
     query_terms = query_terms.split(' ')
+    # if stopwords
+    if postfix.find('stopword') != -1:
+        with open(os.path.join(data_path, '..', 'stopwords.txt'), 'r') as f:
+            stopwords = [line.replace("\n", "") for line in f.readlines()]
+        query_terms = [term for term in query_terms if term not in stopwords]
+    # if stemming
+    if postfix.find('stemming') != -1:
+        stemmer = PorterStemmer()
+        query_terms = [stemmer.stem(term) for term in query_terms]
     # gets unique tokens
     unique_query_term = set(query_terms)
     # finds most common word mex frequency
