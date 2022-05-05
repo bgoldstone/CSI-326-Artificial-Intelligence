@@ -34,7 +34,7 @@ def search():
     # query data
     URLS = query(DATA, postfix, search_term)
     CURRENT_SEARCH = search_term
-    start_row = 3
+    start_row = 4
     # if current Buttons, delete them.
     if len(BTN) > 0:
         for i in range(10):
@@ -63,7 +63,7 @@ def search():
               width=90).grid(row=start_row, column=0)
         # Render button to goto page.
         BTN[i] = Button(app, text="Visit Page", width=5, padx=10,
-                        borderwidth=1)
+                        borderwidth=1, bg='green', fg='white')
         BTN[i].grid(row=start_row, column=1)
         # render empty label for spacing.
         LABEL[i] = Label(app, text="")
@@ -119,30 +119,37 @@ app = Tk()
 # set app title.
 app.title('Muhlenberg Search')
 # set window size.
-app.geometry('800x600+10+40')
+app.geometry('800x700+10+40')
 # set Icon in top left corner.
 app.iconbitmap(os.path.join(os.path.dirname(__file__), 'muhlenberg.ico'))
 # set heading label
 heading = Label(
-    app, text='Welcome to Muhlenberg search!\tPlease enter a query to begin.', justify='center')
-heading.grid(row=0, column=0, columnspan=3)
+    app, text='Welcome to Muhlenberg search!  Please enter a query to begin.', justify='center', font=('Comic Sans MS', 12), highlightthickness=2, padx=10, pady=10)
+heading.config(highlightbackground='#a41e34', highlightcolor='#a41e34')
+heading.grid(row=0, column=0, columnspan=3, pady=10)
 # stem and stopwords checkbox.
 STEMMED = IntVar()
 STOPWORDS = IntVar()
+checkbox_frame = Frame(app, highlightthickness=2)
 stem_checkbox = Checkbutton(
-    app, text="Stemmed", variable=STEMMED, onvalue=1, offvalue=0)
+    checkbox_frame, text="Stemmed", variable=STEMMED, onvalue=1, offvalue=0)
 stopwords_checkbox = Checkbutton(
-    app, text="Stopwords", variable=STOPWORDS, onvalue=1, offvalue=0)
-stem_checkbox.grid(row=1, column=0, sticky=E)
-stopwords_checkbox.grid(row=1, column=1, sticky=W, padx=15)
+    checkbox_frame, text="Stopwords", variable=STOPWORDS, onvalue=1, offvalue=0)
+stem_checkbox.pack(side=LEFT)
+stopwords_checkbox.pack(side=RIGHT)
+checkbox_frame.config(highlightbackground='orange',
+                      highlightcolor='orange')
+checkbox_frame.grid(row=1, columnspan=2, padx=15, pady=10)
 # entry field.
 field = Entry(app, textvariable="Search Muhlenberg.edu",
-              justify='center', width=90)
-field.grid(row=2, column=0, columnspan=2, padx=10)
+              justify='center', width=100)
+field.grid(row=2, column=0, columnspan=1, padx=10)
 # search button with muhlenberg red background.
 search_btn = Button(app, text="Search", command=search,
                     fg='#ffffff', bg='#a41e34')
-search_btn.grid(row=2, column=2, padx=5)
+search_btn.grid(row=2, column=1, columnspan=2, sticky=E, padx=5)
+empty_label = Label(app, text='')
+empty_label.grid(row=3)
 # run app
 if __name__ == '__main__':
     app.mainloop()
