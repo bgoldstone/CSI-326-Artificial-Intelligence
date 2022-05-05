@@ -154,5 +154,6 @@ cython_debug/
 .venv/
 .dccache
 # Parsing Data
-Final Project/output/
-Final Project/data/
+Final Project/output/*.txt
+Final Project/output/HTML/*
+Final Project/data/*
