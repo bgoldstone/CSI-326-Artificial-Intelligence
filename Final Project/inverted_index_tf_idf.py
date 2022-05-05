@@ -127,8 +127,8 @@ def create_inverted_index(input_path: str, output_path: str) -> None:
     all_data = {'': data, '_stopwords': data_stopwords,
                 '_stemming': data_stemming, '_stopwords_stemming': data_stopwords_stemming}
     # for each dataset, get tf_idf.
-    for key, dataset in all_data.items():
-        all_data[key] = get_tf_idf(dataset)
+    for file_extension, dataset in all_data.items():
+        all_data[file_extension] = get_tf_idf(dataset)
 
     # dumps json.
     os.chdir(output_path)
