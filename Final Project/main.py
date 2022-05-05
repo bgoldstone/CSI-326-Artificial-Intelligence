@@ -2,11 +2,11 @@ import gc
 import os
 
 from inverted_index_tf_idf import create_inverted_index
-from query import query
 from scrape import scrape_data
 
 WEB_SCRAPE_OUTPUT = os.path.join(os.path.abspath(__file__), "..", "output")
 JSON_OUTPUT = os.path.join(os.path.abspath(__file__), "..", "data")
+
 
 def main() -> None:
     """

@@ -138,10 +138,11 @@ stopwords_checkbox.grid(row=1, column=1, sticky=W, padx=15)
 # entry field.
 field = Entry(app, textvariable="Search Muhlenberg.edu",
               justify='center', width=90)
-field.grid(row=2, column=0, columnspan=2)
+field.grid(row=2, column=0, columnspan=2, padx=10)
 # search button with muhlenberg red background.
 search_btn = Button(app, text="Search", command=search,
                     fg='#ffffff', bg='#a41e34')
 search_btn.grid(row=2, column=2, padx=5)
 # run app
-app.mainloop()
+if __name__ == '__main__':
+    app.mainloop()
