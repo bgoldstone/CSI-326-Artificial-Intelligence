@@ -20,7 +20,7 @@ def search():
     """
     search Searches website for given term.
     """
-    global CURRENT_SEARCH, VIEW, BTN, LABEL
+    global CURRENT_SEARCH, VIEW, BTN, LABEL, URLS
     postfix = ''
     # gets stopwords and/or stemming if required by user.
     if STEMMED.get() == 1 and STOPWORDS.get() == 1:
