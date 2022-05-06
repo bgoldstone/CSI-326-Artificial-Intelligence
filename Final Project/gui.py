@@ -20,7 +20,7 @@ def search():
     """
     search Searches website for given term.
     """
-    global CURRENT_SEARCH, URLS, DATA, VIEW, BTN, LABEL, STEMMED, STOPWORDS
+    global CURRENT_SEARCH, VIEW, BTN, LABEL
     postfix = ''
     # gets stopwords and/or stemming if required by user.
     if STEMMED.get() == 1 and STOPWORDS.get() == 1:
@@ -100,7 +100,7 @@ def increase_results():
     """
     increase_results Increases VIEW variable to allow for different results.
     """
-    global VIEW, URLS
+    global VIEW
     # If VIEW + 10 is not longer than length of URLS, increment VIEW.
     if len(URLS) >= VIEW + 10:
         VIEW += 10
