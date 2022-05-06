@@ -1,4 +1,4 @@
-from query import query
+from query import query_website
 import os
 DATA = os.path.join(os.path.abspath(__file__), "..", "data")
 '''Main Runner for searching'''
@@ -21,7 +21,7 @@ if __name__ == '__main__':
             postfix = '_stemming'
         if stopwords == 'y':
             postfix = '_stopwords'
-        q = query(DATA, postfix, inp)
+        q = query_website(DATA, postfix, inp)
         quit_search = ''
         if len(q) == 0:
             print('\nNo results found, please try again.\n\n')

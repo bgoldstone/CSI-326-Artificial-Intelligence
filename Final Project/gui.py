@@ -1,7 +1,10 @@
-from tkinter import *
 import os
 import webbrowser
-from query import query
+from tkinter import (LEFT, RIGHT, Button, Checkbutton, E, Entry, Frame, IntVar,
+                     Label, Tk, W)
+
+from query import query_website
+
 # Global Variables
 DATA = os.path.join(os.path.abspath(__file__), "..", "data")
 VIEW = 0
@@ -32,7 +35,7 @@ def search():
     if search_term != CURRENT_SEARCH:
         VIEW = 0
     # query data
-    URLS = query(DATA, postfix, search_term)
+    URLS = query_website(DATA, postfix, search_term)
     CURRENT_SEARCH = search_term
     start_row = 4
     # if current Buttons, delete them.
@@ -71,11 +74,12 @@ def search():
         start_row += 2
     # put previous button and next button in place.
     prev_btn = Button(app, text="Previous", width=5, padx=10, borderwidth=1,
-                      command=decrease_results)
-    prev_btn.grid(row=start_row, column=0)
+                      command=decrease_results, bg='blue', fg='white')
+
     next_btn = Button(app, text="Next", width=5, padx=10, borderwidth=1,
-                      command=increase_results)
-    next_btn.grid(row=start_row, column=1)
+                      command=increase_results, bg='blue', fg='white')
+    prev_btn.grid(row=start_row, padx=15, sticky=E)
+    next_btn.grid(row=start_row, column=1, sticky=W)
     try:
         BTN[0].configure(command=lambda: webbrowser.open(current_urls[0]))
         BTN[1].configure(command=lambda: webbrowser.open(current_urls[1]))
@@ -146,8 +150,9 @@ field = Entry(app, textvariable="Search Muhlenberg.edu",
 field.grid(row=2, column=0, columnspan=1, padx=10)
 # search button with muhlenberg red background.
 search_btn = Button(app, text="Search", command=search,
-                    fg='#ffffff', bg='#a41e34')
+                    fg='white', bg='#a41e34')
 search_btn.grid(row=2, column=1, columnspan=2, sticky=E, padx=5)
+app.bind('<Return>', lambda event: search_btn.invoke())
 empty_label = Label(app, text='')
 empty_label.grid(row=3)
 # run app

@@ -1,14 +1,17 @@
 import json
 import math
 import os
+from pydoc import doc
 import statistics
+from this import d
 from typing import List, Tuple
+
 from nltk.stem import PorterStemmer
 
 
-def query(data_path: str, postfix: str, query_terms: str) -> List[Tuple[str, str]]:
+def query_website(data_path: str, postfix: str, query_terms: str) -> List[Tuple[str, str]]:
     """
-    query gets results from urls given a query.
+    query_website gets results from urls given a query.
 
     Args:
         data_path (str): path to data json.
@@ -31,7 +34,8 @@ def query(data_path: str, postfix: str, query_terms: str) -> List[Tuple[str, str
             data[f'{filename[:filename.find(f"{postfix}.json")]}'] = json.load(
                 f)
     numerator = {}
-    denominator = {}
+    denominator1 = {}
+    denominator2 = {}
     results = {}
     tf_idf_query = {}
     # splits query into tokens
@@ -60,13 +64,18 @@ def query(data_path: str, postfix: str, query_terms: str) -> List[Tuple[str, str
             numerator[document_number] = numerator.get(
                 document_number, 0) + (data['tf_idf'][document_number].get(word, 0)*tf_idf_query[word])
             # calculates denominator for each document.
-            denominator[document_number] = denominator.get(document_number, 0) + (tf_idf_query[word] * data['tf_idf'][document_number].get(
-                word, 0)**2)
+            if document_number not in denominator1:
+                denominator1[document_number] = []
+                denominator2[document_number] = []
+            denominator1[document_number].append(tf_idf_query[word]**2)
+            denominator2[document_number].append(
+                data['tf_idf'][document_number].get(word, 0)**2)
     del(query_max_freq)
     results = {}
     # for all values, divide numerator by denominator and put in results.
     for key, value in numerator.items():
-        results[key] = value/denominator[key]
+        results[key] = value/(math.sqrt(sum(denominator1[document_number]))
+                              * math.sqrt(sum(denominator2[document_number])))
     # sorts results
     results = sorted(
         results.items(), key=lambda item: item[1], reverse=True)
