@@ -157,3 +157,4 @@ cython_debug/
 Final Project/output/*.txt
 Final Project/output/HTML/*
 Final Project/data/*
+*.zip
